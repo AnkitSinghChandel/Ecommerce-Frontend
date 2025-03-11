@@ -1,0 +1,14 @@
+// export const API_URL = process.env.REACT_APP_API_URL;
+export const API_URL = import.meta.env.VITE_APP_API_URL;
+export const ADD_STATUS = "ADD_STATUS";
+export const FETCH_ALL_STATUS = "FETCH_ALL_STATUS";
+export const UPDATE_STATUS_BY_ID = "UPDATE_STATUS_BY_ID";
+export const DELETE_STATUS_BY_ID = "DELETE_STATUS_BY_ID";
+export const ADD_TASK = "ADD_TASK";
+export const FETCH_ALL_TASK = "FETCH_ALL_TASK";
+export const FETCH_TASK_BY_ID = "FETCH_TASK_BY_ID";
+export const UPDATE_TASK_BY_ID = "UPDATE_TASK_BY_ID";
+export const DELETE_TASK_BY_ID = "DELETE_TASK_BY_ID";
+export const UPDATE_ALL_MULTI_TASKS = "UPDATE_ALL_MULTI_TASKS";
+export const SEND_MESSAGE = "SEND_MESSAGE";
+export const FETCH_MESSAGE_BY_TASK_ID = "FETCH_MESSAGE_BY_TASK_ID";
