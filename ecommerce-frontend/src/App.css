@@ -1,0 +1,46 @@
+/* ASC ADD 👇 */
+#root {
+  min-height: 100vh;
+  /* background: #fafafa; */
+  background: #f4fbf5;
+}
+
+@import "tailwindcss";
+
+.ascSmooth * {
+  transition: all 0.5s ease-in-out !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.pointerEvents {
+  pointer-events: none;
+  color: #a5a5a5 !important;
+  opacity: 50%;
+}
+
+.pointerNone {
+  pointer-events: none;
+  color: #a5a5a5 !important;
+  opacity: 50%;
+}
+
+.ascButton {
+  transition: all 0.2s ease-in-out !important;
+}
+
+/* .ascButton:active {
+  transform: scale(0.95);
+} */
+
+.ascButton:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.ascButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  transform: none;
+}
