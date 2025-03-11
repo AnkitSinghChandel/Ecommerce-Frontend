@@ -1,0 +1,36 @@
+.addBtn {
+  background: #5caf90;
+  color: white;
+  font-size: 18px;
+  border: 1px solid #5caf90;
+  border-radius: 10px;
+  width: 200px;
+  max-width: 90%;
+  height: 50px;
+  cursor: pointer;
+  /* box-shadow: 0 12px 20px #e3e3e3; */
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 15px;
+}
+
+.addBtn:hover:not(:disabled) {
+  background: linear-gradient(270deg, #39b637e5 0%, #5caf90 100%);
+}
+
+.cancelBtn {
+  width: 200px;
+  max-width: 90%;
+  height: 50px;
+  font-size: 18px;
+  border-radius: 10px;
+  background-color: #fff;
+  border: 1px solid #00246a;
+  color: #5b5b5b;
+  cursor: pointer;
+  /* box-shadow: 0 12px 20px #e3e3e3; */
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 15px;
+}
+
+.cancelBtn:hover:not(:disabled) {
+  background-color: #f1f1f1;
+  color: #5b5b5b;
+}

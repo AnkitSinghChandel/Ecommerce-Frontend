@@ -2,9 +2,10 @@ import React from "react";
 import "../styles/Buttons.css";
 
 // Add Button
-export const AddButton = ({ className, onClick, label, disabled }) => (
+export const AddButton = ({ className, onClick, label, disabled, style }) => (
   <button
     className={`addBtn ascButton ${className}`}
+    style={style}
     disabled={disabled}
     onClick={onClick}
   >
@@ -13,9 +14,16 @@ export const AddButton = ({ className, onClick, label, disabled }) => (
 );
 
 // Cancel Button
-export const CancelButton = ({ className, onClick, label, disabled }) => (
+export const CancelButton = ({
+  className,
+  onClick,
+  label,
+  disabled,
+  style,
+}) => (
   <button
     className={`cancelBtn ascButton ${className}`}
+    style={style}
     disabled={disabled}
     onClick={onClick}
   >
