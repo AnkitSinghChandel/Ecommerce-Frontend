@@ -1,0 +1,42 @@
+.sidebarlogo {
+  width: auto;
+  height: auto;
+  cursor: pointer;
+  color: #1890ff;
+}
+
+#asc_Sidebar .ant-menu-item {
+  color: inherit !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+/* Submenu Background */
+#asc_Sidebar .ant-menu-submenu {
+  background-color: white !important;
+}
+/* Submenu Items */
+#asc_Sidebar .ant-menu-sub {
+  background-color: whitesmoke !important;
+}
+
+/* Hover effect for menu items */
+#asc_Sidebar .ant-menu-item:hover {
+  background-color: #e6f7ff !important;
+  color: #1890ff !important;
+  padding-left: 10px !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+/* Hover effect for submenu items */
+#asc_Sidebar .ant-menu-submenu-title:hover {
+  background-color: #e6f7ff !important;
+  color: #1890ff !important;
+  padding-left: 10px !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+/* Active (selected) menu item */
+#asc_Sidebar .ant-menu-item-selected {
+  background-color: #1890ff !important;
+  color: white !important;
+}

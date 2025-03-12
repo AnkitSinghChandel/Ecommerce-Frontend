@@ -1,0 +1,71 @@
+/* ASC ANIME START */
+.asc_animaShdeTopStart {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+
+  /* shade from Top 👇 */
+  transform-origin: 0px 39.5px;
+}
+
+.asc_animaShdeTopEnd {
+  opacity: 0;
+  transform: scale(0.75, 0.5625);
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+
+  /* shade from Top 👇 */
+  transform-origin: 0px 39.5px;
+}
+
+.asc_animaShadeBottomStart {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+
+  /* shade from Bottom 👇 */
+  transform-origin: -16px 266.5px;
+}
+
+.asc_animaShadeBottomEnd {
+  opacity: 0;
+  transform: scale(0.75, 0.5625);
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+
+  /* shade from Bottom 👇 */
+  transform-origin: -16px 266.5px;
+}
+
+.asc_animaTopStart {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+
+  transform-origin: -16px 266.5px;
+}
+
+.asc_animaTopEnd {
+  opacity: 0;
+  /* comes from Top 👇*/
+  transform: translateY(-100px);
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+
+  transform-origin: -16px 266.5px;
+}
+
+.asc_animaBottomEnd {
+  opacity: 0;
+  /* comes from Bottom 👇*/
+  transform: translateY(100px);
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+
+  transform-origin: -16px 266.5px;
+}
+
+/* ASC ANIME END */

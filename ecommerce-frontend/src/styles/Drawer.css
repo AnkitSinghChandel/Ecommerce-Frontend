@@ -1,0 +1,40 @@
+.custom-drawer {
+  background: #f2f2f2 !important;
+}
+
+.custom-header {
+  background-color: rgb(184 184 189) !important;
+}
+.custom-body {
+  background-color: lightgray !important;
+}
+.custom-footer {
+  background-color: green !important;
+}
+
+.drawer-title {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* Navigate items below */
+.optionText {
+  color: black;
+  font-size: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.optionText:hover {
+  background: gray;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  padding-left: 20px;
+}
+
+.txtHighlighted {
+  text-decoration: none;
+  color: #00246a;
+  font-size: 20px;
+  font-weight: 700;
+  /* transition: all 0.3s ease-in-out !important; */
+}

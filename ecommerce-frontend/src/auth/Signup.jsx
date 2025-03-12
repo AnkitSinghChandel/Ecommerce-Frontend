@@ -145,6 +145,7 @@ const Signup = () => {
           <input
             className="signup-inputBorder ps-2"
             type="number"
+            min={1}
             name="age"
             placeholder="Enter your Age"
             value={age}
