@@ -39,7 +39,7 @@ const SideBar = () => {
     if (location.pathname === "/add-team") return "3-1";
     if (location.pathname.startsWith("/add-update-team/")) return "3-2";
     if (location.pathname === "/team-list") return "4";
-    if (location.pathname === "/DragDrop") return "5";
+    if (location.pathname === "/products-list") return "5";
     if (location.pathname === "/DragDrop2") return "6";
     if (location.pathname === "/list") return "7";
     if (location.pathname === "/PushedOnCheck") return "8";
@@ -63,19 +63,28 @@ const SideBar = () => {
 
   // menu items below👇
   const menuItems = [
+    // {
+    //   key: "1",
+    //   icon: (
+    //     <img src={navIcon} alt="" width={25} style={{ borderRadius: "50%" }} />
+    //   ),
+    //   // label: "DashBoard",
+    //   label: (
+    //     <span
+    //       style={{ fontWeight: "bold", color: "#1890ff", fontSize: "16px" }}
+    //     >
+    //       DashBoard
+    //     </span>
+    //   ),
+    //   className: "custom-class",
+    //   onClick: () => navigate("/dashboard"),
+    // },
+
     {
       key: "1",
-      icon: (
-        <img src={navIcon} alt="" width={25} style={{ borderRadius: "50%" }} />
-      ),
+      icon: <DashboardOutlined />,
       // label: "DashBoard",
-      label: (
-        <span
-          style={{ fontWeight: "bold", color: "#1890ff", fontSize: "16px" }}
-        >
-          DashBoard
-        </span>
-      ),
+      label: "DashBoard",
       className: "custom-class",
       onClick: () => navigate("/dashboard"),
     },
@@ -117,8 +126,8 @@ const SideBar = () => {
     {
       key: "5",
       icon: <HomeOutlined />,
-      label: "DragDrop",
-      onClick: () => navigate("/DragDrop"),
+      label: "Products List",
+      onClick: () => navigate("/products-list"),
     },
 
     {
@@ -200,7 +209,7 @@ const SideBar = () => {
           >
             <div className="">
               <h5
-                className="sidebarlogo"
+                className="text-2xl text-emerald-500 font-bold"
                 onClick={() => {
                   navigate("/dashboard");
                 }}
@@ -218,8 +227,8 @@ const SideBar = () => {
                 toggleCollapse();
               }}
             >
-              <div className="d-flex justify-content-center pointer">
-                <Hamburger toggled={isOpen} toggle={setOpen} color="#4FD1C5" />
+              <div className="flex justify-center pointer">
+                <Hamburger toggled={isOpen} toggle={setOpen} color="#5CAF90" />
               </div>
             </div>
           </div>

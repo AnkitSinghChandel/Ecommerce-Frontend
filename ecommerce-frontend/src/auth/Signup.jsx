@@ -12,19 +12,26 @@ import {
   playSuccessSound,
   playErrorSound,
 } from "../notifications-alert/CustomToastify";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
+import GlobalButtons from "../buttons/GlobalButtons3";
 
 const Signup = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [Ankit] = useAutoAnimate();
+
+  const signupRes = useSelector((state) => state.user.signupRes);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [validemail, setValidemail] = useState(false);
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [age, setAge] = useState("");
   const [phone, setPhone] = useState("");
   const [warning, setWarning] = useState(false);
+  const [showLoader, setShowLoader] = useState(false);
 
   // asc cancel popup start //
   const [cancelPopupShow, setCancelPopupShow] = useState(false);
@@ -37,11 +44,54 @@ const Signup = () => {
   const [typeInScreen, setTypeInScreen] = useState("");
   // asc cancel popup end //
 
+  useEffect(() => {
+    if (signupRes.status === true) {
+      localStorage.setItem("userLoginData", JSON.stringify(signupRes.data));
+      localStorage.setItem("userFirstName", signupRes.data.FirstName);
+      localStorage.setItem("userLastName", signupRes.data.LastName);
+      localStorage.setItem("userid", signupRes.data.userId);
+
+      toast.success(`${signupRes.data.FirstName} you signup successfully`, {
+        // autoClose: 3000,
+        onOpen: playSuccessSound,
+      });
+      navigate("/products-list");
+    } else {
+      // setApimessage(signupRes?.message);
+    }
+  }, [signupRes]);
+
+  const handleSignup = () => {
+    if (
+      firstName === "" ||
+      lastName === "" ||
+      email === "" ||
+      password === "" ||
+      age === "" ||
+      phone === ""
+    ) {
+      setWarning(true);
+      return false;
+    }
+    dispatch(signupApi(firstName, lastName, email, password, age, phone));
+    setShowLoader(true);
+  };
+
+  const checkEmailValidation = (e) => {
+    const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+    const emails = e.target.value;
+    if (!emailPattern.test(emails) && emails.trim() !== "") {
+      setValidemail(true);
+    } else {
+      setValidemail(false);
+    }
+  };
+
   return (
-    <div className="p-5">
+    <div className="ascSmooth p-5">
       <div className="buttonsDiv pt-5 pe-3">
-        <button
-          className="cancelBtn ascButton"
+        <GlobalButtons.Cancel
+          label={"Cancel"}
           onClick={() => {
             if (typeInScreen !== "") {
               setCancelPopupShow(true);
@@ -50,31 +100,38 @@ const Signup = () => {
               navigate(-1);
             }
           }}
-        >
-          Cancel
-        </button>
-        <button className="addBtn ascButton" onClick={"handleSignup"}>
-          Signup
-        </button>
+        />
+
+        <GlobalButtons.Add label={"Signup"} onClick={handleSignup} />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4 m-auto pt-7">
+      <div
+        className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4 m-auto pt-7 lg:w-[50%] w-full"
+        ref={Ankit}
+      >
         <div className="p-3">
           <label htmlFor="fname" className="signup-label ps-2">
             First Name
           </label>
           <br />
           <input
-            className="signup-inputBorder ps-2"
             type="text"
             name="fname"
+            // disabled
+            autoFocus={true}
             placeholder="Enter your First Name"
+            className="signup-inputBorder ps-2"
+            style={{ border: warning && !firstName && "2px solid red" }}
             value={firstName}
             onChange={(e) => {
               setFirstName(e.target.value);
               setWarning("");
             }}
           />
+          <br />
+          <span className="warningTxt ps-2">
+            {warning && !firstName && "Please fill your Name!"}
+          </span>
         </div>
 
         <div className="p-3">
@@ -83,16 +140,21 @@ const Signup = () => {
           </label>
           <br />
           <input
-            className="signup-inputBorder ps-2"
             type="text"
             name="lname"
             placeholder="Enter your Last Name"
+            className="signup-inputBorder ps-2"
+            style={{ border: warning && !lastName && "2px solid red" }}
             value={lastName}
             onChange={(e) => {
               setLastName(e.target.value);
               setWarning("");
             }}
           />
+          <br />
+          <span className="warningTxt ps-2">
+            {warning && !lastName && "Please fill your Last Name!"}
+          </span>
         </div>
 
         <div className="p-3">
@@ -101,16 +163,23 @@ const Signup = () => {
           </label>
           <br />
           <input
-            className="signup-inputBorder ps-2"
             type="email"
             name="ASCemail"
             placeholder="Enter your Email"
+            className="signup-inputBorder ps-2"
+            style={{ border: warning && !email && "2px solid red" }}
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
+              checkEmailValidation(e);
               setWarning("");
             }}
           />
+          <br />
+          <span className="warningTxt ps-2">
+            {warning && !email && "Please fill your Email!"}
+            {validemail && "Email is invalid!"}
+          </span>
         </div>
 
         <div className="p-3" style={{ position: "relative" }}>
@@ -119,9 +188,10 @@ const Signup = () => {
           </label>
           <br />
           <input
-            className="signup-inputBorder ps-2 pe-5"
             type={showPassword ? "text" : "password"}
             placeholder="Enter your Password"
+            className="signup-inputBorder ps-2 pe-5"
+            style={{ border: warning && !password && "2px solid red" }}
             value={password}
             onChange={(e) => {
               setPassword(e.target.value);
@@ -130,11 +200,15 @@ const Signup = () => {
           />
           <img
             className="eyeIcon pointer"
-            style={{ top: "auto", bottom: "27px", right: "24px" }}
+            style={{ top: "auto", bottom: "55px", right: "24px" }}
             src={showPassword ? eye : eyeClose}
             alt=""
             onClick={() => setShowPassword(!showPassword)}
           />
+          <br />
+          <span className="warningTxt ps-2">
+            {warning && !password && "Please fill your password!"}
+          </span>
         </div>
 
         <div className="p-3">
@@ -143,17 +217,22 @@ const Signup = () => {
           </label>
           <br />
           <input
-            className="signup-inputBorder ps-2"
             type="number"
             min={1}
             name="age"
             placeholder="Enter your Age"
+            className="signup-inputBorder ps-2"
+            style={{ border: warning && !age && "2px solid red" }}
             value={age}
             onChange={(e) => {
               setAge(e.target.value);
               setWarning("");
             }}
           />
+          <br />
+          <span className="warningTxt ps-2">
+            {warning && !age && "Please fill your age!"}
+          </span>
         </div>
 
         <div className="p-3">
@@ -162,16 +241,21 @@ const Signup = () => {
           </label>
           <br />
           <input
-            className="signup-inputBorder ps-2"
             type="number"
             name="phnumber"
             placeholder="Enter your Phone Number"
+            className="signup-inputBorder ps-2"
+            style={{ border: warning && !phone && "2px solid red" }}
             value={phone}
             onChange={(e) => {
               setPhone(e.target.value);
               setWarning("");
             }}
           />
+          <br />
+          <span className="warningTxt ps-2">
+            {warning && !phone && "Please fill your phone number!"}
+          </span>
         </div>
       </div>
     </div>

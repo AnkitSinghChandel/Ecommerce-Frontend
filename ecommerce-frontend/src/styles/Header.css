@@ -1,6 +1,7 @@
 .headerMainDiv {
   display: flex;
   flex-wrap: wrap;
+  gap: 10px;
   justify-content: space-between;
   align-items: center;
 }
@@ -8,15 +9,19 @@
 .txtDacoration {
   text-decoration: none;
   color: #00246a;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
   cursor: pointer;
 }
 
+.txtDacoration:hover {
+  color: #5caf90;
+}
+
 .txtHighlighted {
   text-decoration: none;
-  color: #00246a;
-  font-size: 20px;
+  color: #5caf90;
+  font-size: 18px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease-in-out !important;
@@ -26,7 +31,7 @@
   border-bottom: 4px solid #00246a;
   text-decoration: none;
   color: #00246a;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
 }
 

@@ -11,7 +11,9 @@ const DashBoard = () => {
         // setQuery={setQuerystring}
         leftComponent={
           <div className="leftComponentCss">
-            <p> You are in DashBoard </p>
+            <p className="text-[#5CAF90] font-medium text-[18px]">
+              You are in DashBoard
+            </p>
           </div>
         }
       />

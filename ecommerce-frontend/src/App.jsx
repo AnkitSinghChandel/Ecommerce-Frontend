@@ -26,7 +26,7 @@ function App() {
   // for SEO friendly dynamic url end
 
   return (
-    <div className="App ascSmooth">
+    <div className="App ascSmoot-h">
       <CustomToastify />
       <Routers />
       <NetworkStatus />

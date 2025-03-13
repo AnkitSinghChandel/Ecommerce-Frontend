@@ -4,6 +4,9 @@ import "../styles/Header.css";
 import ASC22 from "../assets/images/ASC22.jpg";
 import moment from "moment";
 import Drawer from "./Drawer";
+import { Tooltip } from "antd";
+import ProductsCategory from "../components/products/ProductsCategory";
+import Carts from "../components/products/Carts";
 
 const Header = (props) => {
   const navigate = useNavigate();
@@ -37,83 +40,104 @@ const Header = (props) => {
   console.log("asc567", JSON.parse(authentication)?.FirstName);
 
   return (
-    <div className="ascSmooth" style={{ background: "re-d" }}>
+    <div>
       {authentication ? (
-        <div className="headerMainDiv px-5 pt-2">
-          <Drawer />
-          <div className="d-flex flex-wrap gap-5">
-            <p
-              className={
-                path === "/add-team" ? "txtHighlighted" : "txtDacoration"
-              }
-              onClick={() => {
-                navigate("/add-team");
-              }}
-            >
-              Add Team
-            </p>
-
-            <p
-              className={
-                path === "/team-list" ? "txtHighlighted" : "txtDacoration"
-              }
-              onClick={() => {
-                navigate("/team-list");
-              }}
-            >
-              Team list
-            </p>
-
-            <p
-              className={
-                path === "/profile" ? "txtHighlighted" : "txtDacoration"
-              }
-              onClick={() => {
-                navigate("/profile");
-              }}
-            >
-              Profile
-            </p>
-          </div>
-
-          {/* left component start */}
-          <div>{props.leftComponent && props.leftComponent}</div>
-          {/* left component end */}
-
-          <div className="d-flex flex-wrap align-items-center gap-5 pt-4 pt-sm-4 gap">
-            <div className="txtDacoration text-muted">
-              {/* <p>{moment(new Date()).format("dddd")}</p> */}
-              <p className="mb-0">
-                {moment(new Date()).format("dddd-DD-MMM-YYYY")}
+        <>
+          <div className="headerMainDiv px-5 pt-2">
+            <div className="flex flex-wrap gap-5 items-center">
+              <Drawer />
+              <p
+                className={
+                  path === "/products-list" ? "txtHighlighted" : "txtDacoration"
+                }
+                onClick={() => {
+                  navigate("/products-list");
+                }}
+              >
+                Products List
               </p>
-              <p className="mb-0">
-                Hello Mr. {JSON.parse(authentication)?.FirstName} {""}
-                {JSON.parse(authentication)?.LastName}
+
+              <p
+                className={
+                  path === "/add-team" ? "txtHighlighted" : "txtDacoration"
+                }
+                onClick={() => {
+                  navigate("/add-team");
+                }}
+              >
+                Add Team
               </p>
-              <div>
-                <p
-                  onClick={() => {
-                    sessionStorage.clear();
-                    localStorage.clear();
-                    navigate("/");
-                  }}
-                  className="txtDacoration"
-                >
-                  Log Out
-                </p>
-              </div>
+
+              <p
+                className={
+                  path === "/team-list" ? "txtHighlighted" : "txtDacoration"
+                }
+                onClick={() => {
+                  navigate("/team-list");
+                }}
+              >
+                Team list
+              </p>
+
+              <p
+                className={
+                  path === "/profile" ? "txtHighlighted" : "txtDacoration"
+                }
+                onClick={() => {
+                  navigate("/profile");
+                }}
+              >
+                Profile
+              </p>
             </div>
 
-            <img
-              className="userImg"
-              // src="https://image-cdn.essentiallysports.com/wp-content/uploads/Untitled-design-32-2-9.jpg?width=900"
-              src={ASC22}
-              alt=""
-            />
+            {/* left component start */}
+            <div>{props.leftComponent && props.leftComponent}</div>
+            {/* left component end */}
+
+            <div className="flex flex-wrap align-center gap-5 pt-4">
+              <div className="txtDacoration text-muted">
+                {/* <p>{moment(new Date()).format("dddd")}</p> */}
+                <p className="mb-0">
+                  {moment(new Date()).format("dddd-DD-MMM-YYYY")}
+                </p>
+                <p className="mb-0">
+                  Hello Mr. {JSON.parse(authentication)?.FirstName} {""}
+                  {JSON.parse(authentication)?.LastName}
+                </p>
+                <div>
+                  <p
+                    onClick={() => {
+                      sessionStorage.clear();
+                      localStorage.clear();
+                      navigate("/");
+                    }}
+                    className="txtDacoration"
+                  >
+                    Log Out
+                  </p>
+                </div>
+              </div>
+
+              <img
+                className="userImg"
+                // src="https://image-cdn.essentiallysports.com/wp-content/uploads/Untitled-design-32-2-9.jpg?width=900"
+                src={ASC22}
+                alt=""
+              />
+            </div>
           </div>
-        </div>
+
+          <div className="flex justify-end pt-5 pe-10">
+            <Carts />
+          </div>
+
+          <div>
+            <ProductsCategory />
+          </div>
+        </>
       ) : (
-        <div className="d-flex flex-wrap justify-content-end gap-4 pt-4 pe-5">
+        <div className="flex flex-wrap justify-end gap-4 pt-4 pe-5">
           <Link
             to="/signup"
             className={path === "/signu-p" ? "withUnderLine" : "txtDacoration"}

@@ -1,9 +1,16 @@
-import React from 'react'
+import React from "react";
+import { Outlet } from "react-router";
+import SideBar from "./SideBar";
 
 const LayoutWithSidebar = () => {
   return (
-    <div>LayoutWithSidebar</div>
-  )
-}
+    <div style={{ display: "flex", gap: "1-0px" }}>
+      <SideBar /> {/* Sidebar on the left */}
+      <div style={{ flex: 1 }}>
+        <Outlet /> {/* Renders the nested routes */}
+      </div>
+    </div>
+  );
+};
 
-export default LayoutWithSidebar
+export default LayoutWithSidebar;

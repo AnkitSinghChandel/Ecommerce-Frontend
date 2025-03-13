@@ -1,4 +1,5 @@
 import React from "react";
+import { AddButton } from "../buttons/GlobalButtons2";
 
 const logErrorToService = (error, errorInfo) => {
   console.error("Logged to external service:", {
@@ -33,9 +34,16 @@ class ErrorBoundary extends React.Component {
         <div className="p-5 text-red-500 text-center">
           <h1>Ooops... Something went wrong!</h1>
           <p>{this.state.error?.message || "An unexpected error occurred"}</p>
-          <button className="mt-3" onClick={this.handleRetry}>
+
+          {/* <button className="mt-3" onClick={this.handleRetry}>
             Try Again
-          </button>
+          </button> */}
+
+          <AddButton
+            className="mt-3"
+            label={"Try Again"}
+            onClick={this.handleRetry}
+          />
         </div>
       );
     }

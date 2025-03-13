@@ -10,19 +10,31 @@ import { AddButton } from "../buttons/GlobalButtons2";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
 import ascResume from "../assets/ascResume.pdf";
-// import { loginApi } from "../Redux/actions/userAction";
-// import { useSelector, useDispatch } from "react-redux";
-// import { LOGIN } from "../Redux/constance/userType";
+import { loginApi } from "../Redux/actions/userAction";
+import { useSelector, useDispatch } from "react-redux";
+import { LOGIN } from "../Redux/constance/userType";
 import { toast } from "react-toastify";
 import {
   playSuccessSound,
   playErrorSound,
 } from "../notifications-alert/CustomToastify";
-import { Padding, WidthFull } from "@mui/icons-material";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 const Login = () => {
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const [Ankit] = useAutoAnimate();
+
+  // Redirect logged-in users.👇
+  useEffect(() => {
+    const authentication = localStorage.getItem("userLoginData");
+    if (authentication) {
+      navigate("/products-list");
+    }
+  }, [navigate]);
+  // Redirect logged-in users.👆
+
+  const loginRes = useSelector((state) => state.user.loginRes);
 
   // state start 👇
   const [email, setEmail] = useState("");
@@ -32,6 +44,59 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [keepMeLogin, setKeepMeLogin] = useState(false);
   const [termCondition, setTermCondition] = useState(false);
+
+  useEffect(() => {
+    if (loginRes.status === true) {
+      setLoginData(loginRes.data);
+
+      if (keepMeLogin) {
+        localStorage.setItem("email", email);
+        localStorage.setItem("password", password);
+        localStorage.setItem("isKeepLoggedIn", true);
+      } else {
+        sessionStorage.clear();
+        localStorage.clear();
+      }
+      localStorage.setItem("userLoginData", JSON.stringify(loginRes.data));
+      localStorage.setItem("userFirstName", loginRes.data.FirstName);
+      localStorage.setItem("userLastName", loginRes.data.LastName);
+      localStorage.setItem("userid", loginRes.data.userId);
+      localStorage.setItem("token", loginRes.token);
+
+      navigate("/products-list");
+
+      // toast.success(`${loginRes.data.FirstName} Login successfully`, {
+      //   autoClose: 3000,
+      //   onOpen: playSuccessSound,
+      // });
+
+      toast.success(
+        <div className="flex items-center">
+          <img src={ASC22} alt="" className="toastImg me-2 w-8 h-8" />
+          <span>{`${loginRes.data.FirstName} Login successfully`}</span>
+        </div>,
+        {
+          autoClose: 3000,
+          onOpen: playSuccessSound,
+        }
+      );
+
+      dispatch({
+        type: LOGIN,
+        data: {},
+      });
+    } else {
+      setMsgalert(loginRes?.message);
+      loginRes?.message &&
+        toast.error("Login failed", { onOpen: playErrorSound });
+    }
+  }, [loginRes]);
+
+  const handleLogin = () => {
+    dispatch(loginApi(email, password));
+  };
+
+  document.getElementById("asc_input")?.focus();
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4 p-4">
@@ -82,7 +147,7 @@ const Login = () => {
             />
           </div>
 
-          <AnimatePresence>
+          {/* <AnimatePresence>
             {msgalert && (
               <motion.p
                 transition={{ duration: 0.5 }}
@@ -94,7 +159,10 @@ const Login = () => {
                 {msgalert}
               </motion.p>
             )}
-          </AnimatePresence>
+          </AnimatePresence> */}
+          <p className="ps-2 mb-0 alertMsg" ref={Ankit}>
+            {msgalert}
+          </p>
         </div>
 
         <div className="keep-labels ps-5">
@@ -150,6 +218,7 @@ const Login = () => {
             disabled={termCondition === !true}
             className=""
             style={{ width: "100%", maxWidth: "100%", fontSize: "20px" }}
+            onClick={handleLogin}
           />
 
           <p className="pt-4 keep-labels">

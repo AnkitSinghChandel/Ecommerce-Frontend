@@ -69,3 +69,19 @@
 }
 
 /* ASC ANIME END */
+
+.asc-anime-start {
+  position: absolute;
+  transform: translateX(-50%) translateY(0);
+  transition: all 0.5s ease-in-out;
+  opacity: 1;
+  visibility: visible;
+}
+
+.asc-anime-exit {
+  position: absolute;
+  transform: translateX(-50%) translateY(100%);
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+}

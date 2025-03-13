@@ -1,9 +1,19 @@
-import React from 'react'
+import React from "react";
+import "../styles/Profile.css";
+import Loader from "../Common/Loader";
+import CustomDatePicker from "../datePicker/CustomDatePicker";
 
 const Profile = () => {
   return (
-    <div>Profile</div>
-  )
-}
+    <div>
+      <div>
+        <CustomDatePicker />
+      </div>
+      <div className="flex justify-center items-center h-screen">
+        <Loader size="large" tip="" className="custom-spin" />
+      </div>
+    </div>
+  );
+};
 
-export default Profile
+export default Profile;

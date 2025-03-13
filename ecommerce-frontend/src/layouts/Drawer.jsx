@@ -4,6 +4,7 @@ import { Drawer, Button } from "antd";
 import "../styles/Drawer.css";
 import DeviceType from "../layouts/DeviceType";
 import Hamburger from "hamburger-react";
+import { Tooltip } from "antd";
 
 const MyDrawer = () => {
   const navigate = useNavigate();
@@ -15,11 +16,13 @@ const MyDrawer = () => {
 
   return (
     <div className={DeviceType() === "mobileview" ? "" : "d-non-e"}>
-      <Hamburger toggled={open} toggle={setOpen} />
+      <Tooltip title="Open Drawer" color={"red"}>
+        <Hamburger toggled={open} toggle={setOpen} />
+      </Tooltip>
 
       <Drawer
         title={
-          <div className="drawer-title d-flex gap-4 align-items-center">
+          <div className="drawer-title flex gap-4 align-center">
             <span>Ankit Singh</span>
             <span>
               <Hamburger toggled={open} toggle={setOpen} size={30} />
@@ -42,7 +45,9 @@ const MyDrawer = () => {
       >
         <div className="pointer">
           <p
-            className={path === "/team-list" ? "txtHighlighted" : "optionText"}
+            className={
+              path === "/team-list" ? "drawer-txtHighlighted" : "optionText"
+            }
             onClick={() => {
               navigate("/dashboard");
             }}
@@ -51,7 +56,9 @@ const MyDrawer = () => {
           </p>
 
           <p
-            className={path === "/profile" ? "txtHighlighted" : "optionText"}
+            className={
+              path === "/profile" ? "drawer-txtHighlighted" : "optionText"
+            }
             onClick={() => {
               navigate("/profile");
             }}
@@ -60,7 +67,9 @@ const MyDrawer = () => {
           </p>
 
           <p
-            className={path === "/add-team" ? "txtHighlighted" : "optionText"}
+            className={
+              path === "/add-team" ? "drawer-txtHighlighted" : "optionText"
+            }
             onClick={() => {
               navigate("/add-team");
             }}
@@ -69,7 +78,9 @@ const MyDrawer = () => {
           </p>
 
           <p
-            className={path === "/team-list" ? "txtHighlighted" : "optionText"}
+            className={
+              path === "/team-list" ? "drawer-txtHighlighted" : "optionText"
+            }
             onClick={() => {
               navigate("/team-list");
             }}
@@ -78,7 +89,9 @@ const MyDrawer = () => {
           </p>
 
           <p
-            className={path === "/DragDrop" ? "txtHighlighted" : "optionText"}
+            className={
+              path === "/DragDrop" ? "drawer-txtHighlighted" : "optionText"
+            }
             onClick={() => {
               navigate("/DragDrop");
             }}
@@ -87,7 +100,9 @@ const MyDrawer = () => {
           </p>
 
           <p
-            className={path === "/DragDrop2" ? "txtHighlighted" : "optionText"}
+            className={
+              path === "/DragDrop2" ? "drawer-txtHighlighted" : "optionText"
+            }
             onClick={() => {
               navigate("/DragDrop2");
             }}
@@ -96,7 +111,9 @@ const MyDrawer = () => {
           </p>
 
           <p
-            className={path === "/list" ? "txtHighlighted" : "optionText"}
+            className={
+              path === "/list" ? "drawer-txtHighlighted" : "optionText"
+            }
             onClick={() => {
               navigate("/list");
             }}
@@ -106,7 +123,7 @@ const MyDrawer = () => {
 
           <p
             className={
-              path === "/PushedOnCheck" ? "txtHighlighted" : "optionText"
+              path === "/PushedOnCheck" ? "drawer-txtHighlighted" : "optionText"
             }
             onClick={() => {
               navigate("/PushedOnCheck");
@@ -116,7 +133,9 @@ const MyDrawer = () => {
           </p>
 
           <p
-            className={path === "/MyTodoTask" ? "txtHighlighted" : "optionText"}
+            className={
+              path === "/MyTodoTask" ? "drawer-txtHighlighted" : "optionText"
+            }
             onClick={() => {
               navigate("/MyTodoTask");
             }}
@@ -126,7 +145,7 @@ const MyDrawer = () => {
 
           <p
             className={
-              path === "/MyTodoTask2" ? "txtHighlighted" : "optionText"
+              path === "/MyTodoTask2" ? "drawer-txtHighlighted" : "optionText"
             }
             onClick={() => {
               navigate("/MyTodoTask2");
@@ -137,7 +156,7 @@ const MyDrawer = () => {
 
           <p
             className={
-              path === "/MyTodoTask3" ? "txtHighlighted" : "optionText"
+              path === "/MyTodoTask3" ? "drawer-txtHighlighted" : "optionText"
             }
             onClick={() => {
               navigate("/MyTodoTask3");
@@ -147,7 +166,9 @@ const MyDrawer = () => {
           </p>
 
           <p
-            className={path === "/SelectBox" ? "txtHighlighted" : "optionText"}
+            className={
+              path === "/SelectBox" ? "drawer-txtHighlighted" : "optionText"
+            }
             onClick={() => {
               navigate("/SelectBox");
             }}
@@ -156,7 +177,9 @@ const MyDrawer = () => {
           </p>
 
           <p
-            className={path === "/SelectBox2" ? "txtHighlighted" : "optionText"}
+            className={
+              path === "/SelectBox2" ? "drawer-txtHighlighted" : "optionText"
+            }
             onClick={() => {
               navigate("/SelectBox2");
             }}
@@ -165,7 +188,9 @@ const MyDrawer = () => {
           </p>
 
           <p
-            className={path === "/asctesting" ? "txtHighlighted" : "optionText"}
+            className={
+              path === "/asctesting" ? "drawer-txtHighlighted" : "optionText"
+            }
             onClick={() => {
               navigate("/asctesting");
             }}

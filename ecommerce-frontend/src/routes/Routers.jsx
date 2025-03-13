@@ -4,9 +4,10 @@ import PrivateComponent from "./PrivateComponent";
 import PageNotFound from "../errors/PageNotFound";
 import Login from "../auth/Login";
 import Signup from "../auth/Signup";
-import Profile from "../auth/Profile";
 import DashBoard from "../components/dashboard/DashBoard";
 import LayoutWithSidebar from "../layouts/LayoutWithSidebar";
+import Profile from "../auth/Profile";
+import ProductsList from "../components/products/ProductsList";
 
 const Routers = () => {
   return (
@@ -17,6 +18,7 @@ const Routers = () => {
             <Route element={<LayoutWithSidebar />}>
               <Route path="/dashboard" element={<DashBoard />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/products-list" element={<ProductsList />} />
             </Route>
           </Route>
 
