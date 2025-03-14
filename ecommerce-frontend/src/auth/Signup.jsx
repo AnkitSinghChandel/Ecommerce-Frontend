@@ -109,7 +109,7 @@ const Signup = () => {
         className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4 m-auto pt-7 lg:w-[50%] w-full"
         ref={Ankit}
       >
-        <div className="p-3">
+        <div className="p-1">
           <label htmlFor="fname" className="signup-label ps-2">
             First Name
           </label>
@@ -121,7 +121,7 @@ const Signup = () => {
             autoFocus={true}
             placeholder="Enter your First Name"
             className="signup-inputBorder ps-2"
-            style={{ border: warning && !firstName && "2px solid red" }}
+            style={{ border: warning && !firstName && "1.5px solid #dc3545" }}
             value={firstName}
             onChange={(e) => {
               setFirstName(e.target.value);
@@ -134,7 +134,7 @@ const Signup = () => {
           </span>
         </div>
 
-        <div className="p-3">
+        <div className="p-1">
           <label htmlFor="lname" className="signup-label ps-2">
             Last Name
           </label>
@@ -144,7 +144,7 @@ const Signup = () => {
             name="lname"
             placeholder="Enter your Last Name"
             className="signup-inputBorder ps-2"
-            style={{ border: warning && !lastName && "2px solid red" }}
+            style={{ border: warning && !lastName && "1.5px solid #dc3545" }}
             value={lastName}
             onChange={(e) => {
               setLastName(e.target.value);
@@ -157,7 +157,7 @@ const Signup = () => {
           </span>
         </div>
 
-        <div className="p-3">
+        <div className="p-1">
           <label htmlFor="ASCemail" className="signup-label ps-2">
             Email
           </label>
@@ -167,7 +167,7 @@ const Signup = () => {
             name="ASCemail"
             placeholder="Enter your Email"
             className="signup-inputBorder ps-2"
-            style={{ border: warning && !email && "2px solid red" }}
+            style={{ border: warning && !email && "1.5px solid #dc3545" }}
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
@@ -182,7 +182,7 @@ const Signup = () => {
           </span>
         </div>
 
-        <div className="p-3" style={{ position: "relative" }}>
+        <div className="p-1" style={{ position: "relative" }}>
           <label htmlFor="ASCemail" className="signup-label ps-2">
             Password
           </label>
@@ -191,7 +191,7 @@ const Signup = () => {
             type={showPassword ? "text" : "password"}
             placeholder="Enter your Password"
             className="signup-inputBorder ps-2 pe-5"
-            style={{ border: warning && !password && "2px solid red" }}
+            style={{ border: warning && !password && "1.5px solid #dc3545" }}
             value={password}
             onChange={(e) => {
               setPassword(e.target.value);
@@ -200,7 +200,7 @@ const Signup = () => {
           />
           <img
             className="eyeIcon pointer"
-            style={{ top: "auto", bottom: "55px", right: "24px" }}
+            style={{ top: "auto", bottom: "45px", right: "24px" }}
             src={showPassword ? eye : eyeClose}
             alt=""
             onClick={() => setShowPassword(!showPassword)}
@@ -211,7 +211,7 @@ const Signup = () => {
           </span>
         </div>
 
-        <div className="p-3">
+        <div className="p-1">
           <label htmlFor="age" className="signup-label ps-2">
             Age
           </label>
@@ -220,9 +220,10 @@ const Signup = () => {
             type="number"
             min={1}
             name="age"
+            required
             placeholder="Enter your Age"
             className="signup-inputBorder ps-2"
-            style={{ border: warning && !age && "2px solid red" }}
+            style={{ border: warning && !age && "1.5px solid #dc3545" }}
             value={age}
             onChange={(e) => {
               setAge(e.target.value);
@@ -235,7 +236,7 @@ const Signup = () => {
           </span>
         </div>
 
-        <div className="p-3">
+        <div className="p-1">
           <label htmlFor="phnumber" className="signup-label ps-2">
             Phone Number
           </label>
@@ -245,7 +246,7 @@ const Signup = () => {
             name="phnumber"
             placeholder="Enter your Phone Number"
             className="signup-inputBorder ps-2"
-            style={{ border: warning && !phone && "2px solid red" }}
+            style={{ border: warning && !phone && "1.5px solid #dc3545" }}
             value={phone}
             onChange={(e) => {
               setPhone(e.target.value);

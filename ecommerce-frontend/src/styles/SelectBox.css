@@ -7,7 +7,7 @@
   border: 1px solid #70707080;
   border-radius: 8px;
   background: white;
-  color: black;
+  color: #4b5966;
   font-size: 16px;
   box-shadow: 0 5px 12px #2d2e1c1a;
   box-shadow: 0 12px 20px #e3e3e3;
@@ -20,7 +20,7 @@
 }
 
 .selectedInput {
-  color: grey;
+  color: #4b5966;
   font-size: 16px;
   font-weight: 500;
   transition: all 0.3s ease-in-out 0s;
@@ -35,7 +35,7 @@
   border: 1px solid #70707080;
   border-radius: 8px;
   background: white;
-  color: grey;
+  color: #4b5966;
   font-size: 16px;
   font-weight: 500;
   padding-top: 15px;
@@ -62,7 +62,7 @@
 }
 
 .bootSearch {
-  color: grey;
+  color: #4b5966;
   font-size: 16px;
   border: none;
 }
@@ -74,12 +74,12 @@ input:focus {
 
 .ascBootList {
   display: flex;
-  color: grey;
+  color: #4b5966;
   transition: all 0.3s ease-in-out;
 }
 
 .ascBootList:hover {
-  color: grey;
+  color: #4b5966;
   background-color: #f1f1f1;
   border-radius: 8px;
   transition: all 0.3s ease-in-out;
@@ -87,7 +87,7 @@ input:focus {
 
 .selectedItem {
   display: flex;
-  color: black;
+  color: #4b5966;
   font-weight: 500;
   background-color: #f1f1f1;
   border-radius: 8px;

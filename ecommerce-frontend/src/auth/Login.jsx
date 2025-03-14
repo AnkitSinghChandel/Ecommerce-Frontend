@@ -217,7 +217,7 @@ const Login = () => {
             label={"Login"}
             disabled={termCondition === !true}
             className=""
-            style={{ width: "100%", maxWidth: "100%", fontSize: "20px" }}
+            style={{ width: "100%", maxWidth: "100%", fontSize: "18px" }}
             onClick={handleLogin}
           />
 

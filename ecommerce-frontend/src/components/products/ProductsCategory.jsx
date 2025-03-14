@@ -38,20 +38,27 @@ const ProductsCategory = () => {
         <div
           className="relative flex gap-3 text-[18px] font-medium items-baseline"
           onMouseEnter={() => setHomeHover(true)}
-          //   onMouseLeave={() => setHomeHover(false)}
+          // onMouseLeave={() => setHomeHover(false)}
         >
-          <p className="hover:text-[#5CAF90]">Home</p>
+          <p className="text-[#4b5966] hover:text-[#5CAF90]">Home</p>
           <img alt="" src={DownArrowOption} width={14} />
         </div>
 
-        {homeHover && (
-          <SelectBox
-            selectBoxShow={homeHover}
-            setSelectBoxShow={homeHover}
-            selectOptions={selectOptions}
-            style={{ top: "218px" }}
-          />
-        )}
+        <div onMouseLeave={() => setHomeHover(false)}>
+          {homeHover && (
+            <SelectBox
+              selectBoxShow={homeHover}
+              setSelectBoxShow={setHomeHover}
+              selectOptions={selectOptions}
+              // asc
+              selectedLabel={selectedLabel}
+              setSelectedLabel={setSelectedLabel}
+              selectedValue={selectedValue}
+              setSelectedValue={setSelectedValue}
+              style={{ top: "165px" }}
+            />
+          )}
+        </div>
 
         {optionsShow && (
           <div className="ascBootOptionDrop px-1 pb-2">
@@ -127,7 +134,7 @@ const ProductsCategory = () => {
         onMouseEnter={() => setHomeHover(true)}
         onMouseLeave={() => setHomeHover(false)}
       >
-        <p className="hover:text-[#5CAF90]">Categories</p>
+        <p className="text-[#4b5966] hover:text-[#5CAF90]">Categories</p>
         <img alt="" src={DownArrowOption} width={14} />
       </div>
 
@@ -136,7 +143,7 @@ const ProductsCategory = () => {
         onMouseEnter={() => setHomeHover(true)}
         onMouseLeave={() => setHomeHover(false)}
       >
-        <p className="hover:text-[#5CAF90]">Products</p>
+        <p className="text-[#4b5966] hover:text-[#5CAF90]">Products</p>
         <img alt="" src={DownArrowOption} width={14} />
       </div>
 
@@ -145,7 +152,7 @@ const ProductsCategory = () => {
         onMouseEnter={() => setHomeHover(true)}
         onMouseLeave={() => setHomeHover(false)}
       >
-        <p className="hover:text-[#5CAF90]">Blogs</p>
+        <p className="text-[#4b5966] hover:text-[#5CAF90]">Blogs</p>
         <img alt="" src={DownArrowOption} width={14} />
       </div>
     </div>

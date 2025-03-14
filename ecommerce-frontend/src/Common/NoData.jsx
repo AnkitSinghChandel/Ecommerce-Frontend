@@ -16,7 +16,7 @@ const NoData = (props) => {
           <div className="text-center">
             No data found!
             <br />
-            <img src={box2} width={45} alt="" />
+            <img src={box2} width={45} alt="" className="m-auto" />
           </div>
         )}
 
@@ -25,7 +25,7 @@ const NoData = (props) => {
         <div className="text-center">
           No data to display!
           <br />
-          <img src={box} width={45} alt="" />
+          <img src={box} width={45} alt="" className="m-auto" />
         </div>
       )}
     </div>

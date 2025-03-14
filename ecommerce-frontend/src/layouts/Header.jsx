@@ -128,12 +128,9 @@ const Header = (props) => {
             </div>
           </div>
 
-          <div className="flex justify-end pt-5 pe-10">
-            <Carts />
-          </div>
-
-          <div>
+          <div className="flex justify-between pt-5 pe-10 ps-8">
             <ProductsCategory />
+            <Carts />
           </div>
         </>
       ) : (

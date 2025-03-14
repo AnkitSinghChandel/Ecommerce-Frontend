@@ -14,13 +14,13 @@
 
 .drawer-title {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 /* Navigate items below */
 .optionText {
   color: black;
-  font-size: 20px;
+  font-size: 18px;
   transition: all 0.3s ease-in-out;
 }
 
@@ -34,7 +34,7 @@
 .drawer-txtHighlighted {
   text-decoration: none;
   color: #00246a;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   /* transition: all 0.3s ease-in-out !important; */
 }

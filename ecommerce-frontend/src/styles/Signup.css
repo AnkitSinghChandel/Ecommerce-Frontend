@@ -8,15 +8,15 @@
 }
 
 .signup-label {
-  color: #00246a;
-  font-size: 20px;
+  color: #4b5966;
+  font-size: 18px;
   font-weight: 600;
 }
 
 .signup-inputBorder {
-  background: white;
-  color: #00246a;
-  border: 2px solid #00246a;
+  background: transparent;
+  color: #777;
+  border: 1px solid #4b5966;
   border-radius: 10px;
   font-size: 18px;
   font-weight: 500;
@@ -26,11 +26,11 @@
 }
 
 .signup-inputBorder:focus {
-  border-color: green;
+  border: 1.5px solid green;
 }
 
 .warningTxt {
-  font-size: 18px;
+  font-size: 14px;
   color: #dc3545;
   font-weight: 500;
 }
