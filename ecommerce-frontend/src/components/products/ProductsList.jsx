@@ -204,7 +204,7 @@ const ProductsList = () => {
         <p className="text-gray-600">This is a sliding popup!</p>
       </div> */}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 p-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 p-6">
         {selectOptions.map((item, index) => {
           return (
             <div className="productsBox p-4 w-full">

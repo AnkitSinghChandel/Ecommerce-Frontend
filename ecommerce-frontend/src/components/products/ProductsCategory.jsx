@@ -41,7 +41,7 @@ const ProductsCategory = () => {
           // onMouseLeave={() => setHomeHover(false)}
         >
           <p className="text-[#4b5966] hover:text-[#5CAF90]">Home</p>
-          <img alt="" src={DownArrowOption} width={14} />
+          <img alt="" src={DownArrowOption} width={12} />
         </div>
 
         <div onMouseLeave={() => setHomeHover(false)}>
@@ -135,7 +135,7 @@ const ProductsCategory = () => {
         onMouseLeave={() => setHomeHover(false)}
       >
         <p className="text-[#4b5966] hover:text-[#5CAF90]">Categories</p>
-        <img alt="" src={DownArrowOption} width={14} />
+        <img alt="" src={DownArrowOption} width={12} />
       </div>
 
       <div
@@ -144,7 +144,7 @@ const ProductsCategory = () => {
         onMouseLeave={() => setHomeHover(false)}
       >
         <p className="text-[#4b5966] hover:text-[#5CAF90]">Products</p>
-        <img alt="" src={DownArrowOption} width={14} />
+        <img alt="" src={DownArrowOption} width={12} />
       </div>
 
       <div
@@ -153,7 +153,7 @@ const ProductsCategory = () => {
         onMouseLeave={() => setHomeHover(false)}
       >
         <p className="text-[#4b5966] hover:text-[#5CAF90]">Blogs</p>
-        <img alt="" src={DownArrowOption} width={14} />
+        <img alt="" src={DownArrowOption} width={12} />
       </div>
     </div>
   );
