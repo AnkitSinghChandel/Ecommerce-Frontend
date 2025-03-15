@@ -1,0 +1,21 @@
+.carts:hover .carts-main-label,
+.carts:hover .carts-label,
+.carts:hover .carts-icons {
+  color: #5caf90;
+  /* transition: all 0.5s ease-in-out; */
+}
+
+.carts-main-label {
+  color: #777;
+  font-size: 13px;
+}
+
+.carts-label {
+  color: #4b5966;
+  font-size: 14px;
+}
+
+.carts-icons {
+  color: #4b5966;
+  font-size: 25px;
+}

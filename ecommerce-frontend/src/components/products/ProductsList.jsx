@@ -178,7 +178,7 @@ const ProductsList = () => {
   ];
 
   return (
-    <div>
+    <div className="ascSmooth">
       <Header
         // setQuery={setQuerystring}
         leftComponent={
