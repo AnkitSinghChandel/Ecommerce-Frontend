@@ -44,7 +44,7 @@ const ProductsCategory = () => {
           <img alt="" src={DownArrowOption} width={12} />
         </div>
 
-        <div onMouseLeave={() => setHomeHover(false)}>
+        <div onMouseLeave={() => setHomeHover(true)}>
           {homeHover && (
             <SelectBox
               selectBoxShow={homeHover}

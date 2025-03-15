@@ -209,7 +209,7 @@ const SideBar = () => {
           >
             <div className="">
               <h5
-                className="text-2xl text-emerald-500 font-bold"
+                className="text-[18px] text-[#5caf90] font-bold"
                 onClick={() => {
                   navigate("/dashboard");
                 }}

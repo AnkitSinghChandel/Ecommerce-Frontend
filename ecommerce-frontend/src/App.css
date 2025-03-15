@@ -44,3 +44,8 @@
   opacity: 0.5;
   transform: none;
 }
+
+/* for input placeholder auto set color to visible clear */
+input::placeholder {
+  color: #4b5563; /* Equivalent to Tailwind's gray-600 */
+}

@@ -120,7 +120,7 @@ const Signup = () => {
             // disabled
             autoFocus={true}
             placeholder="Enter your First Name"
-            className="signup-inputBorder ps-2"
+            className="placeholder-gray-600 signup-inputBorder ps-2"
             style={{ border: warning && !firstName && "1.5px solid #dc3545" }}
             value={firstName}
             onChange={(e) => {
@@ -143,7 +143,7 @@ const Signup = () => {
             type="text"
             name="lname"
             placeholder="Enter your Last Name"
-            className="signup-inputBorder ps-2"
+            className="placeholder-gray-600 signup-inputBorder ps-2"
             style={{ border: warning && !lastName && "1.5px solid #dc3545" }}
             value={lastName}
             onChange={(e) => {
@@ -166,7 +166,7 @@ const Signup = () => {
             type="email"
             name="ASCemail"
             placeholder="Enter your Email"
-            className="signup-inputBorder ps-2"
+            className="placeholder-gray-600 signup-inputBorder ps-2"
             style={{ border: warning && !email && "1.5px solid #dc3545" }}
             value={email}
             onChange={(e) => {
@@ -190,7 +190,7 @@ const Signup = () => {
           <input
             type={showPassword ? "text" : "password"}
             placeholder="Enter your Password"
-            className="signup-inputBorder ps-2 pe-5"
+            className="placeholder-gray-600 signup-inputBorder ps-2 pe-5"
             style={{ border: warning && !password && "1.5px solid #dc3545" }}
             value={password}
             onChange={(e) => {
@@ -222,7 +222,7 @@ const Signup = () => {
             name="age"
             required
             placeholder="Enter your Age"
-            className="signup-inputBorder ps-2"
+            className="placeholder-gray-600 signup-inputBorder ps-2"
             style={{ border: warning && !age && "1.5px solid #dc3545" }}
             value={age}
             onChange={(e) => {
@@ -245,7 +245,7 @@ const Signup = () => {
             type="number"
             name="phnumber"
             placeholder="Enter your Phone Number"
-            className="signup-inputBorder ps-2"
+            className="placeholder-gray-600 signup-inputBorder ps-2"
             style={{ border: warning && !phone && "1.5px solid #dc3545" }}
             value={phone}
             onChange={(e) => {

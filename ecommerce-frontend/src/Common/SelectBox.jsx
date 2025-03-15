@@ -34,7 +34,7 @@ const SelectBox = (props) => {
             <input
               type="text"
               autoFocus={true}
-              className="ps-2 bootSearch w-100"
+              className="ps-2 placeholder-gray-600 bootSearch w-100"
               placeholder="Search..."
               value={searchValue}
               onChange={(e) => {

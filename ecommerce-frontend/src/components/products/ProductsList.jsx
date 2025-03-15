@@ -208,7 +208,7 @@ const ProductsList = () => {
         {selectOptions.map((item, index) => {
           return (
             <div className="productsBox p-4 w-full">
-              <div className="productImage rounded-lg">
+              <div className="productImage rounded-lg pointer">
                 <img src={item.productImage} className="rounded-lg w-full" />
               </div>
 

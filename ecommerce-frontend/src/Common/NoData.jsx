@@ -13,7 +13,7 @@ const NoData = (props) => {
             .toLocaleLowerCase()
             .includes(props.searchValue.toLowerCase())
         ).length === 0 && (
-          <div className="text-center">
+          <div className="font-normal text-center">
             No data found!
             <br />
             <img src={box2} width={45} alt="" className="m-auto" />
@@ -22,7 +22,7 @@ const NoData = (props) => {
 
       {/* Display a message when no data to display */}
       {props.selectOptions.length === 0 && (
-        <div className="text-center">
+        <div className="font-normal text-center">
           No data to display!
           <br />
           <img src={box} width={45} alt="" className="m-auto" />
