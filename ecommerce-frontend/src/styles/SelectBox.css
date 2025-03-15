@@ -56,7 +56,7 @@
   display: flex;
   align-items: center;
   height: 30px;
-  border: 1px solid #777;
+  border: 1px solid #70707080;
   border-radius: 5px;
   transition: all 0.3s ease-in-out 0s;
 }
