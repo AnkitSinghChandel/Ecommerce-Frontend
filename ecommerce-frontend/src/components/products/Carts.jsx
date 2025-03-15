@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   UserOutlined,
   HeartOutlined,
@@ -10,11 +10,17 @@ import {
   CloseCircleOutlined,
 } from "@ant-design/icons";
 import "../../styles/cart.css";
+import "../../styles/asc_Anime.css";
 
 const Carts = () => {
+  const [isOpenAccBox, setIsOpenAccBox] = useState(false);
+
   return (
     <div className="ascSmooth flex gap-8 font-medium">
-      <div className="flex items-center gap-2 pointer carts">
+      <div
+        className="flex items-center gap-2 pointer carts relative"
+        onClick={() => setIsOpenAccBox(!isOpenAccBox)}
+      >
         {/* <img alt="" src="" /> */}
         <UserOutlined
           className="carts-icons"
@@ -23,6 +29,13 @@ const Carts = () => {
         <div>
           <p className="carts-main-label">Account</p>
           <p className="carts-label">LOGIN</p>
+        </div>
+      </div>
+
+      <div className={isOpenAccBox ? "asc-anime-start" : "asc-anime-exit"}>
+        <div className="bg-white border-gray-600 rounded-lg p-3">
+          <p className="text-gray-600">Popup Content</p>
+          <p className="text-gray-600">This is a sliding popup!</p>
         </div>
       </div>
 

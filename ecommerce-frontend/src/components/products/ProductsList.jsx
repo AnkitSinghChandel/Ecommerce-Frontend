@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import "../../styles/ProductsList.css";
-import "../../styles/asc_Anime.css";
 import Header from "../../layouts/Header";
 import { Flex, Rate } from "antd";
 
 const ProductsList = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const desc = ["terrible", "bad", "normal", "good", "wonderful"];
   const [ratingValue, setRatingValue] = useState(3);
   // const [productRating, setProductRating] = useState(3);
@@ -189,20 +187,6 @@ const ProductsList = () => {
           </div>
         }
       />
-
-      {/* <div>
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="px-4 py-2 bg-blue-500 text-amber-800 rounded"
-        >
-          Open Popup
-        </button>
-      </div>
-
-      <div className={isOpen ? "asc-anime-start" : "asc-anime-exit"}>
-        <h2 className="text-lg font-semibold">333Popup Content</h2>
-        <p className="text-gray-600">This is a sliding popup!</p>
-      </div> */}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 p-6">
         {selectOptions.map((item, index) => {
