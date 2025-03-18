@@ -24,7 +24,7 @@
   font-size: 18px;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s ease-in-out !important;
+  transition: all 0.3s ease-in-out;
 }
 
 .withUnderLine {
@@ -51,4 +51,16 @@
   object-fit: cover;
   border-radius: 50%;
   box-shadow: 0 12px 20px #e3e3e3;
+}
+
+.commanSearchBox {
+  border: 1px solid grey;
+  border-radius: 25px;
+  width: 100%;
+  transition: all 0.5s ease-in-out;
+}
+
+.commanSearchBox:hover {
+  width: 110%;
+  transition: all 0.5s ease-in-out;
 }

@@ -95,7 +95,7 @@ const Header = (props) => {
             <div>{props.leftComponent && props.leftComponent}</div>
             {/* left component end */}
 
-            <div className="flex flex-wrap align-center gap-5 pt-4">
+            <div className="flex flex-wrap align-middle gap-5 pt-4 ms-auto lg:ms-0">
               <div className="txtDacoration text-muted">
                 {/* <p>{moment(new Date()).format("dddd")}</p> */}
                 <p className="mb-0">
@@ -128,9 +128,13 @@ const Header = (props) => {
             </div>
           </div>
 
-          <div className="flex justify-between pt-5 pe-10 ps-8">
-            <ProductsCategory />
-            <Carts />
+          <div className="flex flex-wrap-reverse justify-between pt-5 pe-10 ps-8">
+            <div className="pt-6 lg:pt-1">
+              <ProductsCategory />
+            </div>
+            <div className="ms-auto">
+              <Carts />
+            </div>
           </div>
         </>
       ) : (

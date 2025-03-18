@@ -7,6 +7,7 @@ const ProductsList = () => {
   const desc = ["terrible", "bad", "normal", "good", "wonderful"];
   const [ratingValue, setRatingValue] = useState(3);
   // const [productRating, setProductRating] = useState(3);
+  const [querystring, setQuerystring] = useState("");
 
   const selectOptions = [
     {
@@ -176,14 +177,24 @@ const ProductsList = () => {
   ];
 
   return (
-    <div className="ascSmooth">
+    <div className="">
       <Header
-        // setQuery={setQuerystring}
+        setQuery={setQuerystring}
         leftComponent={
           <div className="leftComponentCss">
             <p className="text-[#5CAF90] font-medium text-[18px]">
-              You are in Products List
+              {/* You are in Products List */}
             </p>
+            <input
+              type="text"
+              autoFocus={true}
+              className="commanSearchBox text-[14px] p-3"
+              placeholder="You are in Products List..."
+              value={querystring}
+              onChange={(e) => {
+                setQuerystring(e.target.value);
+              }}
+            />
           </div>
         }
       />

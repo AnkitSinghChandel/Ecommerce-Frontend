@@ -33,7 +33,7 @@ const ProductsCategory = () => {
   ];
 
   return (
-    <div className="ascSmooth flex gap-9 pointer">
+    <div className="flex gap-9 pointer">
       <div>
         <div
           className="relative flex gap-3 text-[18px] font-medium items-baseline"

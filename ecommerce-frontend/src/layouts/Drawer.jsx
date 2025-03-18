@@ -11,11 +11,12 @@ const MyDrawer = () => {
   const location = useLocation();
   const path = location.pathname;
   console.log("path", path);
+  const deviceType = DeviceType();
 
   const [open, setOpen] = useState(false);
 
   return (
-    <div className={DeviceType() === "mobileview" ? "" : "d-non-e"}>
+    <div className={DeviceType() === "mobileView" ? "" : "d-non-e"}>
       <Tooltip title="Open Drawer" color={"red"}>
         <Hamburger toggled={open} toggle={setOpen} />
       </Tooltip>

@@ -6,11 +6,11 @@ const useDeviceType = () => {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 767) {
-        setDevice("mobileview");
+        setDevice("mobileView");
       } else if (window.innerWidth <= 1024) {
-        setDevice("tabview");
+        setDevice("tabView");
       } else {
-        setDevice("webview");
+        setDevice("webView");
       }
     };
 

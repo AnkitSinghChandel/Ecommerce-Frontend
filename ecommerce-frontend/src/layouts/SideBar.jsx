@@ -24,6 +24,8 @@ import DeviceType from "../layouts/DeviceType";
 const SideBar = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const deviceType = DeviceType(); // Store device type in a variable.
+
   const { Sider, Content } = Layout;
   const [collapsed, setCollapsed] = useState(false);
   const [isOpen, setOpen] = useState(false);
@@ -187,7 +189,10 @@ const SideBar = () => {
         style={{
           minHeight: "100vh",
           flex: "none",
-          display: DeviceType() === "mobileview" ? "none" : "",
+          display:
+            deviceType === "mobileView" || deviceType === "tabView"
+              ? "none"
+              : "block",
         }}
       >
         <Sider
