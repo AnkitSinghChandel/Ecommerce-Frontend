@@ -7,12 +7,14 @@ import Drawer from "./Drawer";
 import { Tooltip } from "antd";
 import ProductsCategory from "../components/products/ProductsCategory";
 import Carts from "../components/products/Carts";
+import DeviceType from "../layouts/DeviceType";
 
 const Header = (props) => {
   const navigate = useNavigate();
   const location = useLocation();
   const path = location.pathname;
   console.log("path", path);
+  const deviceType = DeviceType();
 
   const today = new Date();
   const formatedDate = moment(today).format("DD.MMM.YYYY");
@@ -44,8 +46,23 @@ const Header = (props) => {
       {authentication ? (
         <>
           <div className="headerMainDiv px-5 pt-2">
-            <div className="flex flex-wrap gap-5 items-center">
+            <div
+              className={
+                deviceType === "webView" || deviceType === "tabView"
+                  ? "hidden"
+                  : ""
+              }
+            >
               <Drawer />
+            </div>
+
+            <div
+              className={
+                deviceType === "mobileView"
+                  ? "hidden"
+                  : "flex flex-wrap gap-5 items-center"
+              }
+            >
               <p
                 className={
                   path === "/products-list" ? "txtHighlighted" : "txtDacoration"
@@ -128,7 +145,7 @@ const Header = (props) => {
             </div>
           </div>
 
-          <div className="flex flex-wrap-reverse justify-between pt-5 pe-10 ps-8">
+          <div className="flex flex-wrap-reverse justify-between pt-5 px-8">
             <div className="pt-6 lg:pt-1">
               <ProductsCategory />
             </div>

@@ -33,18 +33,18 @@ const ProductsCategory = () => {
   ];
 
   return (
-    <div className="flex gap-9 pointer">
+    <div className="flex flex-wrap gap-9 pointer">
       <div>
         <div
           className="relative flex gap-3 text-[18px] font-medium items-baseline"
           onMouseEnter={() => setHomeHover(true)}
-          // onMouseLeave={() => setHomeHover(false)}
+          onMouseLeave={() => setHomeHover(false)}
         >
           <p className="text-[#4b5966] hover:text-[#5CAF90]">Home</p>
           <img alt="" src={DownArrowOption} width={12} />
         </div>
 
-        <div onMouseLeave={() => setHomeHover(true)}>
+        <div onMouseLeave={() => setHomeHover(false)}>
           {homeHover && (
             <SelectBox
               selectBoxShow={homeHover}

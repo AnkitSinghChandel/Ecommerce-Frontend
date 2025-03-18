@@ -16,7 +16,7 @@ const Carts = () => {
   const [isOpenAccBox, setIsOpenAccBox] = useState(false);
 
   return (
-    <div className="ascSmooth flex gap-8 font-medium">
+    <div className="ascSmoot-h flex flex-wrap gap-8 font-medium">
       <div
         className="flex items-center gap-2 pointer carts relative"
         onClick={() => setIsOpenAccBox(!isOpenAccBox)}
