@@ -109,10 +109,12 @@ const Header = (props) => {
             </div>
 
             {/* left component start */}
-            <div>{props.leftComponent && props.leftComponent}</div>
+            <div className="flex-grow">
+              {props.leftComponent && props.leftComponent}
+            </div>
             {/* left component end */}
 
-            <div className="flex flex-wrap align-middle gap-5 pt-4 ms-auto lg:ms-0">
+            <div className="flex flex-wrap align-middle gap-5 pt-4 ms-auto">
               <div className="txtDacoration text-muted">
                 {/* <p>{moment(new Date()).format("dddd")}</p> */}
                 <p className="mb-0">

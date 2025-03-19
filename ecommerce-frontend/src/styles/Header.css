@@ -56,11 +56,11 @@
 .commanSearchBox {
   border: 1px solid grey;
   border-radius: 25px;
-  width: 100%;
+  width: 95%;
   transition: all 0.5s ease-in-out;
 }
 
 .commanSearchBox:hover {
-  width: 110%;
+  width: 100%;
   transition: all 0.5s ease-in-out;
 }
