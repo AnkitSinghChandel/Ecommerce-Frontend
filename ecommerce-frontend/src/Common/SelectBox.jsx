@@ -85,7 +85,9 @@ const SelectBox = (props) => {
             <NoData
               selectOptions={props.selectOptions}
               searchValue={searchValue}
-              item={searchValue}
+              filterParameters={props.selectOptions.map(
+                (x) => `${x.label} ${x.value}`
+              )}
             />
           </div>
         </div>

@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import "../../styles/ProductsList.css";
 import Header from "../../layouts/Header";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { Flex, Rate } from "antd";
+import NoData from "../../Common/NoData";
 
 const ProductsList = () => {
+  const [Ankit] = useAutoAnimate();
+
   const desc = ["terrible", "bad", "normal", "good", "wonderful"];
   const [ratingValue, setRatingValue] = useState(3);
   // const [productRating, setProductRating] = useState(3);
   const [querystring, setQuerystring] = useState("");
 
-  const selectOptions = [
+  const productOptions = [
     {
       productName: "Ankit",
       productImage:
@@ -180,59 +184,73 @@ const ProductsList = () => {
     <div className="">
       <Header
         setQuery={setQuerystring}
+        placeholder={"You are in products list..."}
         leftComponent={
           <div className="leftComponentCss">
             <p className="text-[#5CAF90] font-medium text-[18px]">
               {/* You are in Products List */}
             </p>
-            <input
-              type="text"
-              autoFocus={true}
-              className="commanSearchBox text-[14px] p-3"
-              placeholder="You are in Products List..."
-              value={querystring}
-              onChange={(e) => {
-                setQuerystring(e.target.value);
-              }}
-            />
           </div>
         }
       />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 p-6">
-        {selectOptions.map((item, index) => {
-          return (
-            <div className="productsBox p-4 w-full">
-              <div className="productImage rounded-lg pointer">
-                <img src={item.productImage} className="rounded-lg w-full" />
-              </div>
-
-              <div className="pt-5">
-                <p className="productTitle">{item.productTitle}</p>
-                {/* <p className="pt-2 productName">{item.productName}</p> */}
-                <p className="pt-2 productName">{item.productDescription}</p>
-                {/* <p>{item.productRating}</p> */}
-                <p className="pt-2">
-                  <Rate
-                    tooltips={desc}
-                    onChange={setRatingValue}
-                    // value={ratingValue}
-                    value={item.productRating}
+      <div
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 p-6"
+        ref={Ankit}
+      >
+        {productOptions
+          .filter((x) =>
+            `${x.productTitle} ${x.productDescription} ${x.productName}`
+              .toLocaleLowerCase()
+              .includes(querystring.toLowerCase())
+          )
+          .map((item, index) => {
+            return (
+              <div className="productsBox p-4 w-full">
+                <div className="productImage rounded-lg pointer">
+                  <img
+                    src={item.productImage}
+                    alt="products"
+                    className="rounded-lg w-full"
                   />
-                  <br />
-                  {ratingValue && <span>{desc[item.productRating - 1]}</span>}
-                </p>
-                <p className="font-bold text-[14px] text-[#4b5966] flex gap-4 pt-2">
-                  {/* {`$ ${item.productPrice}`} */}
-                  <span className="">{`$ ${item.productPrice}`}</span>
-                  <span className="font-normal text-[#777] line-through">
-                    {`$ ${(item.productPrice / 2).toFixed(2)}`}
-                  </span>
-                </p>
+                </div>
+
+                <div className="pt-5">
+                  <p className="productTitle">{item.productTitle}</p>
+                  {/* <p className="pt-2 productName">{item.productName}</p> */}
+                  <p className="pt-2 productName">{item.productDescription}</p>
+                  {/* <p>{item.productRating}</p> */}
+                  <p className="pt-2">
+                    <Rate
+                      tooltips={desc}
+                      onChange={setRatingValue}
+                      // value={ratingValue}
+                      value={item.productRating}
+                    />
+                    <br />
+                    {ratingValue && <span>{desc[item.productRating - 1]}</span>}
+                  </p>
+                  <p className="font-bold text-[14px] text-[#4b5966] flex gap-4 pt-2">
+                    {/* {`$ ${item.productPrice}`} */}
+                    <span className="">{`$ ${item.productPrice}`}</span>
+                    <span className="font-normal text-[#777] line-through">
+                      {`$ ${(item.productPrice / 2).toFixed(2)}`}
+                    </span>
+                  </p>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+      </div>
+      {/* Display a message when no search are found */}
+      <div className="flex justify-center items-center h-[50vh]">
+        <NoData
+          selectOptions={productOptions}
+          searchValue={querystring}
+          filterParameters={productOptions.map(
+            (x) => `${x.productTitle} ${x.productDescription} ${x.productName}`
+          )}
+        />
       </div>
     </div>
   );

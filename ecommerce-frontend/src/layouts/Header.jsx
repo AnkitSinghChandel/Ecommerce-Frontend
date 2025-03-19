@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router";
 import "../styles/Header.css";
 import ASC22 from "../assets/images/ASC22.jpg";
@@ -40,6 +40,10 @@ const Header = (props) => {
   const authentication = localStorage.getItem("userLoginData");
 
   console.log("asc567", JSON.parse(authentication)?.FirstName);
+
+  const [query, setQuery] = useState("");
+
+  console.log("header props:", props);
 
   return (
     <div>
@@ -109,10 +113,23 @@ const Header = (props) => {
             </div>
 
             {/* left component start */}
-            <div className="flex-grow">
-              {props.leftComponent && props.leftComponent}
+            <div className="flex-gro-w">
+              {/* {props.leftComponent && props.leftComponent} */}
             </div>
             {/* left component end */}
+
+            <div className="flex-grow">
+              <input
+                type="text"
+                autoFocus={true}
+                className="commanSearchBox text-[14px] p-3"
+                placeholder={props.placeholder || "Search..."}
+                value={props.query}
+                onChange={(e) => {
+                  props.setQuery(e.target.value);
+                }}
+              />
+            </div>
 
             <div className="flex flex-wrap align-middle gap-5 pt-4 ms-auto">
               <div className="txtDacoration text-muted">
