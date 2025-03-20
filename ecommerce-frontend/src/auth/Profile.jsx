@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/Profile.css";
-import Loader from "../Common/Loader";
+import Loader from "../common/Loader";
 import CustomDatePicker from "../datePicker/CustomDatePicker";
 
 const Profile = () => {

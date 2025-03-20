@@ -1,0 +1,44 @@
+/* new input start */
+.asc-input-container {
+  margin-top: 10px !important;
+  position: relative;
+}
+
+.asc-top-label {
+  position: absolute;
+  left: 25px;
+  top: -14px;
+  /* bottom: 36px; */
+  /* background: #fafafa; */
+  background: #f4fbf5;
+  padding: 0px 5px;
+  color: #4b5966;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.2s ease-out;
+  z-index: 1;
+}
+
+.asc-Normal-Input {
+  width: 100%;
+  height: 50px;
+  color: #4b5966;
+  font-size: 16px;
+  font-weight: 400;
+  padding-left: 29px;
+  border: 1.5px solid #4b5966;
+  border-radius: 10px;
+  /* background: #fafafa; */
+  background: #f4fbf5;
+  /* box-shadow: 0 12px 20px #e3e3e3; */
+}
+
+#ascNewInput label {
+  /* position: absolute;
+    top: 0;
+    left: 10px;
+    transition: all 0.2s ease-out;
+    pointer-events: none;
+    color: #999; */
+}
+/* new input end */

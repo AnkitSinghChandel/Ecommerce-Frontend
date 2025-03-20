@@ -36,14 +36,26 @@ GlobalButtons.Delete = ({ className, onClick, label, disabled, style }) => (
   </button>
 );
 
-GlobalButtons.Submit = ({ className, onClick, label, disabled, style }) => (
+GlobalButtons.Submit = ({
+  className,
+  onClick,
+  label,
+  disabled,
+  style,
+  extraComponent,
+  onMouseEnter,
+  onMouseLeave,
+}) => (
   <button
     className={`submitBtn ascButton ${className}`}
     style={style}
     disabled={disabled}
     onClick={onClick}
+    onMouseEnter={onMouseEnter}
+    onMouseLeave={onMouseLeave}
   >
-    {label || "Submit"}
+    {/* {label || "Submit"} */}
+    {extraComponent && extraComponent}
   </button>
 );
 

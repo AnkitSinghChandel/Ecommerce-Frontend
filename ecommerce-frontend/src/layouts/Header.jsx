@@ -8,6 +8,17 @@ import { Tooltip } from "antd";
 import ProductsCategory from "../components/products/ProductsCategory";
 import Carts from "../components/products/Carts";
 import DeviceType from "../layouts/DeviceType";
+import {
+  UserOutlined,
+  HeartOutlined,
+  ShoppingCartOutlined,
+  DownOutlined,
+  ArrowDownOutlined,
+  ReloadOutlined,
+  ShoppingOutlined,
+  CloseCircleOutlined,
+  CloseOutlined,
+} from "@ant-design/icons";
 
 const Header = (props) => {
   const navigate = useNavigate();

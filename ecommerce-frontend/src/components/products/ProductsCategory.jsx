@@ -7,8 +7,8 @@ import searchicon from "../../assets/icons/search.svg";
 import box from "../../assets/images/box(1).png";
 import box2 from "../../assets/images/box(4).png";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-import NoData from "../../Common/NoData";
-import SelectBox from "../../Common/SelectBox";
+import NoData from "../../common/NoData";
+import SelectBox from "../../common/SelectBox";
 
 const ProductsCategory = () => {
   const [Ankit] = useAutoAnimate();

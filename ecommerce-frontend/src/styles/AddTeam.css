@@ -1,0 +1,33 @@
+.addTeamPage {
+  align-items: center;
+  color: #00246a;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.calendarCss {
+  position: absolute;
+  left: 7px;
+  top: 13px;
+  cursor: pointer;
+}
+
+.icons {
+  width: 20px;
+}
+
+.leftComponentCss {
+  font-size: 20px;
+  font-weight: 500;
+  color: grey;
+}
+
+#asc-date .ant-picker-input {
+  color: #4b5966;
+  font-size: 16px !important;
+  font-weight: 500;
+}
+
+.team-custom-spin .ant-spin-dot i {
+  background-color: white !important;
+}

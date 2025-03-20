@@ -23,7 +23,7 @@ const MyDrawer = () => {
 
       <Drawer
         title={
-          <div className="drawer-title flex gap-4 align-center">
+          <div className="drawer-title flex gap-4 items-center">
             <span>Ankit Singh</span>
             <span>
               <Hamburger toggled={open} toggle={setOpen} size={30} />
@@ -87,6 +87,17 @@ const MyDrawer = () => {
             }}
           >
             Team List
+          </p>
+
+          <p
+            className={
+              path === "/team-list" ? "drawer-txtHighlighted" : "optionText"
+            }
+            onClick={() => {
+              navigate("/products-list");
+            }}
+          >
+            Products List
           </p>
 
           <p

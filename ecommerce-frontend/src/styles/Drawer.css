@@ -3,10 +3,10 @@
 }
 
 .custom-header {
-  background-color: rgb(184 184 189) !important;
+  background-color: #5caf90 !important;
 }
 .custom-body {
-  background-color: lightgray !important;
+  background-color: #c5fcce !important;
 }
 .custom-footer {
   background-color: green !important;
@@ -19,13 +19,14 @@
 
 /* Navigate items below */
 .optionText {
+  margin-bottom: 10px;
   color: black;
-  font-size: 18px;
+  font-size: 16px;
   transition: all 0.3s ease-in-out;
 }
 
 .optionText:hover {
-  background: gray;
+  background: #5caf90;
   border-radius: 8px;
   transition: all 0.3s ease-in-out;
   padding-left: 20px;

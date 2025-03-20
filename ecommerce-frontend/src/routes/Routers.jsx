@@ -7,6 +7,8 @@ import Signup from "../auth/Signup";
 import DashBoard from "../components/dashboard/DashBoard";
 import LayoutWithSidebar from "../layouts/LayoutWithSidebar";
 import Profile from "../auth/Profile";
+import AddTeam from "../components/teams/AddTeam";
+import TeamList from "../components/teams/TeamList";
 import ProductsList from "../components/products/ProductsList";
 
 const Routers = () => {
@@ -18,6 +20,9 @@ const Routers = () => {
             <Route element={<LayoutWithSidebar />}>
               <Route path="/dashboard" element={<DashBoard />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/add-team" element={<AddTeam />} />
+              <Route path="/add-team/:id" element={<AddTeam />} />
+              <Route path="/team-list" element={<TeamList />} />
               <Route path="/products-list" element={<ProductsList />} />
             </Route>
           </Route>

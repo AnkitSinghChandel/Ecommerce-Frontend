@@ -3,7 +3,7 @@ import "../../styles/ProductsList.css";
 import Header from "../../layouts/Header";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { Flex, Rate } from "antd";
-import NoData from "../../Common/NoData";
+import NoData from "../../common/NoData";
 
 const ProductsList = () => {
   const [Ankit] = useAutoAnimate();
