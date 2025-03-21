@@ -137,21 +137,6 @@ const TeamsList = () => {
     }
   }, [searchBorderShow]);
 
-  const teamListData2 = [
-    { firstName: "Java", lastName: "asc1" },
-    { firstName: "JavaScript", lastName: "asc2" },
-    { firstName: "React", lastName: "asc3" },
-    { firstName: "Python", lastName: "asc4" },
-    { firstName: "Node", lastName: "asc5" },
-    { firstName: "MongoDB", lastName: "asc6" },
-    { firstName: "SQL", lastName: "asc7" },
-    { firstName: "My SQL", lastName: "asc8" },
-  ];
-  const tableData = [
-    { id: 1, name: "John Doe", email: "john@example.com", role: "Developer" },
-    { id: 2, name: "Jane Smith", email: "jane@example.com", role: "Designer" },
-    { id: 3, name: "Bob Johnson", email: "bob@example.com", role: "Manager" },
-  ];
   return (
     <div>
       <Header
@@ -196,7 +181,7 @@ const TeamsList = () => {
                   <td data-label="Role">{row.role}</td>
                 </tr>
               ))} */}
-            {teamListData2?.map((item, index) => {
+            {teamListData?.map((item, index) => {
               return (
                 <tr key={index}>
                   <td className="ps-3">{index + 1}</td>
