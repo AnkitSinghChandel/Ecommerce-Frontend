@@ -147,7 +147,11 @@ const TeamsList = () => {
     { firstName: "SQL", lastName: "asc7" },
     { firstName: "My SQL", lastName: "asc8" },
   ];
-
+  const tableData = [
+    { id: 1, name: "John Doe", email: "john@example.com", role: "Developer" },
+    { id: 2, name: "Jane Smith", email: "jane@example.com", role: "Designer" },
+    { id: 3, name: "Bob Johnson", email: "bob@example.com", role: "Manager" },
+  ];
   return (
     <div>
       <Header
@@ -163,8 +167,8 @@ const TeamsList = () => {
       />
 
       <div className="ascTableWrapper mt-7 px-5" id="">
-        <table className="table table-hover">
-          <thead className="custom-thead">
+        <table className="tableContainer table">
+          <thead>
             <tr className="tableHeading">
               <th className="txtField">S.No</th>
               <th className="txtField" style={{ width: "10%" }}>
@@ -178,16 +182,23 @@ const TeamsList = () => {
               </th>
               <th className="txtField">Phone Number</th>
               <th className="txtField">Developer's Price</th>
-              <th></th>
-              <th></th>
-              <th></th>
+              <th className="invisible">ASC</th>
+              <th className="invisible">ASC</th>
+              <th className="invisible">ASC</th>
             </tr>
           </thead>
-
-          <tbody className="tabLine" ref={animationParent}>
+          <tbody>
+            {/* {tableData.map((row) => (
+                <tr key={row.id}>
+                  <td data-label="ID">{row.id}</td>
+                  <td data-label="Name">{row.name}</td>
+                  <td data-label="Email">{row.email}</td>
+                  <td data-label="Role">{row.role}</td>
+                </tr>
+              ))} */}
             {teamListData2?.map((item, index) => {
               return (
-                <tr className="trHover " key={index}>
+                <tr key={index}>
                   <td className="ps-3">{index + 1}</td>
                   <td>{moment(item.creationDate).format("DD.MM.YYYY")}</td>
                   <td>{item.firstName}</td>
@@ -268,21 +279,6 @@ const TeamsList = () => {
                 </tr>
               );
             })}
-            {/* Display a message when no projects are found */}
-            {teamListData.length > 0 &&
-              teamListData.filter(
-                (item) =>
-                  item.firstName
-                    ?.toLowerCase()
-                    .includes(searching.toLowerCase()) ||
-                  item.phoneNumber
-                    ?.toLowerCase()
-                    .includes(searching.toLowerCase()) ||
-                  item.email?.toLowerCase().includes(searching.toLowerCase())
-              ).length === 0 && <span>No projects found!</span>}
-
-            {/* Display a message when no data to display */}
-            {teamListData.length === 0 && <span>No data to display!</span>}
           </tbody>
         </table>
       </div>

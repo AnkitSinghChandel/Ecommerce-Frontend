@@ -4,14 +4,42 @@
   display: block;
   overflow-x: auto;
   position: relative;
-  /* white-space: nowrap; */
+  white-space: nowrap;
   height: 500px;
 }
 
 .tableHeading {
   font-size: 18px;
   color: #4b5966;
-  font-weight: 500;
+  font-weight: 600;
+}
+
+.tableContainer {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+  background-color: #fff;
+  font-size: 16px;
+}
+
+.tableContainer th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+}
+
+.tableContainer th,
+.tableContainer td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  text-overflow: ellipsis; /* Handles long content */
+  overflow: hidden;
+}
+
+/* Hover effect */
+.tableContainer tr:hover {
+  background-color: #f9f9f9;
 }
 
 .txtField {
