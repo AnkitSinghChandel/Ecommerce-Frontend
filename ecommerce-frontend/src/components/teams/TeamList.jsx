@@ -137,21 +137,36 @@ const TeamsList = () => {
     }
   }, [searchBorderShow]);
 
+  const teamListData2 = [
+    { firstName: "Java", lastName: "asc1" },
+    { firstName: "JavaScript", lastName: "asc2" },
+    { firstName: "React", lastName: "asc3" },
+    { firstName: "Python", lastName: "asc4" },
+    { firstName: "Node", lastName: "asc5" },
+    { firstName: "MongoDB", lastName: "asc6" },
+    { firstName: "SQL", lastName: "asc7" },
+    { firstName: "My SQL", lastName: "asc8" },
+  ];
+
   return (
     <div>
       <Header
         // setQuery={setQuerystring}
+        placeholder={"You are in Team List..."}
         leftComponent={
           <div className="leftComponentCss">
-            <p> You are in Teams List </p>
+            <p className="text-[#5CAF90] font-medium text-[18px]">
+              {/* You are in Products List */}
+            </p>
           </div>
         }
       />
-      <div className="table-responsive pt-3 px-5" id="ascScroll">
+
+      <div className="ascTableWrapper mt-7 px-5" id="">
         <table className="table table-hover">
           <thead className="custom-thead">
             <tr className="tableHeading">
-              <td className="txtField">S.No</td>
+              <th className="txtField">S.No</th>
               <th className="txtField" style={{ width: "10%" }}>
                 Date
               </th>
@@ -170,7 +185,7 @@ const TeamsList = () => {
           </thead>
 
           <tbody className="tabLine" ref={animationParent}>
-            {teamListData?.map((item, index) => {
+            {teamListData2?.map((item, index) => {
               return (
                 <tr className="trHover " key={index}>
                   <td className="ps-3">{index + 1}</td>
@@ -269,18 +284,6 @@ const TeamsList = () => {
             {/* Display a message when no data to display */}
             {teamListData.length === 0 && <span>No data to display!</span>}
           </tbody>
-
-          {/* <tbody className="tabLine">
-              <tr>
-                <td>Ankit</td>
-              </tr>
-              <tr>
-                <td>Singh</td>
-              </tr>
-              <tr>
-                <td>Chandel</td>
-              </tr>
-            </tbody> */}
         </table>
       </div>
     </div>

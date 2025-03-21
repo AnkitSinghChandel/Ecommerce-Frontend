@@ -1,0 +1,19 @@
+.ascTableWrapper {
+  align-items: center;
+  /* background: #fafafa; */
+  display: block;
+  overflow-x: auto;
+  position: relative;
+  /* white-space: nowrap; */
+  height: 500px;
+}
+
+.tableHeading {
+  font-size: 18px;
+  color: #4b5966;
+  font-weight: 500;
+}
+
+.txtField {
+  font-weight: 500;
+}
