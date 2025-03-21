@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import "../../styles/AddTeam.css";
 import "../../styles/NewInput.css";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
@@ -13,11 +13,16 @@ import Xicon from "../../assets/icons/Xicon.svg";
 import searchicon from "../../assets/icons/search.svg";
 import calendarIcon from "../../assets/icons/calendarIcon.svg";
 import doubleUser from "../../assets/icons/doubleUser.svg";
-import { addTeam } from "../../Redux/actions/teamAction";
+import {
+  addTeam,
+  fetchTeamByid,
+  updateTeamByid,
+} from "../../Redux/actions/teamAction";
 import { ADD_TEAM } from "../../Redux/constance/teamType";
 import { useSelector, useDispatch } from "react-redux";
 // import AntDatePicker from "../../datePicker/AntDatePicker";
 import { DatePicker, Spin } from "antd";
+import dayjs from "dayjs";
 
 import { toast } from "react-toastify";
 import {
@@ -28,12 +33,18 @@ import moment from "moment";
 import NoData from "../../common/NoData";
 import GlobalButtons from "../../buttons/GlobalButtons3";
 
-const AddTeam = () => {
+const AddUpdateTeam = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const params = useParams();
+  console.log("param", params.id);
   const [Ankit] = useAutoAnimate();
 
   const addTeamRes = useSelector((state) => state.team.addTeamRes);
+  const fetchTeambyidRes = useSelector((state) => state.team.fetchTeambyidRes);
+  const updateTeambyidRes = useSelector(
+    (state) => state.team.updateTeambyidRes
+  );
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -68,6 +79,7 @@ const AddTeam = () => {
   const [typeInScreen, setTypeInScreen] = useState("");
   // asc cancel popup end //
 
+  // for Add Team start👇.
   useEffect(() => {
     if (addTeamRes.status === true) {
       setShowLoader(false);
@@ -90,6 +102,7 @@ const AddTeam = () => {
     }
   }, [addTeamRes]);
 
+  // when we add team
   const handleAddTeam = () => {
     if (
       firstName === "" ||
@@ -118,6 +131,70 @@ const AddTeam = () => {
     );
     setShowLoader(true);
   };
+  // for Add Team end👆.
+
+  // for Update Team start👇.
+  useEffect(() => {
+    dispatch(fetchTeamByid(params.id));
+  }, []);
+
+  useEffect(() => {
+    if (fetchTeambyidRes.status === true) {
+      setFirstName(fetchTeambyidRes.data.firstName);
+      setLastName(fetchTeambyidRes.data.lastName);
+      setEmail(fetchTeambyidRes.data.email);
+      setPassword(fetchTeambyidRes.data.password);
+      setDevsPrice(fetchTeambyidRes.data.devsPrice);
+      setPhoneNumber(fetchTeambyidRes.data.phoneNumber);
+      setTechnology(fetchTeambyidRes.data.technology);
+      setCreationDate(new Date(fetchTeambyidRes.data.creationDate));
+      //   setCreationDate(dayjs(fetchTeambyidRes.data.creationDate));
+    }
+  }, [fetchTeambyidRes]);
+
+  useEffect(() => {
+    if (updateTeambyidRes.status === true) {
+      setShowLoader(false);
+
+      toast.success(`${firstName} Updated successfully`, {
+        // autoClose: 3000,
+        onOpen: playSuccessSound,
+      });
+      navigate("/team-list");
+    }
+  }, [updateTeambyidRes]);
+
+  // when we update team
+  const handleUpdateTeam = () => {
+    if (
+      firstName === "" ||
+      lastName === "" ||
+      email === "" ||
+      password === "" ||
+      creationDate === "" ||
+      technology === "" ||
+      phoneNumber === "" ||
+      devsPrice === ""
+    ) {
+      setWarning(true);
+      return false;
+    }
+    dispatch(
+      updateTeamByid(
+        firstName,
+        lastName,
+        email,
+        password,
+        phoneNumber,
+        devsPrice,
+        params.id,
+        technology,
+        creationDate
+      )
+    );
+    setShowLoader(true);
+  };
+  // for Update Team end👆.
 
   const checkEmailValidation = (e) => {
     const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
@@ -161,6 +238,17 @@ const AddTeam = () => {
         }
       />
 
+      {cancelPopupShow && (
+        <CancelPopup
+          open={cancelPopupShow}
+          // onCancel={() => setCancelPopupShow(false)}
+          onCancel={handleClose}
+          onOk={handleCancel}
+          title={""}
+          keyboard={true}
+        />
+      )}
+
       <div className="flex justify-center md:justify-end flex-wrap gap-4 pt-15 p-6">
         <GlobalButtons.Cancel
           label={"Cancel"}
@@ -177,9 +265,7 @@ const AddTeam = () => {
         <GlobalButtons.Submit
           disabled={validemail || showLoader}
           // onClick={handleAddTeam}
-          onClick={() => {
-            handleAddTeam();
-          }}
+          onClick={params.id ? handleUpdateTeam : handleAddTeam}
           onMouseEnter={() => setBtnHover(true)}
           onMouseLeave={() => setBtnHover(false)}
           className="addBtn"
@@ -196,7 +282,7 @@ const AddTeam = () => {
                   src={btnHover ? addicon : doubleUser}
                   alt=""
                 />
-                Add Team
+                {params.id ? "Update Team" : "Add Team"}
               </div>
             )
           }
@@ -510,4 +596,4 @@ const AddTeam = () => {
   );
 };
 
-export default AddTeam;
+export default AddUpdateTeam;

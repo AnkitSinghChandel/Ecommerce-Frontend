@@ -55,7 +55,7 @@ const ProductsCategory = () => {
               setSelectedLabel={setSelectedLabel}
               selectedValue={selectedValue}
               setSelectedValue={setSelectedValue}
-              style={{ top: "165px" }}
+              style={{ top: "190px" }}
             />
           )}
         </div>
