@@ -226,7 +226,12 @@ const TeamsList = () => {
                       setSelectedSortShow(false);
                     }}
                   >
-                    Python
+                    <span className="flex justify-between gap-2">
+                      Python
+                      {selectedSort === "Python" && (
+                        <span className="ms-auto pe-2">✔</span>
+                      )}
+                    </span>
                   </p>
                 </div>
               )}
@@ -236,7 +241,7 @@ const TeamsList = () => {
                 <div className="selectBox2 py-2 px-3 left-[200px]!">
                   <h6 className="mb-1 ps-2 text-gray-600">Select...</h6>
                   {["React", "Node", "JavaScript", "Python"].map((item) => (
-                    <p
+                    <div
                       key={item}
                       className="mb-1 cursor-pointer hover:bg-gray-100 px-2 py-1 rounded"
                       onClick={() => {
@@ -244,8 +249,14 @@ const TeamsList = () => {
                         setSelectedSortShow(false);
                       }}
                     >
-                      {item}
-                    </p>
+                      <span className="flex justify-between gap-2">
+                        {item}
+
+                        {selectedSort === item && (
+                          <span className="ms-auto pe-2">✔</span>
+                        )}
+                      </span>
+                    </div>
                   ))}
                 </div>
               )}
