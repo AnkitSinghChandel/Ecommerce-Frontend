@@ -11,6 +11,8 @@ import AddTeam from "../components/teams/AddTeam";
 import AddUpdateTeam from "../components/teams/AddUpdateTeam";
 import TeamList from "../components/teams/TeamList";
 import ProductsList from "../components/products/ProductsList";
+import ProductItems from "../components/products/ProductItems";
+import AddToCart from "../components/products/AddToCart";
 // ASC FOLDER👇
 import SelectBox from "../ASC-FOLDER/SelectBox";
 
@@ -29,6 +31,8 @@ const Routers = () => {
               <Route path="/update-team/:id" element={<AddUpdateTeam />} />
               <Route path="/team-list" element={<TeamList />} />
               <Route path="/products-list" element={<ProductsList />} />
+              <Route path="/product/:id" element={<ProductItems />} />
+              <Route path="/add-to-cart" element={<AddToCart />} />
               {/* // ASC FOLDER👇 */}
               <Route path="/selectBox" element={<SelectBox />} />
             </Route>

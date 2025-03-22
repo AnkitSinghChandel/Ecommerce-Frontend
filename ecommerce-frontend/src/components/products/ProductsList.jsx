@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router";
 import "../../styles/ProductsList.css";
 import Header from "../../layouts/Header";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { Flex, Rate } from "antd";
 import NoData from "../../common/NoData";
 import Loader from "../../common/Loader";
+import { useDispatch } from "react-redux";
 
 const ProductsList = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const params = useParams();
+  console.log("param", params.id);
   const [Ankit] = useAutoAnimate();
 
   const desc = ["terrible", "bad", "normal", "good", "wonderful"];
@@ -209,7 +216,7 @@ const ProductsList = () => {
       ) : (
         <>
           <div
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 pt-15 p-6"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 pt-15 p-5"
             ref={Ankit}
           >
             {productOptions
@@ -221,7 +228,12 @@ const ProductsList = () => {
               .map((item, index) => {
                 return (
                   <div className="productsBox p-4 w-full">
-                    <div className="productImage rounded-lg pointer">
+                    <div
+                      className="productImage rounded-lg pointer"
+                      onClick={() => {
+                        navigate(`/product/${item.productID}`);
+                      }}
+                    >
                       <img
                         src={item.productImage}
                         alt="products"
