@@ -106,7 +106,7 @@ const Profile = () => {
 
       <Header
         // setQuery={setQuerystring}
-        placeholder={"You are in your Profile"}
+        placeholder={"You are in your profile..."}
         leftComponent={
           <div className="leftComponentCss">
             <p className="text-[#5CAF90] font-medium text-[18px]">
@@ -175,7 +175,6 @@ const Profile = () => {
           <input
             type="text"
             // disabled
-            autoFocus={true}
             className="asc-Normal-Input"
             style={{ border: warning && !firstName && "1.5px solid #dc3545" }}
             placeholder="Enter your First Name"

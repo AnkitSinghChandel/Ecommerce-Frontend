@@ -235,7 +235,9 @@ const AddUpdateTeam = () => {
     <div className="">
       <Header
         // setQuery={setQuerystring}
-        placeholder={"You are in Add Team"}
+        placeholder={
+          isUpdating ? "You are in update team..." : "You are in add team"
+        }
         leftComponent={
           <div className="leftComponentCss">
             <p className="text-[#5CAF90] font-medium text-[18px]">

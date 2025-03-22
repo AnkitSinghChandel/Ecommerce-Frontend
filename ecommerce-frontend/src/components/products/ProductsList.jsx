@@ -209,7 +209,7 @@ const ProductsList = () => {
       ) : (
         <>
           <div
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 p-6"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 pt-15 p-6"
             ref={Ankit}
           >
             {productOptions

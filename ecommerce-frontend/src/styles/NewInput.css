@@ -42,3 +42,21 @@
     color: #999; */
 }
 /* new input end */
+
+/* Different browsers ke autofill ko handle karne ke liye 
+-webkit-autofill, -moz-autofill, aur -ms-autofill ka use kiya gaya hai. */
+
+input:-webkit-autofill {
+  background-color: transparent !important; /* Autofill background */
+  transition: background-color 9999s ease-in-out 0s !important; /* Force transparent */
+}
+
+input:-moz-autofill {
+  background-color: transparent !important;
+  transition: background-color 9999s ease-in-out 0s !important; /* Force transparent */
+}
+
+input:-ms-autofill {
+  background-color: transparent !important;
+  transition: background-color 9999s ease-in-out 0s !important; /* Force transparent */
+}

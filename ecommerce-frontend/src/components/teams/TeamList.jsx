@@ -142,7 +142,7 @@ const TeamsList = () => {
     <div className="ascSmooth">
       <Header
         setQuery={setSearching}
-        placeholder={"You are in Team List..."}
+        placeholder={"You are in teams list..."}
         leftComponent={
           <div className="leftComponentCss">
             <p className="text-[#5CAF90] font-medium text-[18px]">

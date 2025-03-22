@@ -49,7 +49,6 @@ const SideBar = () => {
     if (location.pathname === "/MyTodoTask2") return "10";
     if (location.pathname === "/MyTodoTask3") return "11";
     if (location.pathname === "/SelectBox") return "12";
-    if (location.pathname === "/SelectBox2") return "13";
     return "";
   })();
 
@@ -174,12 +173,6 @@ const SideBar = () => {
       icon: <HomeOutlined />,
       label: "SelectBox",
       onClick: () => navigate("/SelectBox"),
-    },
-    {
-      key: "13",
-      icon: <HomeOutlined />,
-      label: "SelectBox2",
-      onClick: () => navigate("/SelectBox2"),
     },
   ];
 
