@@ -175,7 +175,7 @@ const Header = (props) => {
             </div>
           </div>
 
-          <div className="flex flex-wrap-reverse justify-between pt-5 px-8">
+          <div className="flex flex-wrap-reverse justify-between pt-5 px-5">
             <div className="pt-6 lg:pt-1">
               <ProductsCategory />
             </div>

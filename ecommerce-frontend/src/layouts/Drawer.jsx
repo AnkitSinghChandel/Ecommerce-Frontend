@@ -17,9 +17,7 @@ const MyDrawer = () => {
 
   return (
     <div className={DeviceType() === "mobileView" ? "" : "d-non-e"}>
-      <Tooltip title="Open Drawer" color={"red"}>
-        <Hamburger toggled={open} toggle={setOpen} />
-      </Tooltip>
+      <Hamburger toggled={open} toggle={setOpen} />
 
       <Drawer
         title={

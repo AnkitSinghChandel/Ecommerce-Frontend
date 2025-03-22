@@ -1,4 +1,5 @@
 import React from "react";
+import { Button, Result } from "antd";
 import { AddButton } from "../buttons/GlobalButtons2";
 
 const logErrorToService = (error, errorInfo) => {
@@ -31,19 +32,43 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="p-5 text-red-500 text-center">
-          <h1>Ooops... Something went wrong!</h1>
-          <p>{this.state.error?.message || "An unexpected error occurred"}</p>
+        <div>
+          <Result
+            status="500"
+            title="500"
+            // subTitle="Sorry, something went wrong."
+            subTitle={
+              <div>
+                <h1>Ooops... Something went wrong!</h1>
+                <p>
+                  {this.state.error?.message || "An unexpected error occurred"}
+                </p>
+              </div>
+            }
+            extra={
+              <AddButton
+                className="mt-3"
+                label={"Try Again"}
+                onClick={this.handleRetry}
+              />
+            }
+          />
 
-          {/* <button className="mt-3" onClick={this.handleRetry}>
+          {/* real 👇 */}
+          <div className="p-5 text-red-500 text-center hidden">
+            <h1>Ooops... Something went wrong!</h1>
+            <p>{this.state.error?.message || "An unexpected error occurred"}</p>
+
+            {/* <button className="mt-3" onClick={this.handleRetry}>
             Try Again
           </button> */}
 
-          <AddButton
-            className="mt-3"
-            label={"Try Again"}
-            onClick={this.handleRetry}
-          />
+            <AddButton
+              className="mt-3"
+              label={"Try Again"}
+              onClick={this.handleRetry}
+            />
+          </div>
         </div>
       );
     }

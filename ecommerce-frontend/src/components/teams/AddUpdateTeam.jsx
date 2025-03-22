@@ -147,8 +147,7 @@ const AddUpdateTeam = () => {
       setDevsPrice(fetchTeambyidRes.data.devsPrice);
       setPhoneNumber(fetchTeambyidRes.data.phoneNumber);
       setTechnology(fetchTeambyidRes.data.technology);
-      setCreationDate(new Date(fetchTeambyidRes.data.creationDate));
-      //   setCreationDate(dayjs(fetchTeambyidRes.data.creationDate));
+      setCreationDate(dayjs(fetchTeambyidRes.data.creationDate));
     }
   }, [fetchTeambyidRes]);
 

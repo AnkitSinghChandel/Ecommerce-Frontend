@@ -24,7 +24,7 @@ const Routers = () => {
               {/* <Route path="/add-team" element={<AddTeam />} /> */}
               {/* <Route path="/add-team/:id" element={<AddTeam />} /> */}
               <Route path="/add-team/" element={<AddUpdateTeam />} />
-              <Route path="/add-team/:id" element={<AddUpdateTeam />} />
+              <Route path="/update-team/:id" element={<AddUpdateTeam />} />
               <Route path="/team-list" element={<TeamList />} />
               <Route path="/products-list" element={<ProductsList />} />
             </Route>

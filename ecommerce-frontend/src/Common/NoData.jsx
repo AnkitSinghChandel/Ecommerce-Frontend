@@ -9,7 +9,7 @@ const NoData = (props) => {
     <div>
       {props.selectOptions.length > 0 &&
         props.selectOptions.filter((x) =>
-          `${props.filterParameters} `
+          `${props.filterParameters}`
             .toLocaleLowerCase()
             .includes(props.searchValue.toLowerCase())
         ).length === 0 && (

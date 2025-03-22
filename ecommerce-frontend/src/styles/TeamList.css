@@ -1,3 +1,4 @@
+/* table css start 👇 */
 .ascTableWrapper {
   align-items: center;
   /* background: #fafafa; */
@@ -9,9 +10,13 @@
 }
 
 .tableHeading {
-  font-size: 18px;
+  position: sticky;
+  top: -20px;
+  z-index: 1;
   color: #4b5966;
+  font-size: 18px;
   font-weight: 600;
+  border-bottom: 2px solid #7e7e7e;
 }
 
 .tableContainer {
@@ -37,11 +42,110 @@
   overflow: hidden;
 }
 
+.tableContainer tr:nth-child(even) {
+  background-color: #f2f2f2; /* Light gray background for even rows */
+}
+
 /* Hover effect */
 .tableContainer tr:hover {
   background-color: #f9f9f9;
+  transition: all 1s ease;
 }
 
 .txtField {
   font-weight: 500;
 }
+/* table css end 👆 */
+
+.sortingBox {
+  position: absolute;
+  width: 200px;
+  min-width: 100%;
+  background: #fff;
+  z-index: 2;
+  border: 0.2px solid #bbb8b8;
+  border-radius: 10px;
+  box-shadow: 0 12px 20px #e3e3e3;
+  top: 30px;
+  left: -18px;
+
+  color: #4b5966;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.selectText {
+  opacity: 50%;
+  color: grey;
+  font-size: 16px;
+}
+
+.search_input {
+  border: 1px solid #c0c5c5;
+  border-radius: 8px;
+  width: 300px;
+  height: 40px;
+  transition: all 0.5s ease-in-out 0s;
+}
+
+.search_input:hover {
+  /* Adjust the expanded width as needed 👇 */
+  width: 310px;
+}
+
+.search_input_icon {
+  position: absolute;
+  cursor: pointer;
+  top: 10px;
+  right: 15px;
+  width: 22px;
+}
+
+.invisibleInput {
+  visibility: hidden;
+  height: 40px;
+  width: 22px;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.upArrow {
+  width: 15px;
+  height: 15px;
+  transform: rotate(180deg);
+  cursor: pointer;
+  transition: transform 0.1s linear;
+}
+
+.downArrow {
+  width: 15px;
+  height: 15px;
+  transform: rotate(0deg);
+  cursor: pointer;
+  transition: transform 0.5s linear;
+}
+
+/* asc custom scroll bar css start 👇*/
+
+/* width */
+#ascScroll::-webkit-scrollbar {
+  width: 8px;
+  height: 5px;
+}
+
+/* Track */
+#ascScroll::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Handle */
+#ascScroll::-webkit-scrollbar-thumb {
+  background: #a5a5a5;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+#ascScroll::-webkit-scrollbar-thumb:hover {
+  background: gray;
+}
+
+/* asc custom scroll bar css end */

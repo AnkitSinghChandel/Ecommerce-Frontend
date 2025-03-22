@@ -261,7 +261,7 @@ const ProductsList = () => {
               })}
           </div>
           {/* Display a message when no search are found */}
-          <div className="flex justify-center items-center h-[50vh]">
+          <div className="flex justify-center items-center h-[5-0vh]">
             <NoData
               selectOptions={productOptions}
               searchValue={querystring}

@@ -140,7 +140,7 @@ const TeamsList = () => {
   return (
     <div>
       <Header
-        // setQuery={setQuerystring}
+        setQuery={setSearching}
         placeholder={"You are in Team List..."}
         leftComponent={
           <div className="leftComponentCss">
@@ -150,6 +150,113 @@ const TeamsList = () => {
           </div>
         }
       />
+
+      {cancelPopupShow && (
+        <CancelPopup
+          open={cancelPopupShow}
+          // onCancel={() => setCancelPopupShow(false)}
+          onCancel={handleClose}
+          onOk={handleDeleteTeam}
+          title={""}
+          keyboard={true}
+        />
+      )}
+
+      <sorting-and-searching-Div>
+        <div className="flex justify-between flex-wrap pt-4 px-5">
+          <div className="flex gap-3 items-center">
+            <p className="text-[#4b5966] hover:text-[#5CAF90] text-[18px] font-medium">
+              Team List
+            </p>
+            <img
+              src={upArrow}
+              alt=""
+              className={arrowOptionsRotate ? "upArrow mt-1" : "downArrow mt-1"}
+              onClick={() => {
+                setArrowOptionsRotate(!arrowOptionsRotate);
+                setOrderBy(!orderBy);
+              }}
+            />
+
+            <div className="relative" ref={animationParent}>
+              <p
+                className="text-[#4b5966] hover:text-[#5CAF90] text-[18px] font-medium pointer"
+                onClick={() => setSelectedSortShow(!selectedSortShow)}
+              >
+                {selectedSort || "Select..."}
+              </p>
+
+              {selectedSortShow && (
+                <div className="sortingBox py-2 px-3">
+                  <h6 className="mb-0 selectText">Select...</h6>
+                  <p
+                    className="mb-0 pt-2"
+                    onClick={() => {
+                      setSelectedSort("React");
+                      setSelectedSortShow(false);
+                    }}
+                  >
+                    React
+                  </p>
+                  <p
+                    className="mb-0"
+                    onClick={() => {
+                      setSelectedSort("Node");
+                      setSelectedSortShow(false);
+                    }}
+                  >
+                    Node
+                  </p>
+                  <p
+                    className="mb-0"
+                    onClick={() => {
+                      setSelectedSort("JavaScript");
+                      setSelectedSortShow(false);
+                    }}
+                  >
+                    JavaScript
+                  </p>
+                  <p
+                    className="mb-1"
+                    onClick={() => {
+                      setSelectedSort("Paython");
+                      setSelectedSortShow(false);
+                    }}
+                  >
+                    Python
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <search-Section>
+            <div className="relative hidden sm:block">
+              <input
+                ref={SearchInputRef}
+                className={
+                  searchBorderShow ? "search_input ps-2 pe-5" : "invisibleInput"
+                }
+                type="text"
+                placeholder="Search Team..."
+                autoFocus={true}
+                value={searching}
+                onChange={(e) => {
+                  setSearching(e.target.value);
+                }}
+              />
+              <img
+                className="search_input_icon"
+                src={searchBorderShow ? search : searchIcon}
+                alt=""
+                onClick={() => {
+                  setSearchBorderShow(!searchBorderShow);
+                }}
+              />
+            </div>
+          </search-Section>
+        </div>
+      </sorting-and-searching-Div>
 
       <div className="ascTableWrapper mt-7 px-5" id="">
         <table className="tableContainer table">
@@ -218,7 +325,7 @@ const TeamsList = () => {
                           navigate({
                             // pathname: "/update-team",
                             // pathname: `/update-team/${item._id}`,
-                            pathname: `/add-update-team/${item._id}`,
+                            pathname: `/update-team/${item._id}`,
                             state: {
                               from: "TeamList",
                               navigateId: item._id,
