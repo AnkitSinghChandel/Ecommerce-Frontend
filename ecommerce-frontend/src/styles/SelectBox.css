@@ -1,5 +1,5 @@
-/* ASC BOOT DROPDOWN START */
-.ascInputBootDiv {
+/* ASC SELECT BOX START */
+.ascInputDiv {
   position: relative;
   width: 100%;
   max-width: 250px;
@@ -26,7 +26,7 @@
   transition: all 0.3s ease-in-out 0s;
 }
 
-.ascBootOptionDrop {
+.ascSelectBox {
   position: absolute;
   top: 105px;
   width: 100%;
@@ -45,14 +45,7 @@
   /* transition: all 0.3s ease-in-out 0s; */
 }
 
-.ascBootOptionList {
-  height: auto;
-  max-height: 200px;
-  overflow: auto;
-  transition: all 0.3s ease-in-out 0s;
-}
-
-.ascInputBoot {
+.selectBoxInput {
   display: flex;
   align-items: center;
   height: 30px;
@@ -61,19 +54,21 @@
   transition: all 0.3s ease-in-out 0s;
 }
 
-.bootSearch {
+.ascSearchInput {
   color: #4b5966;
   font-size: 14px;
   font-weight: 400;
   border: none;
 }
 
-textarea:focus,
-input:focus {
-  outline: none;
+.selectBoxOptions {
+  height: auto;
+  max-height: 200px;
+  overflow: auto;
+  transition: all 0.3s ease-in-out 0s;
 }
 
-.ascBootList {
+.optionsItem {
   display: flex;
   font-size: 16px;
   font-weight: 400;
@@ -81,17 +76,8 @@ input:focus {
   transition: all 0.3s ease-in-out;
 }
 
-.ascBootList:hover {
+.optionsItem:hover {
   color: #4b5966;
-  background-color: #f1f1f1;
-  border-radius: 8px;
-  transition: all 0.3s ease-in-out;
-}
-
-.selectedItem {
-  display: flex;
-  color: #4b5966;
-  font-weight: 500;
   background-color: #f1f1f1;
   border-radius: 8px;
   transition: all 0.3s ease-in-out;
@@ -103,9 +89,23 @@ input:focus {
   border-radius: 50%;
 }
 
+.selectedItem {
+  display: flex;
+  color: #4b5966;
+  font-weight: 500;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
 .xicon {
   width: 8px;
   height: 8px;
   opacity: 80%;
 }
-/* ASC BOOT DROPDOWN End */
+/* ASC SELECT BOX End */

@@ -61,17 +61,17 @@ const ProductsCategory = () => {
         </div>
 
         {optionsShow && (
-          <div className="ascBootOptionDrop px-1 pb-2">
-            <div className="ascInputBoot px-2 mx-2">
+          <div className="ascSelectBox px-1 pb-2">
+            <div className="selectBoxInput px-2 mx-2">
               <img
                 src={searchicon}
-                className="asc_searchicon"
+                className="ascSearchicon"
                 alt="Search Icon"
               />
               <input
                 type="text"
                 autoFocus={true}
-                className="ps-2 bootSearch w-100"
+                className="ps-2 ascSearchInput w-full"
                 placeholder="Search..."
                 value={searchValue}
                 onChange={(e) => {
@@ -80,7 +80,7 @@ const ProductsCategory = () => {
               />
             </div>
 
-            <div className="ascBootOptionList py-2" id="ascScroll" ref={Ankit}>
+            <div className="selectBoxOptions py-2" id="ascScroll" ref={Ankit}>
               {selectOptions
                 .filter((x) =>
                   // x.label
@@ -101,7 +101,7 @@ const ProductsCategory = () => {
                       className={
                         selectedValue === item.value
                           ? "selectedItem pointer mb-2 me-1 ps-3 p-1"
-                          : "ascBootList pointer mb-2 me-1 ps-3 p-1"
+                          : "optionsItem pointer mb-2 me-1 ps-3 p-1"
                       }
                       onClick={() => {
                         setSelectedLabel(item.label);

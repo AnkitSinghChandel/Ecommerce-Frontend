@@ -189,9 +189,9 @@ const TeamsList = () => {
 
               {selectedSortShow && (
                 <div className="sortingBox py-2 px-3">
-                  <h6 className="mb-0 selectText">Select...</h6>
+                  <h6 className="mb-1 selectText">Select...</h6>
                   <p
-                    className="mb-0 pt-2"
+                    className="mb-1"
                     onClick={() => {
                       setSelectedSort("React");
                       setSelectedSortShow(false);
@@ -200,7 +200,7 @@ const TeamsList = () => {
                     React
                   </p>
                   <p
-                    className="mb-0"
+                    className="mb-1"
                     onClick={() => {
                       setSelectedSort("Node");
                       setSelectedSortShow(false);
@@ -209,7 +209,7 @@ const TeamsList = () => {
                     Node
                   </p>
                   <p
-                    className="mb-0"
+                    className="mb-1"
                     onClick={() => {
                       setSelectedSort("JavaScript");
                       setSelectedSortShow(false);
@@ -220,12 +220,31 @@ const TeamsList = () => {
                   <p
                     className="mb-1"
                     onClick={() => {
-                      setSelectedSort("Paython");
+                      setSelectedSort("Python");
                       setSelectedSortShow(false);
                     }}
                   >
                     Python
                   </p>
+                </div>
+              )}
+
+              {/* another way */}
+              {selectedSortShow && (
+                <div className="sortingBox py-2 px-3 left-[200px]!">
+                  <h6 className="mb-1 ps-2 text-gray-600">Select...</h6>
+                  {["React", "Node", "JavaScript", "Python"].map((item) => (
+                    <p
+                      key={item}
+                      className="mb-1 cursor-pointer hover:bg-gray-100 px-2 py-1 rounded"
+                      onClick={() => {
+                        setSelectedSort(item);
+                        setSelectedSortShow(false);
+                      }}
+                    >
+                      {item}
+                    </p>
+                  ))}
                 </div>
               )}
             </div>

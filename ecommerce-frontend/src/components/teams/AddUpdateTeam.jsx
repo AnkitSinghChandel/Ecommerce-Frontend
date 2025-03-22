@@ -18,7 +18,7 @@ import {
   fetchTeamByid,
   updateTeamByid,
 } from "../../Redux/actions/teamAction";
-import { ADD_TEAM } from "../../Redux/constance/teamType";
+import { ADD_TEAM, FETCH_TEAM_BY_ID } from "../../Redux/constance/teamType";
 import { useSelector, useDispatch } from "react-redux";
 // import AntDatePicker from "../../datePicker/AntDatePicker";
 import { DatePicker, Spin } from "antd";
@@ -38,6 +38,7 @@ const AddUpdateTeam = () => {
   const dispatch = useDispatch();
   const params = useParams();
   console.log("param", params.id);
+  const isUpdating = Boolean(params.id);
   const [Ankit] = useAutoAnimate();
 
   const addTeamRes = useSelector((state) => state.team.addTeamRes);
@@ -135,7 +136,14 @@ const AddUpdateTeam = () => {
 
   // for Update Team start👇.
   useEffect(() => {
-    dispatch(fetchTeamByid(params.id));
+    if (params.id) {
+      dispatch(fetchTeamByid(params.id));
+    } else {
+      dispatch({
+        type: FETCH_TEAM_BY_ID,
+        data: {},
+      });
+    }
   }, []);
 
   useEffect(() => {
@@ -281,7 +289,7 @@ const AddUpdateTeam = () => {
                   src={btnHover ? addicon : doubleUser}
                   alt=""
                 />
-                {params.id ? "Update Team" : "Add Team"}
+                {isUpdating ? "Update Team" : "Add Team"}
               </div>
             )
           }
@@ -360,17 +368,17 @@ const AddUpdateTeam = () => {
           </span>
 
           {optionsShow && (
-            <div className="ascBootOptionDrop px-1 pb-2 top-[60px]! max-w-[100%]!">
-              <div className="ascInputBoot px-2 mx-2">
+            <div className="ascSelectBox px-1 pb-2 top-[60px]! max-w-[100%]!">
+              <div className="selectBoxInput px-2 mx-2">
                 <img
                   src={searchicon}
-                  className="asc_searchicon"
+                  className="ascSearchicon"
                   alt="Search Icon"
                 />
                 <input
                   type="text"
                   autoFocus={true}
-                  className="ps-2 bootSearch w-100"
+                  className="ps-2 ascSearchInput w-full"
                   placeholder="Search..."
                   value={searchValue}
                   onChange={(e) => {
@@ -379,11 +387,7 @@ const AddUpdateTeam = () => {
                 />
               </div>
 
-              <div
-                className="ascBootOptionList py-2"
-                id="ascScroll"
-                ref={Ankit}
-              >
+              <div className="selectBoxOptions py-2" id="ascScroll" ref={Ankit}>
                 {selectOptions
                   .filter((x) =>
                     // x.label
@@ -404,7 +408,7 @@ const AddUpdateTeam = () => {
                         className={
                           selectedValue === item.value
                             ? "selectedItem pointer mb-2 me-1 ps-3 p-1"
-                            : "ascBootList pointer mb-2 me-1 ps-3 p-1"
+                            : "optionsItem pointer mb-2 me-1 ps-3 p-1"
                         }
                         onClick={() => {
                           setSelectedLabel(item.label);

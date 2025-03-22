@@ -24,17 +24,13 @@ const SelectBox = (props) => {
   return (
     <>
       {props.selectBoxShow && (
-        <div className="ascBootOptionDrop px-1 pb-2" style={props.style}>
-          <div className="ascInputBoot px-2 mx-2">
-            <img
-              src={searchicon}
-              className="asc_searchicon"
-              alt="Search Icon"
-            />
+        <div className="ascSelectBox px-1 pb-2" style={props.style}>
+          <div className="selectBoxInput px-2 mx-2">
+            <img src={searchicon} className="ascSearchicon" alt="Search Icon" />
             <input
               type="text"
               autoFocus={true}
-              className="ps-2 placeholder-gray-600 bootSearch w-100"
+              className="ps-2 placeholder-gray-600 ascSearchInput w-full"
               placeholder="Search..."
               value={searchValue}
               onChange={(e) => {
@@ -43,7 +39,7 @@ const SelectBox = (props) => {
             />
           </div>
 
-          <div className="ascBootOptionList py-2" id="ascScroll" ref={Ankit}>
+          <div className="selectBoxOptions py-2" id="ascScroll" ref={Ankit}>
             {props.selectOptions
               .filter((x) =>
                 // x.label
@@ -64,7 +60,7 @@ const SelectBox = (props) => {
                     className={
                       selectedValue === item.value
                         ? "selectedItem pointer mb-2 me-1 ps-3 p-1"
-                        : "ascBootList pointer mb-2 me-1 ps-3 p-1"
+                        : "optionsItem pointer mb-2 me-1 ps-3 p-1"
                     }
                     onClick={() => {
                       setSelectedLabel(item.label);

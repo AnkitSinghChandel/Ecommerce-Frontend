@@ -161,6 +161,17 @@ const AddTeam = () => {
         }
       />
 
+      {cancelPopupShow && (
+        <CancelPopup
+          open={cancelPopupShow}
+          // onCancel={() => setCancelPopupShow(false)}
+          onCancel={handleClose}
+          onOk={handleCancel}
+          title={""}
+          keyboard={true}
+        />
+      )}
+
       <div className="flex justify-center md:justify-end flex-wrap gap-4 pt-15 p-6">
         <GlobalButtons.Cancel
           label={"Cancel"}
@@ -275,17 +286,17 @@ const AddTeam = () => {
           </span>
 
           {optionsShow && (
-            <div className="ascBootOptionDrop px-1 pb-2 top-[60px]! max-w-[100%]!">
-              <div className="ascInputBoot px-2 mx-2">
+            <div className="ascSelectBox px-1 pb-2 top-[60px]! max-w-[100%]!">
+              <div className="selectBoxInput px-2 mx-2">
                 <img
                   src={searchicon}
-                  className="asc_searchicon"
+                  className="ascSearchicon"
                   alt="Search Icon"
                 />
                 <input
                   type="text"
                   autoFocus={true}
-                  className="ps-2 bootSearch w-100"
+                  className="ps-2 ascSearchInput w-full"
                   placeholder="Search..."
                   value={searchValue}
                   onChange={(e) => {
@@ -294,11 +305,7 @@ const AddTeam = () => {
                 />
               </div>
 
-              <div
-                className="ascBootOptionList py-2"
-                id="ascScroll"
-                ref={Ankit}
-              >
+              <div className="selectBoxOptions py-2" id="ascScroll" ref={Ankit}>
                 {selectOptions
                   .filter((x) =>
                     // x.label
@@ -319,7 +326,7 @@ const AddTeam = () => {
                         className={
                           selectedValue === item.value
                             ? "selectedItem pointer mb-2 me-1 ps-3 p-1"
-                            : "ascBootList pointer mb-2 me-1 ps-3 p-1"
+                            : "optionsItem pointer mb-2 me-1 ps-3 p-1"
                         }
                         onClick={() => {
                           setSelectedLabel(item.label);
