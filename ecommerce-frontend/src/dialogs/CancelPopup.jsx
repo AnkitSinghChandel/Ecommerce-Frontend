@@ -12,6 +12,8 @@ const CancelPopup = (props) => {
         open={props.open}
         onOk={() => props.onOk()}
         onCancel={() => props.onCancel()}
+        maskClosable={false}
+        loading={false}
         width={{
           xs: "90%",
           sm: "80%",

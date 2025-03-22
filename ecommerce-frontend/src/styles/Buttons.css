@@ -13,7 +13,7 @@
 }
 
 .addBtn:hover:not(:disabled) {
-  background: linear-gradient(270deg, #39b637e5 0%, #5caf90 100%);
+  background: linear-gradient(270deg, #44a743e5 0%, #5caf90 100%);
 }
 
 .cancelBtn {

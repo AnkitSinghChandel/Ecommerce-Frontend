@@ -14,6 +14,7 @@ import ASC22 from "../../assets/images/ASC22.jpg";
 import Header from "../../layouts/Header";
 import CancelPopup from "../../dialogs/CancelPopup";
 import { Tooltip } from "antd";
+import { Empty } from "antd";
 import {
   fetchAllTeams,
   deleteTeamById,
@@ -36,7 +37,7 @@ const TeamsList = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const SearchInputRef = useRef(null);
-  const [animationParent] = useAutoAnimate();
+  const [Ankit] = useAutoAnimate();
 
   const fetchTeamRes = useSelector((state) => state.team.fetchTeamRes);
   const deleteTeamRes = useSelector((state) => state.team.deleteTeamRes);
@@ -138,7 +139,7 @@ const TeamsList = () => {
   }, [searchBorderShow]);
 
   return (
-    <div>
+    <div className="ascSmooth">
       <Header
         setQuery={setSearching}
         placeholder={"You are in Team List..."}
@@ -178,7 +179,7 @@ const TeamsList = () => {
               }}
             />
 
-            <div className="relative" ref={animationParent}>
+            <div className="relative" ref={Ankit}>
               <p
                 className="text-[#4b5966] hover:text-[#5CAF90] text-[18px] font-medium pointer"
                 onClick={() => setSelectedSortShow(!selectedSortShow)}
@@ -279,7 +280,7 @@ const TeamsList = () => {
               <th className="invisible">ASC</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody ref={Ankit}>
             {/* {tableData.map((row) => (
                 <tr key={row.id}>
                   <td data-label="ID">{row.id}</td>
@@ -289,6 +290,7 @@ const TeamsList = () => {
                 </tr>
               ))} */}
             {teamListData?.map((item, index) => {
+              console.log("asc team data", item);
               return (
                 <tr key={index}>
                   <td className="ps-3">{index + 1}</td>
@@ -373,6 +375,11 @@ const TeamsList = () => {
             })}
           </tbody>
         </table>
+        {teamListData.length === 0 && (
+          <div className="pt-10">
+            <Empty />
+          </div>
+        )}
       </div>
     </div>
   );

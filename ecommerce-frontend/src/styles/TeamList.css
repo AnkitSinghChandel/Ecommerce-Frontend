@@ -6,12 +6,14 @@
   overflow-x: auto;
   position: relative;
   white-space: nowrap;
-  height: 500px;
+  /* height: 500px; */
+  max-height: min(100vh, 55vh);
+  min-height: auto;
 }
 
 .tableHeading {
   position: sticky;
-  top: -20px;
+  top: -2px;
   z-index: 1;
   color: #4b5966;
   font-size: 18px;
