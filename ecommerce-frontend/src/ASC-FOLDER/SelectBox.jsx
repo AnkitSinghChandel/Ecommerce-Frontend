@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../styles/SelectBox.css";
-import useClickOutside from "../customHooks/useClickOutside";
+import useClickOutside from "../hooks/useClickOutside";
 import { motion, AnimatePresence } from "motion/react";
 import moment from "moment";
 import DownArrowOption from "../assets/icons/DownArrowOption.svg";
@@ -10,7 +10,7 @@ import searchicon from "../assets/icons/search.svg";
 import box from "../assets/images/box(1).png";
 import box2 from "../assets/images/box(4).png";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-import NoData from "./NoData";
+import NoData from "../common/NoData";
 
 const SelectBox = () => {
   // const selectBoxPopupRef = useRef(null);

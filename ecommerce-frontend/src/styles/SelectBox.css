@@ -28,7 +28,7 @@
 
 .ascSelectBox {
   position: absolute;
-  top: 105px;
+  top: 75px;
   width: 100%;
   max-width: 250px;
   height: auto;
@@ -109,3 +109,20 @@ input:focus {
   opacity: 80%;
 }
 /* ASC SELECT BOX End */
+
+.selectBox2 {
+  position: absolute;
+  width: 200px;
+  min-width: 100%;
+  background: #fff;
+  z-index: 2;
+  border: 0.2px solid #bbb8b8;
+  border-radius: 10px;
+  box-shadow: 0 12px 20px #e3e3e3;
+  top: 30px;
+  left: -18px;
+
+  color: #4b5966;
+  font-size: 16px;
+  cursor: pointer;
+}

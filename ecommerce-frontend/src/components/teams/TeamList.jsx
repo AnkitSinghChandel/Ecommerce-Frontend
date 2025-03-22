@@ -188,8 +188,10 @@ const TeamsList = () => {
               </p>
 
               {selectedSortShow && (
-                <div className="sortingBox py-2 px-3">
-                  <h6 className="mb-1 selectText">Select...</h6>
+                <div className="selectBox2 py-2 px-3">
+                  <h6 className="mb-1 text-[gray] text-[16px] opacity-50">
+                    Select...
+                  </h6>
                   <p
                     className="mb-1"
                     onClick={() => {
@@ -231,7 +233,7 @@ const TeamsList = () => {
 
               {/* another way */}
               {selectedSortShow && (
-                <div className="sortingBox py-2 px-3 left-[200px]!">
+                <div className="selectBox2 py-2 px-3 left-[200px]!">
                   <h6 className="mb-1 ps-2 text-gray-600">Select...</h6>
                   {["React", "Node", "JavaScript", "Python"].map((item) => (
                     <p
