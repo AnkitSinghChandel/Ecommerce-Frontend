@@ -39,24 +39,23 @@ const SideBar = () => {
     if (location.pathname === "/dashboard") return "1";
     if (location.pathname === "/profile") return "2";
     if (location.pathname === "/add-team") return "3-1";
-    if (location.pathname.startsWith("/add-update-team/")) return "3-2";
+    if (location.pathname.startsWith("/update-team/")) return "3-2";
     if (location.pathname === "/team-list") return "4";
     if (location.pathname === "/products-list") return "5";
-    if (location.pathname === "/DragDrop2") return "6";
-    if (location.pathname === "/list") return "7";
-    if (location.pathname === "/PushedOnCheck") return "8";
-    if (location.pathname === "/MyTodoTask") return "9";
-    if (location.pathname === "/MyTodoTask2") return "10";
-    if (location.pathname === "/MyTodoTask3") return "11";
-    if (location.pathname === "/SelectBox") return "12";
+    if (location.pathname === "/add-product") return "6-1";
+    if (location.pathname === "/update-product/") return "6-2";
+    if (location.pathname === "/asc-folder") return "7";
     return "";
   })();
 
   // Set openKeys based on the current route
   const [openKeys, setOpenKeys] = useState([]);
+
   useEffect(() => {
     if (selectedKey.startsWith("3")) {
-      setOpenKeys(["3"]); // Open Users submenu if any user-related route is active
+      setOpenKeys(["3"]); // Open Users submenu
+    } else if (selectedKey.startsWith("6")) {
+      setOpenKeys(["6"]); // Open Products submenu
     } else {
       setOpenKeys([]); // Close all other submenus
     }
@@ -133,46 +132,29 @@ const SideBar = () => {
 
     {
       key: "6",
-      icon: <HomeOutlined />,
-      label: "DragDrop2",
-      onClick: () => navigate("/DragDrop2"),
+      icon: <UserOutlined />,
+      label: "Products",
+      children: [
+        {
+          key: "6-1",
+          icon: <UsergroupAddOutlined />,
+          label: "Add Product",
+          onClick: () => navigate("/add-product"),
+        },
+        {
+          key: "6-2",
+          icon: <UserSwitchOutlined />,
+          label: "Update Product",
+          onClick: () => navigate("/update-product/:id"),
+        },
+      ],
     },
 
     {
       key: "7",
-      icon: <FilePdfOutlined />,
-      label: "Js PDF List",
-      onClick: () => navigate("/list"),
-    },
-    {
-      key: "8",
-      icon: <CheckCircleOutlined />,
-      label: "Check-Uncheck",
-      onClick: () => navigate("/PushedOnCheck"),
-    },
-    {
-      key: "9",
       icon: <FolderOpenTwoTone />,
-      label: "MyTodoTask",
-      onClick: () => navigate("/MyTodoTask"),
-    },
-    {
-      key: "10",
-      icon: <FolderOpenTwoTone />,
-      label: "MyTodoTask2",
-      onClick: () => navigate("/MyTodoTask2"),
-    },
-    {
-      key: "11",
-      icon: <FolderOpenTwoTone />,
-      label: "MyTodoTask3",
-      onClick: () => navigate("/MyTodoTask3"),
-    },
-    {
-      key: "12",
-      icon: <HomeOutlined />,
-      label: "SelectBox",
-      onClick: () => navigate("/SelectBox"),
+      label: "ASC-FOLDER",
+      onClick: () => navigate("/asc-folder"),
     },
   ];
 

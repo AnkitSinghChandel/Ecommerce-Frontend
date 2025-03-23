@@ -26,7 +26,7 @@ const ProductsList = () => {
     {
       productName: "Ankit",
       productImage:
-        "https://images.unsplash.com/photo-1587225536270-7487675ab5b1?w=294&dpr=2&h=294&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8ODQwNjcxfHxlbnwwfHx8fHw%3D",
+        "https://cdn.pixabay.com/photo/2017/09/28/18/13/bread-2796393_640.jpg",
       productTitle: "Dried Fruits",
       productDescription: "Dates Value Pack Pouch",
       productRating: "3",
@@ -37,7 +37,7 @@ const ProductsList = () => {
     {
       productName: "Ankit",
       productImage:
-        "https://plus.unsplash.com/premium_photo-1670270204757-08153c6fd333?w=294&dpr=2&h=294&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8NDY3MDAyN3x8ZW58MHx8fHx8",
+        "https://cdn.pixabay.com/photo/2020/11/04/13/29/cereal-5712343_640.jpg",
       productTitle: "Chips & Fries",
       productDescription: "Crunchy Triangle Chips Snacks",
       productRating: "5",
@@ -48,7 +48,7 @@ const ProductsList = () => {
     {
       productName: "Ankit",
       productImage:
-        "https://images.unsplash.com/photo-1621317758612-3958e0f07c49?w=294&dpr=2&h=294&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8ODU5ODI5M3x8ZW58MHx8fHx8",
+        "https://cdn.pixabay.com/photo/2024/06/11/02/01/ai-generated-8821696_640.png",
       productTitle: "Dried Fruits",
       productDescription: "Californian Almonds Value Pack",
       productRating: "2",
@@ -59,7 +59,7 @@ const ProductsList = () => {
     {
       productName: "Ankit",
       productImage:
-        "https://images.unsplash.com/photo-1516826771201-5f85cb4a3133?w=294&dpr=2&h=294&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8NTgzMjMwNTR8fGVufDB8fHx8fA%3D%3D",
+        "https://cdn.pixabay.com/photo/2024/04/18/10/41/ai-generated-8704060_640.jpg",
       productTitle: "Foods",
       productDescription: "Banana Chips Snacks & Spices",
       productRating: "2",
@@ -70,7 +70,7 @@ const ProductsList = () => {
     {
       productName: "Ankit",
       productImage:
-        "https://images.unsplash.com/photo-1552997082-aa9ee21701c1?w=294&dpr=2&h=294&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8MzgyNTE5OHx8ZW58MHx8fHx8",
+        "https://cdn.pixabay.com/photo/2017/03/02/12/25/strawberries-2111130_640.jpg",
       productTitle: "Snacks",
       productDescription: "Berry & Graps Mix Snack",
       productRating: "4",
@@ -81,7 +81,7 @@ const ProductsList = () => {
     {
       productName: "Ankit",
       productImage:
-        "https://images.unsplash.com/photo-1643226226304-d434ebda0922?w=294&dpr=2&h=294&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8OTI1ODkzMnx8ZW58MHx8fHx8",
+        "https://cdn.pixabay.com/photo/2018/05/01/18/21/eclair-3366430_640.jpg",
       productTitle: "Dried Froots",
       productDescription: "Mixed Nuts Seeds & Berries Pack",
       productRating: "5",
@@ -92,7 +92,7 @@ const ProductsList = () => {
     {
       productName: "Ankit",
       productImage:
-        "https://images.unsplash.com/photo-1717398804938-f008d162d7f6?w=294&dpr=2&h=294&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8MTUxNTM2Mnx8ZW58MHx8fHx8",
+        "https://cdn.pixabay.com/photo/2024/02/20/15/19/ai-generated-8585693_640.jpg",
       productTitle: "Snacks",
       productDescription: "Smoked Honey Spiced Nuts",
       productRating: "2",
@@ -103,7 +103,7 @@ const ProductsList = () => {
     {
       productName: "Ankit",
       productImage:
-        "https://plus.unsplash.com/premium_photo-1661600643912-dc6dbb1db475?w=294&dpr=2&h=294&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8alZRaWpiVXdjT2N8fGVufDB8fHx8fA%3D%3D",
+        "https://cdn.pixabay.com/photo/2020/09/21/14/06/meal-5590184_640.jpg",
       productTitle: "Snacks",
       productDescription: "Smoked Honey Spiced Nuts",
       productRating: "3",
@@ -114,7 +114,7 @@ const ProductsList = () => {
     {
       productName: "Ankit",
       productImage:
-        "https://images.unsplash.com/photo-1662695086800-f4079b412abe?w=294&dpr=2&h=294&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8MzU5NTE5MHx8ZW58MHx8fHx8",
+        "https://cdn.pixabay.com/photo/2024/04/03/20/39/ai-generated-8673812_640.png",
       productTitle: "Snacks",
       productDescription: "Smoked Honey Spiced Nuts",
       productRating: "2",
@@ -125,7 +125,7 @@ const ProductsList = () => {
     {
       productName: "Ankit",
       productImage:
-        "https://images.unsplash.com/photo-1648288718348-4b6d53755716?w=294&dpr=2&h=294&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8ODk2MTYxOXx8ZW58MHx8fHx8",
+        "https://cdn.pixabay.com/photo/2024/05/29/22/04/tomato-juice-8797323_640.png",
       productTitle: "Snacks",
       productDescription: "Smoked Honey Spiced Nuts",
       productRating: "3",
@@ -136,7 +136,7 @@ const ProductsList = () => {
     {
       productName: "Ankit",
       productImage:
-        "https://images.unsplash.com/photo-1692737003302-8ae57a23c6e8?w=294&dpr=2&h=294&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8ODMzNDQxfHxlbnwwfHx8fHw%3D",
+        "https://cdn.pixabay.com/photo/2017/11/08/22/18/spaghetti-2931846_640.jpg",
       productTitle: "Snacks",
       productDescription: "Smoked Honey Spiced Nuts",
       productRating: "2",
@@ -147,7 +147,7 @@ const ProductsList = () => {
     {
       productName: "Ankit",
       productImage:
-        "https://images.unsplash.com/photo-1705917893101-f098279ebc44?w=294&dpr=2&h=294&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8MmdKV0ZIbWtNbll8fGVufDB8fHx8fA%3D%3D",
+        "https://cdn.pixabay.com/photo/2018/05/01/18/21/eclair-3366430_640.jpg",
       productTitle: "Snacks",
       productDescription: "Smoked Honey Spiced Nuts",
       productRating: "4",
@@ -158,7 +158,7 @@ const ProductsList = () => {
     {
       productName: "Ankit",
       productImage:
-        "https://images.unsplash.com/photo-1444952483853-7c36e902e722?w=294&dpr=2&h=294&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8MTEzMTIxMXx8ZW58MHx8fHx8",
+        "https://cdn.pixabay.com/photo/2021/03/19/22/18/strawberries-6108520_640.jpg",
       productTitle: "Snacks",
       productDescription: "Smoked Honey Spiced Nuts",
       productRating: "3",
@@ -169,7 +169,7 @@ const ProductsList = () => {
     {
       productName: "Ankit",
       productImage:
-        "https://images.unsplash.com/photo-1617866893127-0dddb005fae7?w=294&dpr=2&h=294&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8MTExOTM2MHx8ZW58MHx8fHx8",
+        "https://cdn.pixabay.com/photo/2021/04/01/15/39/copyright-6142611_640.jpg",
       productTitle: "Snacks",
       productDescription: "Smoked Honey Spiced Nuts",
       productRating: "3",
@@ -180,12 +180,23 @@ const ProductsList = () => {
     {
       productName: "Ankit",
       productImage:
-        "https://images.unsplash.com/photo-1521220509776-3df02465ccad?w=294&dpr=2&h=294&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8NDExNzAyfHxlbnwwfHx8fHw%3D",
+        "https://cdn.pixabay.com/photo/2017/01/11/11/33/cake-1971552_640.jpg",
       productTitle: "Snacks",
       productDescription: "Smoked Honey Spiced Nuts",
       productRating: "3",
       productPrice: "47878445",
       productID: "asc15",
+    },
+
+    {
+      productName: "Ankit",
+      productImage:
+        "https://cdn.pixabay.com/photo/2024/02/14/05/34/girl-8572400_640.png",
+      productTitle: "Snacks",
+      productDescription: "Smoked Honey Spiced Nuts",
+      productRating: "3",
+      productPrice: "47878445",
+      productID: "asc16",
     },
   ];
 
@@ -237,7 +248,7 @@ const ProductsList = () => {
                       <img
                         src={item.productImage}
                         alt="products"
-                        className="rounded-lg w-full"
+                        className="rounded-lg w-full aspect-3/2 object-cover"
                       />
                     </div>
 

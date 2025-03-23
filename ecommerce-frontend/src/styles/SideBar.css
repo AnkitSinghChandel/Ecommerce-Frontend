@@ -11,12 +11,13 @@
 }
 
 /* Submenu Background */
-#asc_Sidebar .ant-menu-submenu {
-  background-color: white !important;
+#asc_Sidebar .ant-menu-submenu-title {
+  background-color: lightgray !important;
 }
 /* Submenu Items */
 #asc_Sidebar .ant-menu-sub {
-  background-color: whitesmoke !important;
+  background-color: lightgray !important;
+  border-radius: 8px;
 }
 
 /* Hover effect for menu items */
