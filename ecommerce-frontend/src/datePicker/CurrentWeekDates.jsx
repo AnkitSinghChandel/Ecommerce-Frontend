@@ -54,7 +54,7 @@ const CurrentWeekDates = ({
   ]);
 
   return (
-    <div className="d-flex gap-2">
+    <div className="flex gap-2">
       <div className="pointer" onClick={prevWeek}>
         <img
           src={DownArrowOption}

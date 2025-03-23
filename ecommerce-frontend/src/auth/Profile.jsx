@@ -187,7 +187,7 @@ const Profile = () => {
           />
           <br />
           <span className="warningTxt ps-2">
-            {warning && !firstName && "Please fill your Name!"}
+            {warning && !firstName && "Please fill your first name!"}
           </span>
         </div>
 
@@ -208,7 +208,7 @@ const Profile = () => {
           />
           <br />
           <span className="warningTxt ps-2">
-            {warning && !lastName && "Please fill your Last Name!"}
+            {warning && !lastName && "Please fill your last name!"}
           </span>
         </div>
 
@@ -230,7 +230,7 @@ const Profile = () => {
           />
           <br />
           <span className="warningTxt ps-2">
-            {warning && !email && "Please fill your Email!"}
+            {warning && !email && "Please fill your email!"}
             {validemail && "Email is invalid!"}
           </span>
         </div>

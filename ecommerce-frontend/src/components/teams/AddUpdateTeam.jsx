@@ -320,7 +320,7 @@ const AddUpdateTeam = () => {
           />
           <br />
           <span className="warningTxt ps-2">
-            {warning && !firstName && "Please fill your Name!"}
+            {warning && !firstName && "Please fill your first name!"}
           </span>
         </div>
 
@@ -341,7 +341,7 @@ const AddUpdateTeam = () => {
           />
           <br />
           <span className="warningTxt ps-2">
-            {warning && !lastName && "Please fill your Last Name!"}
+            {warning && !lastName && "Please fill your last name!"}
           </span>
         </div>
 
@@ -366,7 +366,7 @@ const AddUpdateTeam = () => {
           />
           <br />
           <span className="warningTxt ps-2">
-            {warning && !technology && "Please fill your Technology!"}
+            {warning && !technology && "Please fill your technology!"}
           </span>
 
           {optionsShow && (
@@ -459,7 +459,7 @@ const AddUpdateTeam = () => {
           />
           <br />
           <span className="warningTxt ps-2">
-            {warning && !email && "Please fill your Email!"}
+            {warning && !email && "Please fill your email!"}
             {validemail && "Email is invalid!"}
           </span>
         </div>
@@ -551,7 +551,7 @@ const AddUpdateTeam = () => {
           />
           <br />
           <span className="warningTxt ps-2">
-            {warning && !creationDate && "Please fill your Date!"}
+            {warning && !creationDate && "Please fill your date!"}
           </span>
         </div>
 
@@ -593,7 +593,7 @@ const AddUpdateTeam = () => {
           />
           <br />
           <span className="warningTxt ps-2">
-            {warning && !devsPrice && "Please fill your Price!"}
+            {warning && !devsPrice && "Please fill your price!"}
           </span>
         </div>
       </div>
