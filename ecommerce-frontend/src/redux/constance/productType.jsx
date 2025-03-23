@@ -1,0 +1,6 @@
+// export const API_URL = process.env.REACT_APP_API_URL;
+export const API_URL = import.meta.env.VITE_APP_API_URL;
+export const ADD_PRODUCT = "ADD_PRODUCT";
+export const FETCH_ALL_PRODUCTS = "FETCH_ALL_PRODUCTS";
+export const FETCH_PRODUCT_BY_ID = "FETCH_PRODUCT_BY_ID";
+export const UPDATE_PRODUCT_BY_ID = "UPDATE_PRODUCT_BY_ID";

@@ -17,8 +17,8 @@ import {
   addTeam,
   fetchTeamByid,
   updateTeamByid,
-} from "../../Redux/actions/teamAction";
-import { ADD_TEAM, FETCH_TEAM_BY_ID } from "../../Redux/constance/teamType";
+} from "../../redux/actions/teamAction";
+import { ADD_TEAM, FETCH_TEAM_BY_ID } from "../../redux/constance/teamType";
 import { useSelector, useDispatch } from "react-redux";
 // import AntDatePicker from "../../datePicker/AntDatePicker";
 import { DatePicker, Spin } from "antd";

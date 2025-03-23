@@ -10,9 +10,9 @@ import { AddButton } from "../buttons/GlobalButtons2";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
 import ascResume from "../assets/ascResume.pdf";
-import { loginApi } from "../Redux/actions/userAction";
+import { loginApi } from "../redux/actions/userAction";
 import { useSelector, useDispatch } from "react-redux";
-import { LOGIN } from "../Redux/constance/userType";
+import { LOGIN } from "../redux/constance/userType";
 import { toast } from "react-toastify";
 import {
   playSuccessSound,

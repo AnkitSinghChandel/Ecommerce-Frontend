@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router";
-import "../../styles/AddTeam.css";
+import "../../styles/AddProduct.css";
 import "../../styles/NewInput.css";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import Header from "../../layouts/Header";
@@ -13,12 +13,10 @@ import Xicon from "../../assets/icons/Xicon.svg";
 import searchicon from "../../assets/icons/search.svg";
 import calendarIcon from "../../assets/icons/calendarIcon.svg";
 import doubleUser from "../../assets/icons/doubleUser.svg";
-import { addTeam } from "../../Redux/actions/teamAction";
-import { ADD_TEAM } from "../../Redux/constance/teamType";
+import { addProduct } from "../../redux/actions/productAction";
+import { ADD_PRODUCT } from "../../redux/constance/productType";
 import { useSelector, useDispatch } from "react-redux";
-// import AntDatePicker from "../../datePicker/AntDatePicker";
-import { DatePicker, Spin } from "antd";
-
+import { Spin } from "antd";
 import { toast } from "react-toastify";
 import {
   playSuccessSound,
@@ -35,6 +33,8 @@ const AddProduct = () => {
   const params = useParams();
   console.log("param", params.id);
   const [Ankit] = useAutoAnimate();
+
+  const addProductRes = useSelector((state) => state.product.addProductRes);
 
   const [productName, setProductName] = useState("");
   const [productImage, setProductImage] = useState("");
@@ -56,6 +56,28 @@ const AddProduct = () => {
   const [typeInScreen, setTypeInScreen] = useState("");
   // asc cancel popup end //
 
+  useEffect(() => {
+    if (addProductRes?.status === true) {
+      setShowLoader(false);
+
+      toast.success(`${productName} Added successfully`, {
+        // autoClose: 3000,
+        onOpen: playSuccessSound,
+      });
+      navigate("/products-list");
+
+      dispatch({
+        type: ADD_PRODUCT,
+        data: {},
+      });
+    } else if (addProductRes?.status === false) {
+      toast.error(`Failed to add product ${productName}`, {
+        // autoClose: 3000,
+        onOpen: playErrorSound,
+      });
+    }
+  }, [addProductRes]);
+
   const handleAddProduct = () => {
     if (
       productName === "" ||
@@ -68,7 +90,7 @@ const AddProduct = () => {
       return false;
     }
     dispatch(
-      addTeam(
+      addProduct(
         productName,
         productImage,
         productTitle,

@@ -19,7 +19,7 @@ import {
   fetchAllTeams,
   deleteTeamById,
   TeamsGeneratePDF,
-} from "../../Redux/actions/teamAction";
+} from "../../redux/actions/teamAction";
 import { useSelector, useDispatch } from "react-redux";
 import moment from "moment";
 import CurrentWeekDates from "../../datePicker/CurrentWeekDates";
