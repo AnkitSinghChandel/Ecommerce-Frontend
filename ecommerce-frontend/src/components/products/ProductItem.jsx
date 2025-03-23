@@ -11,7 +11,9 @@ import {
 } from "@ant-design/icons";
 import NoData from "../../common/NoData";
 import Loader from "../../common/Loader";
-import { useDispatch } from "react-redux";
+import { fetchProductById } from "../../redux/actions/productAction";
+import {} from "../../redux/constance/productType";
+import { useSelector, useDispatch } from "react-redux";
 import GlobalButtons from "../../buttons/GlobalButtons3";
 
 const ProductItems = () => {
@@ -21,6 +23,31 @@ const ProductItems = () => {
   const params = useParams();
   console.log("param", params.id);
   const [Ankit] = useAutoAnimate();
+
+  const fetchProductByIdRes = useSelector(
+    (state) => state.product.fetchProductByIdRes
+  );
+
+  const [productName, setProductName] = useState("");
+  const [productImage, setProductImage] = useState("");
+  const [productTitle, setProductTitle] = useState("");
+  const [productDescription, setProductDescription] = useState("");
+  const [productPrice, setProductPrice] = useState("");
+  const [showLoader, setShowLoader] = useState(false);
+
+  useEffect(() => {
+    dispatch(fetchProductById(params.id));
+  }, []);
+
+  useEffect(() => {
+    if (fetchProductByIdRes.status === true) {
+      setProductName(fetchProductByIdRes.data.productName);
+      setProductImage(fetchProductByIdRes.data.productImage);
+      setProductTitle(fetchProductByIdRes.data.productTitle);
+      setProductDescription(fetchProductByIdRes.data.productDescription);
+      setProductPrice(fetchProductByIdRes.data.productPrice);
+    }
+  }, [fetchProductByIdRes]);
 
   return (
     <div>
@@ -38,26 +65,28 @@ const ProductItems = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-15 px-5">
         <div className="">
-          <img
-            className="rounded-2xl object-cover"
-            src="https://cdn.pixabay.com/photo/2022/07/15/18/15/burgers-7323689_640.jpg"
-            alt=""
-          />
+          <img className="rounded-2xl object-cover" src={productImage} alt="" />
         </div>
 
         <div className="pt-2">
           <p className="text-[#4b5966] text-[18px]">
-            Dyazo 14.1 Inch Laptop Sleeve Case Cover With Handle And Two Front
-            Pocket Compatible For Lenovo, Hp, Dell, Asus Acer & Other Notebooks
-            (Grey)
+            {productDescription}
+            <br />
+            <span>
+              Dyazo 14.1 Inch Laptop Sleeve Case Cover With Handle And Two Front
+              Pocket Compatible For Lenovo, Hp, Dell, Asus Acer & Other
+              Notebooks (Grey)
+            </span>
           </p>
 
           <p className="bg-[#5caf90] text-[white] text-[16px] rounded-lg ps-4 w-[150px] max-w-full my-3 p-1">
             Amazon's choice
           </p>
 
-          <p className="text-2xl">-70% ₹299</p>
-          <p className="text-[14px] text-[#4b5966] ps-4">{`M.R.P : ${999}`}</p>
+          <p className="text-2xl">{`-70% ₹${productPrice}`}</p>
+          <p className="text-[14px] text-[#4b5966] ps-4">
+            {`M.R.P : ${productPrice}`}
+          </p>
 
           <p className="bg-[#5caf90] text-[white] text-[16px] rounded-lg ps-4 w-[150px] max-w-full my-3 p-1 pointer">
             <span className="ps-1">

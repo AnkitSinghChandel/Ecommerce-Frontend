@@ -112,7 +112,7 @@ const AddProduct = () => {
     <div>
       <Header
         // setQuery={setQuerystring}
-        placeholder={"You are in add team..."}
+        placeholder={"You are in add product..."}
         leftComponent={
           <div className="leftComponentCss">
             <p className="text-[#5CAF90] font-medium text-[18px]">

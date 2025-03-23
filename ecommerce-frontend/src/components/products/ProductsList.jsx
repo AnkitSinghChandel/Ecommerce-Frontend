@@ -27,7 +27,7 @@ const ProductsList = () => {
   const [querystring, setQuerystring] = useState("");
 
   const [productsData, setProductsData] = useState([]);
-  const [showLoader, setShowLoader] = useState(false);
+  const [showLoader, setShowLoader] = useState(true);
 
   useEffect(() => {
     dispatch(fetchAllProducts());
@@ -78,7 +78,7 @@ const ProductsList = () => {
                     <div
                       className="productImage rounded-lg pointer"
                       onClick={() => {
-                        navigate(`/product/${item.productID}`);
+                        navigate(`/product/${item.productId}`);
                       }}
                     >
                       <img
