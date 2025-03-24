@@ -1,0 +1,26 @@
+.circle-input-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 1.5px dotted #00246a;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectedImg {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.three-Dots-in-multiLine {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Adjust the number of lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+}

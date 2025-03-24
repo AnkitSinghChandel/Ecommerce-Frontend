@@ -65,7 +65,11 @@ const ProductItems = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-15 px-5">
         <div className="">
-          <img className="rounded-2xl object-cover" src={productImage} alt="" />
+          <img
+            className="rounded-2xl object-cover h-full"
+            src={productImage}
+            alt=""
+          />
         </div>
 
         <div className="pt-2">

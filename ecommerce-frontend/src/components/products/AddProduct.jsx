@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate, useParams } from "react-router";
 import "../../styles/AddProduct.css";
 import "../../styles/NewInput.css";
@@ -7,6 +7,7 @@ import Header from "../../layouts/Header";
 import CancelPopup from "../../dialogs/CancelPopup";
 import addicon from "../../assets/icons/addicon.svg";
 import singleUser from "../../assets/icons/singleUser.svg";
+import setting from "../../assets/icons/setting.svg";
 import ASC22 from "../../assets/images/ASC22.jpg";
 import DownArrowOption from "../../assets/icons/DownArrowOption.svg";
 import Xicon from "../../assets/icons/Xicon.svg";
@@ -38,6 +39,7 @@ const AddProduct = () => {
   console.log("param", params.id);
   const isUpdating = Boolean(params.id);
   const [Ankit] = useAutoAnimate();
+  const hiddenFileInput = useRef(null);
 
   const addProductRes = useSelector((state) => state.product.addProductRes);
   const fetchProductByIdRes = useSelector(
@@ -49,6 +51,7 @@ const AddProduct = () => {
 
   const [productName, setProductName] = useState("");
   const [productImage, setProductImage] = useState("");
+  const [attachmentData, setAttachmentData] = useState([]);
   const [productTitle, setProductTitle] = useState("");
   const [productDescription, setProductDescription] = useState("");
   const [productPrice, setProductPrice] = useState("");
@@ -183,6 +186,11 @@ const AddProduct = () => {
     }
   };
 
+  const handleClick = (event) => {
+    event.preventDefault();
+    hiddenFileInput.current.click();
+  };
+
   return (
     <div>
       <Header
@@ -249,6 +257,83 @@ const AddProduct = () => {
           }
         />
       </div>
+
+      {/* circle img div start */}
+      <div
+        onDragOver={(e) => e.preventDefault()}
+        onDragLeave={(e) => e.preventDefault()}
+        onDrop={(e) => {
+          e.preventDefault();
+          // const droppedFile = Array.from(e.dataTransfer.files);
+          // if (droppedFile.length > 0) {
+          //   console.log("drop imgs", droppedFile);
+          //   setAttachmentData(droppedFile);
+          // }
+
+          // single file upload👇
+          const fileUploaded = e.dataTransfer.files[0];
+          if (fileUploaded) {
+            const imageLink = URL.createObjectURL(fileUploaded);
+            // setProductImage({ url: imageLink, name: fileUploaded.name }); // Store both URL and name.
+            setProductImage(imageLink);
+            setTypeInScreen(imageLink);
+          }
+        }}
+      >
+        {/* no need to use ref if we use setting img under label */}
+        <label>
+          <img src={setting} alt="" width={20} />
+          <input
+            type="file"
+            ref={hiddenFileInput}
+            multiple
+            // accept="image/*"
+            // accept=".doc,.docx,.pdf,.xls,.xlsx,.xml,"
+            // ref={hidden_Input_File}
+            style={{ display: "none" }}
+            onChange={(e) => {
+              console.log("fileList", e.target.files);
+              // setAttachmentData(e.target.files[0]); // single file upload.
+              const selectedFiles = Array.from(e.target.files);
+              setAttachmentData(selectedFiles);
+
+              // single file upload👇
+              const fileUploaded = e.target.files[0];
+              if (fileUploaded) {
+                const imageLink = URL.createObjectURL(fileUploaded);
+                // setProductImage({ url: imageLink, name: fileUploaded.name }); // Store both URL and name.
+                setProductImage(imageLink);
+                setTypeInScreen(imageLink);
+              }
+            }}
+          />
+        </label>
+        {/* circle input img start */}
+        <div className="circle-input-img m-auto">
+          {productImage ? (
+            <img
+              src={productImage}
+              alt=""
+              className="selectedImg"
+              onClick={handleClick}
+            />
+          ) : (
+            <>
+              <img
+                src={setting}
+                alt=""
+                width={20}
+                className="pointer"
+                onClick={handleClick}
+              />
+              <br />
+              <p>Add or Drag a photo</p>
+            </>
+          )}
+        </div>
+        {/* circle input img end */}
+      </div>
+      {/* circle img div start */}
 
       <div
         className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-5 m-auto pt-6 lg:w-[70%] w-full"

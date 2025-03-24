@@ -9,7 +9,10 @@ import {
   EditOutlined,
   DeleteOutlined,
   ShoppingCartOutlined,
+  HeartOutlined,
+  HeartFilled,
 } from "@ant-design/icons";
+import { Tooltip } from "antd";
 import NoData from "../../common/NoData";
 import Loader from "../../common/Loader";
 import {
@@ -147,9 +150,38 @@ const ProductsList = () => {
                     <div className="pt-5">
                       <p className="productTitle">{item.productTitle}</p>
                       {/* <p className="pt-2 productName">{item.productName}</p> */}
-                      <p className="pt-2 productName">
-                        {item.productDescription}
-                      </p>
+                      <Tooltip
+                        title={
+                          item.productDescription.length > 45 &&
+                          item.productDescription
+                        }
+                        color="#5caf90"
+                      >
+                        <p
+                          className="pt-2 productName min-h-[55px] truncat-e"
+                          // style={{
+                          //   // for 3 dots 👇
+                          //   // whiteSpace: "pre-wrap",
+                          //   whiteSpace: "nowrap",
+                          //   overflow: "hidden",
+                          //   textOverflow: "ellipsis",
+                          //   maxWidth: "100%",
+                          // }}
+
+                          // style={{
+                          //   display: "-webkit-box",
+                          //   WebkitLineClamp: 2, // Adjust the number of lines
+                          //   WebkitBoxOrient: "vertical",
+                          //   overflow: "hidden",
+                          //   wordBreak: "break-word",
+                          // }}
+                        >
+                          {/* {item.productDescription} */}
+                          {item.productDescription.length > 45
+                            ? item.productDescription.slice(0, 45) + "..."
+                            : item.productDescription}
+                        </p>
+                      </Tooltip>
                       {/* <p>{item.productRating}</p> */}
                       <p className="pt-2">
                         <Rate
@@ -199,6 +231,16 @@ const ProductsList = () => {
                           </span>
                           <span className="ps-2">Delete</span>
                         </span>
+                      </p>
+
+                      <p
+                        className="ms-auto float-end pt-3 pointer"
+                        onClick={() => {
+                          // asc
+                        }}
+                      >
+                        <HeartOutlined />
+                        {/* <HeartFilled style={{ color: "#5caf90 " }} /> */}
                       </p>
                     </div>
                   </div>
