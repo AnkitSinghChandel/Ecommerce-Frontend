@@ -83,7 +83,7 @@ export const deleteTeamById = (teamid) => async (dispatch) => {
       headers: {
         "Content-Type": "application/json",
       },
-      data: {},
+      data: { teamid },
     });
     dispatch({
       type: DELETE_TEAM,

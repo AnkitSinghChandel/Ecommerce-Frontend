@@ -9,6 +9,7 @@ import {
   FETCH_ALL_PRODUCTS,
   FETCH_PRODUCT_BY_ID,
   UPDATE_PRODUCT_BY_ID,
+  DELETE_PRODUCT_BY_ID,
 } from "../constance/productType";
 
 export const addProduct =
@@ -81,12 +82,12 @@ export const fetchProductById = (productID) => async (dispatch) => {
 
 export const updateProductById =
   (
+    productID,
     productName,
     productImage,
     productTitle,
     productDescription,
-    productPrice,
-    productID
+    productPrice
   ) =>
   async (dispatch) => {
     try {
@@ -113,3 +114,23 @@ export const updateProductById =
       console.error(error);
     }
   };
+
+export const deleteProductById = (productID) => async (dispatch) => {
+  try {
+    const response = await axios({
+      method: "delete",
+      url: `${API_URL}/products/${productID}`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {},
+    });
+    dispatch({
+      type: DELETE_PRODUCT_BY_ID,
+      data: response.data,
+    });
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};

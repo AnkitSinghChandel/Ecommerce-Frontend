@@ -13,7 +13,11 @@ import Xicon from "../../assets/icons/Xicon.svg";
 import searchicon from "../../assets/icons/search.svg";
 import calendarIcon from "../../assets/icons/calendarIcon.svg";
 import doubleUser from "../../assets/icons/doubleUser.svg";
-import { addProduct } from "../../redux/actions/productAction";
+import {
+  addProduct,
+  fetchProductById,
+  updateProductById,
+} from "../../redux/actions/productAction";
 import { ADD_PRODUCT } from "../../redux/constance/productType";
 import { useSelector, useDispatch } from "react-redux";
 import { Spin } from "antd";
@@ -32,15 +36,23 @@ const AddProduct = () => {
   const location = useLocation();
   const params = useParams();
   console.log("param", params.id);
+  const isUpdating = Boolean(params.id);
   const [Ankit] = useAutoAnimate();
 
   const addProductRes = useSelector((state) => state.product.addProductRes);
+  const fetchProductByIdRes = useSelector(
+    (state) => state.product.fetchProductByIdRes
+  );
+  const updateProductByIdRes = useSelector(
+    (state) => state.product.updateProductByIdRes
+  );
 
   const [productName, setProductName] = useState("");
   const [productImage, setProductImage] = useState("");
   const [productTitle, setProductTitle] = useState("");
   const [productDescription, setProductDescription] = useState("");
   const [productPrice, setProductPrice] = useState("");
+  const [productID, setProductID] = useState("");
   const [warning, setWarning] = useState(false);
   const [btnHover, setBtnHover] = useState(false);
   const [showLoader, setShowLoader] = useState(false);
@@ -101,6 +113,69 @@ const AddProduct = () => {
     setShowLoader(true);
   };
 
+  // fetch and update products below👇
+  useEffect(() => {
+    if (isUpdating) {
+      dispatch(fetchProductById(params.id));
+    }
+  }, [isUpdating]);
+
+  useEffect(() => {
+    if (fetchProductByIdRes.status === true) {
+      setProductName(fetchProductByIdRes.data.productName);
+      setProductImage(fetchProductByIdRes.data.productImage);
+      setProductTitle(fetchProductByIdRes.data.productTitle);
+      setProductDescription(fetchProductByIdRes.data.productDescription);
+      setProductPrice(fetchProductByIdRes.data.productPrice);
+    }
+  }, [fetchProductByIdRes]);
+
+  const handleUpdateProduct = () => {
+    if (
+      productName === "" ||
+      productImage === "" ||
+      productTitle === "" ||
+      productDescription === "" ||
+      productPrice === ""
+    ) {
+      setWarning(true);
+      return false;
+    }
+    dispatch(
+      updateProductById(
+        params.id,
+        productName,
+        productImage,
+        productTitle,
+        productDescription,
+        productPrice
+      )
+    );
+    setShowLoader(true);
+  };
+
+  useEffect(() => {
+    if (updateProductByIdRes?.status === true) {
+      setShowLoader(false);
+
+      toast.success(`${productName} Updated successfully`, {
+        // autoClose: 3000,
+        onOpen: playSuccessSound,
+      });
+      navigate("/products-list");
+
+      // dispatch({
+      //   type: ADD_PRODUCT,
+      //   data: {},
+      // });
+    } else if (updateProductByIdRes?.status === false) {
+      toast.error(`Failed to update product ${productName}`, {
+        // autoClose: 3000,
+        onOpen: playErrorSound,
+      });
+    }
+  }, [updateProductByIdRes]);
+
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -150,7 +225,7 @@ const AddProduct = () => {
           disabled={showLoader}
           // onClick={handleAddProduct}
           onClick={() => {
-            handleAddProduct();
+            isUpdating ? handleUpdateProduct() : handleAddProduct();
           }}
           onMouseEnter={() => setBtnHover(true)}
           onMouseLeave={() => setBtnHover(false)}
@@ -168,7 +243,7 @@ const AddProduct = () => {
                   src={btnHover ? addicon : doubleUser}
                   alt=""
                 />
-                Add Product
+                {isUpdating ? "Update Product" : "Add Product"}
               </div>
             )
           }
@@ -252,7 +327,8 @@ const AddProduct = () => {
         <div className="asc-input-container" id="ascNewInput">
           <label className="asc-top-label labelText">Product Price</label>
           <input
-            type="text"
+            type="number"
+            min={100}
             // disabled
             className="asc-Normal-Input"
             style={{
@@ -260,7 +336,22 @@ const AddProduct = () => {
             }}
             placeholder="Enter your Product Price"
             value={productPrice}
-            onChange={(e) => {
+            // onChange={(e) => {
+            //   setProductPrice(e.target.value);
+            //   setTypeInScreen(e.target.value);
+            // }}
+
+            // onChange={(e) => {
+            //   const value = Number(e.target.value);
+            //   if (value >= 100 || e.target.value === "") {
+            //     setProductPrice(e.target.value);
+            //     setTypeInScreen(e.target.value);
+            //   }
+            // }}
+
+            onInput={(e) => {
+              if (e.target.value < 100) e.target.value = 100;
+              if (e.target.value.includes("-")) e.target.value = ""; // Prevent negative values
               setProductPrice(e.target.value);
               setTypeInScreen(e.target.value);
             }}
