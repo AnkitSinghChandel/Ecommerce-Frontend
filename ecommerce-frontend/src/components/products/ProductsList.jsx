@@ -34,6 +34,7 @@ const ProductsList = () => {
   const params = useParams();
   console.log("param", params.id);
   const [Ankit] = useAutoAnimate();
+
   const userid = localStorage.getItem("userid");
 
   const fetchAllProductsRes = useSelector(
