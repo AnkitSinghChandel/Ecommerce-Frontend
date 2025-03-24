@@ -9,7 +9,7 @@ import Pdficon from "../../assets/icons/Pdficon.svg";
 import binIcon from "../../assets/icons/Bin.svg";
 import search from "../../assets/icons/search.svg";
 import searchIcon from "../../assets/icons/searchicon.svg";
-import upArrow from "../../assets/icons/upArrow.png";
+import upArrow from "../../assets/icons/upArrow.svg";
 import ASC22 from "../../assets/images/ASC22.jpg";
 import Header from "../../layouts/Header";
 import CancelPopup from "../../dialogs/CancelPopup";
@@ -172,7 +172,7 @@ const TeamsList = () => {
             <img
               src={upArrow}
               alt=""
-              className={arrowOptionsRotate ? "upArrow mt-1" : "downArrow mt-1"}
+              className={arrowOptionsRotate ? "upArrow" : "downArrow"}
               onClick={() => {
                 setArrowOptionsRotate(!arrowOptionsRotate);
                 setOrderBy(!orderBy);

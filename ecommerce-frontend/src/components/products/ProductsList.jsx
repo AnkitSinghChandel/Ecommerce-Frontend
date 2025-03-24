@@ -173,7 +173,7 @@ const ProductsList = () => {
                         </span>
                       </p>
 
-                      <p className="flex justify-between gap-2 pt-4">
+                      <p className="flex justify-between gap-2 pt-4 text-center">
                         <span
                           className="bg-[#5caf90] text-[white] text-[16px] rounded-lg ps- w-[150px] max-w-full p-1 pointer"
                           onClick={() => {
@@ -183,7 +183,7 @@ const ProductsList = () => {
                           <span className="ps-1">
                             <EditOutlined />
                           </span>
-                          <span className="ps-3">Edit</span>
+                          <span className="ps-2">Edit</span>
                         </span>
 
                         <span
@@ -197,7 +197,7 @@ const ProductsList = () => {
                           <span className="ps-1">
                             <DeleteOutlined />
                           </span>
-                          <span className="ps-3">Delete</span>
+                          <span className="ps-2">Delete</span>
                         </span>
                       </p>
                     </div>

@@ -104,7 +104,7 @@ const SelectBox = () => {
           ) : (
             <img
               src={DownArrowOption}
-              className={arrowOptionsRotate ? "upArrow mt-1" : "downArrow mt-1"}
+              className={arrowOptionsRotate ? "upArrow" : "downArrow"}
               alt=""
               onClick={() => {
                 // setSelectBoxShow(!selectBoxShow);
