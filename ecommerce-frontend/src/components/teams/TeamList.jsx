@@ -332,7 +332,7 @@ const TeamsList = () => {
                   <td>{item.technology ? item.technology : "No Technology"}</td>
                   <td>{item.email}</td>
                   <td>{item.phoneNumber}</td>
-                  <td>{`$ ${item.devsPrice}`}</td>
+                  <td>{`₹ ${item.devsPrice}`}</td>
 
                   <td style={{ width: "50px" }}>
                     <Tooltip title="Edit Team">
