@@ -11,7 +11,7 @@ import {
 } from "@ant-design/icons";
 import NoData from "../../common/NoData";
 import Loader from "../../common/Loader";
-import { fetchProductById } from "../../redux/actions/productAction";
+import { fetchProductById, addToCart } from "../../redux/actions/productAction";
 import {} from "../../redux/constance/productType";
 import { useSelector, useDispatch } from "react-redux";
 import GlobalButtons from "../../buttons/GlobalButtons3";
@@ -24,15 +24,24 @@ const ProductItems = () => {
   console.log("param", params.id);
   const [Ankit] = useAutoAnimate();
 
+  const userid = localStorage.getItem("userid");
+
   const fetchProductByIdRes = useSelector(
     (state) => state.product.fetchProductByIdRes
   );
+
+  const addToCartRes = useSelector((state) => state.product.addToCartRes);
+
+  const desc = ["terrible", "bad", "normal", "good", "wonderful"];
+  const [ratingValue, setRatingValue] = useState(3);
 
   const [productName, setProductName] = useState("");
   const [productImage, setProductImage] = useState("");
   const [productTitle, setProductTitle] = useState("");
   const [productDescription, setProductDescription] = useState("");
   const [productPrice, setProductPrice] = useState("");
+  const [productRating, setProductRating] = useState("");
+  const [productID, setProductID] = useState("");
   const [showLoader, setShowLoader] = useState(false);
 
   useEffect(() => {
@@ -46,6 +55,8 @@ const ProductItems = () => {
       setProductTitle(fetchProductByIdRes.data.productTitle);
       setProductDescription(fetchProductByIdRes.data.productDescription);
       setProductPrice(fetchProductByIdRes.data.productPrice);
+      setProductID(fetchProductByIdRes.data.productId);
+      setProductRating(fetchProductByIdRes.data.ratings[0]?.rating);
     }
   }, [fetchProductByIdRes]);
 
@@ -66,7 +77,7 @@ const ProductItems = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-15 px-5">
         <div className="">
           <img
-            className="rounded-2xl object-cover h-full"
+            className="rounded-2xl object-cover h-full w-dvw max-h-[333px]"
             src={productImage}
             alt=""
           />
@@ -74,12 +85,24 @@ const ProductItems = () => {
 
         <div className="pt-2">
           <p className="text-[#4b5966] text-[18px]">
+            {productTitle}
+            <br />
             {productDescription}
             <br />
             <span>
-              Dyazo 14.1 Inch Laptop Sleeve Case Cover With Handle And Two Front
-              Pocket Compatible For Lenovo, Hp, Dell, Asus Acer & Other
-              Notebooks (Grey)
+              <p className="pt-2">
+                <Rate
+                  tooltips={desc}
+                  // onChange={setRatingValue}
+                  // value={ratingValue}
+                  onChange={(e) => {
+                    // dispatch(addReview(userid, item.productId, e));
+                  }}
+                  value={productRating}
+                />
+                <br />
+                {ratingValue && <span>{desc[productRating - 1]}</span>}
+              </p>
             </span>
           </p>
 
@@ -92,7 +115,12 @@ const ProductItems = () => {
             {`M.R.P : ${productPrice}`}
           </p>
 
-          <p className="bg-[#5caf90] text-[white] text-[16px] rounded-lg ps-4 w-[150px] max-w-full my-3 p-1 pointer">
+          <p
+            className="bg-[#5caf90] text-[white] text-[16px] rounded-lg ps-4 w-[150px] max-w-full my-3 p-1 pointer"
+            onClick={() => {
+              dispatch(addToCart(userid, productID));
+            }}
+          >
             <span className="ps-1">
               <ShoppingCartOutlined />
             </span>

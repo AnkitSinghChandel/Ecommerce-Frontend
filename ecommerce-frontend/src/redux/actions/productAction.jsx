@@ -10,6 +10,8 @@ import {
   FETCH_PRODUCT_BY_ID,
   UPDATE_PRODUCT_BY_ID,
   DELETE_PRODUCT_BY_ID,
+  ADD_REVIEW,
+  ADD_TO_CART,
 } from "../constance/productType";
 
 export const addProduct =
@@ -134,3 +136,44 @@ export const deleteProductById = (productID) => async (dispatch) => {
     console.error(error);
   }
 };
+
+export const addReview = (userId, productId, rating) => async (dispatch) => {
+  try {
+    const response = await axios({
+      method: "post",
+      url: `${API_URL}/reviews`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: { userId, productId, rating },
+    });
+    dispatch({
+      type: ADD_REVIEW,
+      data: response.data,
+    });
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const addToCart =
+  (userId, productId, productQuantity) => async (dispatch) => {
+    try {
+      const response = await axios({
+        method: "post",
+        url: `${API_URL}/carts`,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: { userId, productId, productQuantity },
+      });
+      dispatch({
+        type: ADD_TO_CART,
+        data: response.data,
+      });
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  };

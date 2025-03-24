@@ -18,6 +18,7 @@ import Loader from "../../common/Loader";
 import {
   fetchAllProducts,
   deleteProductById,
+  addReview,
 } from "../../redux/actions/productAction";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -33,6 +34,7 @@ const ProductsList = () => {
   const params = useParams();
   console.log("param", params.id);
   const [Ankit] = useAutoAnimate();
+  const userid = localStorage.getItem("userid");
 
   const fetchAllProductsRes = useSelector(
     (state) => state.product.fetchAllProductsRes
@@ -42,11 +44,11 @@ const ProductsList = () => {
     (state) => state.product.deleteProductByIdRes
   );
 
+  const addReviewRes = useSelector((state) => state.product.addReviewRes);
+
   const desc = ["terrible", "bad", "normal", "good", "wonderful"];
   const [ratingValue, setRatingValue] = useState(3);
-  // const [productRating, setProductRating] = useState(3);
   const [querystring, setQuerystring] = useState("");
-
   const [productsData, setProductsData] = useState([]);
   const [productName, setProductName] = useState("");
   const [productID, setProductID] = useState("");
@@ -65,7 +67,7 @@ const ProductsList = () => {
 
   useEffect(() => {
     dispatch(fetchAllProducts());
-  }, [deleteProductByIdRes]);
+  }, [deleteProductByIdRes, addReviewRes]);
 
   useEffect(() => {
     if (fetchAllProductsRes.status === true) {
@@ -75,6 +77,15 @@ const ProductsList = () => {
       }, 1000);
     }
   }, [fetchAllProductsRes]);
+
+  useEffect(() => {
+    if (addReviewRes.status === true) {
+      toast.success(`${productName} Rating added successfully`, {
+        // autoClose: 3000,
+        onOpen: playSuccessSound,
+      });
+    }
+  }, [addReviewRes]);
 
   const handleDeleteTeam = () => {
     dispatch(deleteProductById(productID));
@@ -182,17 +193,20 @@ const ProductsList = () => {
                             : item.productDescription}
                         </p>
                       </Tooltip>
-                      {/* <p>{item.productRating}</p> */}
+
                       <p className="pt-2">
                         <Rate
                           tooltips={desc}
-                          onChange={setRatingValue}
+                          // onChange={setRatingValue}
                           // value={ratingValue}
-                          value={item.productRating}
+                          onChange={(e) => {
+                            dispatch(addReview(userid, item.productId, e));
+                          }}
+                          value={item.ratings[0]?.rating}
                         />
                         <br />
                         {ratingValue && (
-                          <span>{desc[item.productRating - 1]}</span>
+                          <span>{desc[item.ratings[0]?.rating - 1]}</span>
                         )}
                       </p>
                       <p className="font-bold text-[14px] text-[#4b5966] flex gap-4 pt-2">

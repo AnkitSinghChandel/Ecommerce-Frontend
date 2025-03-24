@@ -4,6 +4,8 @@ const initialState = {
   fetchProductByIdRes: {},
   updateProductByIdRes: {},
   deleteProductByIdRes: {},
+  addReviewRes: {},
+  addToCartRes: {},
 };
 
 const productReducer = (state = initialState, action) => {
@@ -36,6 +38,18 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         deleteProductByIdRes: action.data,
+      };
+
+    case "ADD_REVIEW":
+      return {
+        ...state,
+        addReviewRes: action.data,
+      };
+
+    case "ADD_TO_CART":
+      return {
+        ...state,
+        addToCartRes: action.data,
       };
 
     default:
