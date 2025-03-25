@@ -6,6 +6,7 @@ const initialState = {
   deleteProductByIdRes: {},
   addReviewRes: {},
   addToCartRes: {},
+  discountPropsApiRes: {},
 };
 
 const productReducer = (state = initialState, action) => {
@@ -51,6 +52,15 @@ const productReducer = (state = initialState, action) => {
         ...state,
         addToCartRes: action.data,
       };
+
+    // ASC REDUX PROPS START //
+    case "DISCOUNT_PROPS_API":
+      console.log("discount state:", action.data);
+      return {
+        ...state,
+        discountPropsApiRes: action.data,
+      };
+    // ASC REDUX PROPS END //
 
     default:
       return { ...state };

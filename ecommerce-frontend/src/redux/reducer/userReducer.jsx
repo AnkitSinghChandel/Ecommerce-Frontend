@@ -24,14 +24,6 @@ const userReducer = (state = initialState, action) => {
         fetchUserRes: action.data,
       };
 
-    // ASC REDUX PROPS START //
-    case "TIMELINE_PROPS":
-      return {
-        ...state,
-        timeline_props: action.data,
-      };
-    // ASC REDUX PROPS END //
-
     default:
       return { ...state };
   }

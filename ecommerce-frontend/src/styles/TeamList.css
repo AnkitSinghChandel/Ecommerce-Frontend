@@ -90,17 +90,17 @@
 .upArrow {
   width: 15px;
   height: 15px;
-  transform: rotate(180deg);
+  rotate: 180deg;
   cursor: pointer;
-  transition: transform 0.1s linear;
+  transition: transform 0.1s ease-in-out;
 }
 
 .downArrow {
   width: 15px;
   height: 15px;
-  transform: rotate(0deg);
+  rotate: 0deg;
   cursor: pointer;
-  transition: transform 0.5s linear;
+  transition: transform 0.5s ease-in-out;
 }
 
 /* asc custom scroll bar css start 👇*/

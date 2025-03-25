@@ -12,6 +12,7 @@ import {
   DELETE_PRODUCT_BY_ID,
   ADD_REVIEW,
   ADD_TO_CART,
+  DISCOUNT_PROPS_API,
 } from "../constance/productType";
 
 export const addProduct =
@@ -175,5 +176,36 @@ export const addToCart =
       return response.data;
     } catch (error) {
       console.error(error);
+      dispatch({
+        type: ADD_TO_CART,
+        data: error.response.data,
+      });
     }
   };
+
+// ASC REDUX PROPS START //
+export const discount_Props_API2 = (discount1, discount2) => {
+  return {
+    type: DISCOUNT_PROPS_API,
+    data: { discount1, discount2 },
+  };
+};
+
+export const discount_Props_API =
+  (discount1, discount2) => async (dispatch) => {
+    try {
+      console.log("Dispatching discount data:", discount1, discount2);
+
+      dispatch({
+        type: DISCOUNT_PROPS_API,
+        data: { discount1, discount2 },
+      });
+    } catch (error) {
+      console.error(error);
+      dispatch({
+        type: DISCOUNT_PROPS_API,
+        data: error.response.data,
+      });
+    }
+  };
+// ASC REDUX PROPS END //
