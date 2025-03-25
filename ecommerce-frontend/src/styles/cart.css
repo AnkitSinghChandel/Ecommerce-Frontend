@@ -13,9 +13,24 @@
 .carts-label {
   color: #4b5966;
   font-size: 14px;
+  display: flex;
 }
 
 .carts-icons {
   color: #4b5966;
   font-size: 25px;
+}
+
+.totalWish {
+  width: 25px;
+  height: 25px;
+  background: #5caf90;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 50%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

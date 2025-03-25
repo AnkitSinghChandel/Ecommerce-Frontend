@@ -43,7 +43,7 @@ const SideBar = () => {
     if (location.pathname === "/team-list") return "4";
     if (location.pathname === "/products-list") return "5";
     if (location.pathname === "/add-product") return "6-1";
-    if (location.pathname === "/update-product/") return "6-2";
+    if (location.pathname.startsWith("/update-product/")) return "6-2";
     if (location.pathname === "/asc-folder") return "7";
     return "";
   })();

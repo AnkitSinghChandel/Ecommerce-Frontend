@@ -224,7 +224,7 @@ const ProductsList = () => {
                         <span
                           className="bg-[#5caf90] text-[white] text-[16px] rounded-lg ps- w-[150px] max-w-full p-1 pointer"
                           onClick={() => {
-                            navigate(`/update/product/${item.productId}`);
+                            navigate(`/update-product/${item.productId}`);
                           }}
                         >
                           <span className="ps-1">

@@ -386,8 +386,7 @@ const AddProduct = () => {
 
         <div className="asc-input-container" id="ascNewInput">
           <label className="asc-top-label labelText">Product Description</label>
-          <input
-            type="text"
+          <textarea
             // disabled
             className="asc-Normal-Input"
             style={{

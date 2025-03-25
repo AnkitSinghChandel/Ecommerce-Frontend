@@ -1,7 +1,9 @@
 .circle-input-img {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
+  /* width: 200px; */
+  width: 600px;
+  height: 300px;
+  /* border-radius: 50%; */
+  border-radius: 10px;
   border: 1.5px dotted #00246a;
 
   display: flex;
@@ -11,9 +13,11 @@
 }
 
 .selectedImg {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
+  /* width: 200px; */
+  width: 600px;
+  height: 300px;
+  /* border-radius: 50%; */
+  border-radius: 10px;
   cursor: pointer;
 }
 

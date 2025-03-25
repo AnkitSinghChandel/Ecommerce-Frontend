@@ -6,6 +6,7 @@ const initialState = {
   deleteProductByIdRes: {},
   addReviewRes: {},
   addToCartRes: {},
+  fetchAllCartProductsRes: {},
   discountPropsApiRes: {},
 };
 
@@ -51,6 +52,12 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         addToCartRes: action.data,
+      };
+
+    case "FETCH_ALL_CART_PRODUCTS":
+      return {
+        ...state,
+        fetchAllCartProductsRes: action.data,
       };
 
     // ASC REDUX PROPS START //

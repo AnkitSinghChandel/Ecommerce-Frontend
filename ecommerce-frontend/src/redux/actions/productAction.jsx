@@ -12,6 +12,7 @@ import {
   DELETE_PRODUCT_BY_ID,
   ADD_REVIEW,
   ADD_TO_CART,
+  FETCH_ALL_CART_PRODUCTS,
   DISCOUNT_PROPS_API,
 } from "../constance/productType";
 
@@ -183,14 +184,27 @@ export const addToCart =
     }
   };
 
-// ASC REDUX PROPS START //
-export const discount_Props_API2 = (discount1, discount2) => {
-  return {
-    type: DISCOUNT_PROPS_API,
-    data: { discount1, discount2 },
-  };
+export const fetchAllCartProducts = () => async (dispatch) => {
+  try {
+    const response = await axios({
+      method: "get",
+      url: `${API_URL}/carts`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {},
+    });
+    dispatch({
+      type: FETCH_ALL_CART_PRODUCTS,
+      data: response.data,
+    });
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
+// ASC REDUX PROPS START //
 export const discount_Props_API =
   (discount1, discount2) => async (dispatch) => {
     try {

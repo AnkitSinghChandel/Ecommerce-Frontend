@@ -8,8 +8,8 @@ import {
   UserOutlined,
   ArrowLeftOutlined,
   ShoppingCartOutlined,
-  PlusCircleFilled,
-  MinusCircleFilled,
+  PlusOutlined,
+  MinusOutlined,
 } from "@ant-design/icons";
 import NoData from "../../common/NoData";
 import Loader from "../../common/Loader";
@@ -97,10 +97,13 @@ const ProductItems = () => {
 
   useEffect(() => {
     console.log("asc678", discountPropsApiRes);
-    localStorage.setItem("hhh", discountPropsApiRes);
 
     if (discountPropsApiRes) {
       setGlobalProductDiscount(discountPropsApiRes.discount1);
+      localStorage.setItem(
+        "hhh",
+        JSON.stringify(discountPropsApiRes.discount1)
+      );
     }
   }, [discountPropsApiRes]);
 
@@ -159,7 +162,7 @@ const ProductItems = () => {
                 setProductQuantity((prev) => Math.max(prev - 1, 0));
               }}
             >
-              <MinusCircleFilled />
+              <MinusOutlined />
             </span>
 
             <p>{productQuantity}</p>
@@ -169,7 +172,7 @@ const ProductItems = () => {
                 setProductQuantity((prev) => prev + 1);
               }}
             >
-              <PlusCircleFilled />
+              <PlusOutlined />
             </span>
           </div>
 

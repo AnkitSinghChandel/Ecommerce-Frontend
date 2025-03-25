@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { fetchAllCartProducts } from "../../redux/actions/productAction";
+import { useDispatch, useSelector } from "react-redux";
 import {
   UserOutlined,
   HeartOutlined,
@@ -11,9 +13,44 @@ import {
 } from "@ant-design/icons";
 import "../../styles/cart.css";
 import "../../styles/asc_Anime.css";
+import { useLocation, useNavigate, useParams } from "react-router";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 const Carts = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const params = useParams();
+  console.log("param", params.id);
+  const [Ankit] = useAutoAnimate();
+
+  const cartItem = localStorage.getItem("cartItem") ?? 0;
+
+  const addToCartRes = useSelector((state) => state.product.addToCartRes);
+  const fetchAllCartProductsRes = useSelector(
+    (state) => state.product.fetchAllCartProductsRes
+  );
+
+  const [totalWishItem, setTotalWishItem] = useState(0);
+  const [totalCartItem, setTotalCartItem] = useState(0);
   const [isOpenAccBox, setIsOpenAccBox] = useState(false);
+
+  useEffect(() => {
+    if (addToCartRes.status === true) {
+      // setTotalCartItem(addToCartRes.data.productQuantity);
+      // localStorage.setItem("cartItem", addToCartRes.data.productQuantity);
+    }
+  }, [addToCartRes]);
+
+  useEffect(() => {
+    dispatch(fetchAllCartProducts());
+  }, [addToCartRes]);
+
+  useEffect(() => {
+    if (fetchAllCartProductsRes.status === true) {
+      setTotalCartItem(fetchAllCartProductsRes.length);
+    }
+  }, [fetchAllCartProductsRes]);
 
   return (
     <div className="ascSmoot-h flex flex-wrap gap-8 font-medium">
@@ -44,7 +81,9 @@ const Carts = () => {
         <HeartOutlined className="carts-icons" />
         <div>
           <p className="carts-main-label">Wishlist</p>
-          <p className="carts-label">{`${4}-items`}</p>
+          <div className="carts-label">
+            <p className="totalWish">{`${totalWishItem}`}</p>-Items
+          </div>
         </div>
       </div>
 
@@ -53,7 +92,9 @@ const Carts = () => {
         <ShoppingCartOutlined className="carts-icons" />
         <div>
           <p className="carts-main-label">Cart</p>
-          <p className="carts-label">{`${4}-items`}</p>
+          <div className="carts-label">
+            <p className="totalWish">{`${totalCartItem || cartItem}`}</p>-Items
+          </div>
         </div>
       </div>
     </div>
