@@ -21,7 +21,7 @@ import {
 } from "../../redux/actions/productAction";
 import { ADD_PRODUCT } from "../../redux/constance/productType";
 import { useSelector, useDispatch } from "react-redux";
-import { Spin } from "antd";
+import { Row, Col, Spin } from "antd";
 import { toast } from "react-toastify";
 import {
   playSuccessSound,
@@ -258,47 +258,22 @@ const AddProduct = () => {
         />
       </div>
 
-      {/* circle img div start */}
-      <div
-        onDragOver={(e) => e.preventDefault()}
-        onDragLeave={(e) => e.preventDefault()}
-        onDrop={(e) => {
-          e.preventDefault();
-          // const droppedFile = Array.from(e.dataTransfer.files);
-          // if (droppedFile.length > 0) {
-          //   console.log("drop imgs", droppedFile);
-          //   setAttachmentData(droppedFile);
-          // }
-
-          // single file upload👇
-          const fileUploaded = e.dataTransfer.files[0];
-          if (fileUploaded) {
-            const imageLink = URL.createObjectURL(fileUploaded);
-            // setProductImage({ url: imageLink, name: fileUploaded.name }); // Store both URL and name.
-            setProductImage(imageLink);
-            setTypeInScreen(imageLink);
-          }
-        }}
-      >
-        {/* no need to use ref if we use setting img under label */}
-        <label>
-          <img src={setting} alt="" width={20} />
-          <input
-            type="file"
-            ref={hiddenFileInput}
-            multiple
-            // accept="image/*"
-            // accept=".doc,.docx,.pdf,.xls,.xlsx,.xml,"
-            // ref={hidden_Input_File}
-            style={{ display: "none" }}
-            onChange={(e) => {
-              console.log("fileList", e.target.files);
-              // setAttachmentData(e.target.files[0]); // single file upload.
-              const selectedFiles = Array.from(e.target.files);
-              setAttachmentData(selectedFiles);
+      <Row gutter={[32, 16]} className="pt-6">
+        <Col xs={24} sm={12} md={12} lg={12}>
+          {/* circle img div start */}
+          <div
+            onDragOver={(e) => e.preventDefault()}
+            onDragLeave={(e) => e.preventDefault()}
+            onDrop={(e) => {
+              e.preventDefault();
+              // const droppedFile = Array.from(e.dataTransfer.files);
+              // if (droppedFile.length > 0) {
+              //   console.log("drop imgs", droppedFile);
+              //   setAttachmentData(droppedFile);
+              // }
 
               // single file upload👇
-              const fileUploaded = e.target.files[0];
+              const fileUploaded = e.dataTransfer.files[0];
               if (fileUploaded) {
                 const imageLink = URL.createObjectURL(fileUploaded);
                 // setProductImage({ url: imageLink, name: fileUploaded.name }); // Store both URL and name.
@@ -306,173 +281,233 @@ const AddProduct = () => {
                 setTypeInScreen(imageLink);
               }
             }}
-          />
-        </label>
-        {/* circle input img start */}
-        <div className="circle-input-img m-auto">
-          {productImage ? (
-            <img
-              src={productImage}
-              alt=""
-              className="selectedImg"
-              onClick={handleClick}
-            />
-          ) : (
-            <>
-              <img
-                src={setting}
-                alt=""
-                width={20}
-                className="pointer"
-                onClick={handleClick}
+          >
+            {/* no need to use ref if we use setting img under label */}
+            <label>
+              <img src={setting} alt="" width={20} />
+              <input
+                type="file"
+                ref={hiddenFileInput}
+                multiple
+                // accept="image/*"
+                // accept=".doc,.docx,.pdf,.xls,.xlsx,.xml,"
+                // ref={hidden_Input_File}
+                style={{ display: "none" }}
+                onChange={(e) => {
+                  console.log("fileList", e.target.files);
+                  // setAttachmentData(e.target.files[0]); // single file upload.
+                  const selectedFiles = Array.from(e.target.files);
+                  setAttachmentData(selectedFiles);
+
+                  // single file upload👇
+                  const fileUploaded = e.target.files[0];
+                  if (fileUploaded) {
+                    const imageLink = URL.createObjectURL(fileUploaded);
+                    // setProductImage({ url: imageLink, name: fileUploaded.name }); // Store both URL and name.
+                    setProductImage(imageLink);
+                    setTypeInScreen(imageLink);
+                  }
+                }}
+              />
+            </label>
+            {/* circle input img start */}
+            <div className="circle-input-img m-auto">
+              {productImage ? (
+                <img
+                  src={productImage}
+                  alt=""
+                  className="selectedImg"
+                  onClick={handleClick}
+                />
+              ) : (
+                <>
+                  <img
+                    src={setting}
+                    alt=""
+                    width={20}
+                    className="pointer"
+                    onClick={handleClick}
+                  />
+                  <br />
+                  <p>Add or Drag a photo</p>
+                </>
+              )}
+            </div>
+            {/* circle input img end */}
+          </div>
+          {/* circle img div start */}
+        </Col>
+
+        <Col xs={24} sm={12} md={12} lg={12}>
+          <div className="pt-4" ref={Ankit}>
+            <div className="asc-input-container" id="ascNewInput">
+              <label className="asc-top-label labelText">Product Name</label>
+              <input
+                type="text"
+                // disabled
+                autoFocus={true}
+                className="asc-Normal-Input"
+                style={{
+                  border: warning && !productName && "1.5px solid #dc3545",
+                }}
+                placeholder="Enter your Product Name"
+                value={productName}
+                onChange={(e) => {
+                  setProductName(e.target.value);
+                  setTypeInScreen(e.target.value);
+                }}
+                onKeyDown={handleKeyDown}
               />
               <br />
-              <p>Add or Drag a photo</p>
-            </>
-          )}
-        </div>
-        {/* circle input img end */}
-      </div>
-      {/* circle img div start */}
+              <span className="warningTxt ps-2">
+                {warning && !productName && "Please fill product name!"}
+              </span>
+            </div>
 
-      <div
-        className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-5 m-auto pt-6 lg:w-[70%] w-full"
-        ref={Ankit}
-      >
+            <div className="asc-input-container" id="ascNewInput">
+              <label className="asc-top-label labelText">Product Title</label>
+              <input
+                type="text"
+                // disabled
+                className="asc-Normal-Input"
+                style={{
+                  border: warning && !productTitle && "1.5px solid #dc3545",
+                }}
+                placeholder="Enter your Product Title"
+                value={productTitle}
+                onChange={(e) => {
+                  setProductTitle(e.target.value);
+                  setTypeInScreen(e.target.value);
+                }}
+                onKeyDown={handleKeyDown}
+              />
+              <br />
+              <span className="warningTxt ps-2">
+                {warning && !productTitle && "Please fill product title!"}
+              </span>
+            </div>
+
+            <div className="asc-input-container" id="ascNewInput">
+              <label className="asc-top-label labelText">
+                Product Description
+              </label>
+              <textarea
+                // disabled
+                className="asc-Normal-Input"
+                style={{
+                  border:
+                    warning && !productDescription && "1.5px solid #dc3545",
+                }}
+                placeholder="Enter your Product Description"
+                value={productDescription}
+                onChange={(e) => {
+                  setProductDescription(e.target.value);
+                  setTypeInScreen(e.target.value);
+                }}
+                onKeyDown={handleKeyDown}
+              />
+              <br />
+              <span className="warningTxt ps-2">
+                {warning &&
+                  !productDescription &&
+                  "Please fill product description!"}
+              </span>
+            </div>
+
+            <div className="asc-input-container" id="ascNewInput">
+              <label className="asc-top-label labelText">Product Price</label>
+              <input
+                type="number"
+                min={100}
+                // disabled
+                className="asc-Normal-Input"
+                style={{
+                  border: warning && !productPrice && "1.5px solid #dc3545",
+                }}
+                placeholder="Enter your Product Price ₹"
+                value={productPrice}
+                // onChange={(e) => {
+                //   setProductPrice(e.target.value);
+                //   setTypeInScreen(e.target.value);
+                // }}
+
+                // onChange={(e) => {
+                //   const value = Number(e.target.value);
+                //   if (value >= 100 || e.target.value === "") {
+                //     setProductPrice(e.target.value);
+                //     setTypeInScreen(e.target.value);
+                //   }
+                // }}
+
+                onInput={(e) => {
+                  if (e.target.value < 100) e.target.value = 100;
+                  if (e.target.value.includes("-")) e.target.value = ""; // Prevent negative values
+                  setProductPrice(e.target.value);
+                  setTypeInScreen(e.target.value);
+                }}
+                onKeyDown={handleKeyDown}
+              />
+              <br />
+              <span className="warningTxt ps-2">
+                {warning && !productPrice && "Please fill product price!"}
+              </span>
+            </div>
+
+            <div className="md:col-span-2 hidden">
+              <div className="asc-input-container" id="ascNewInput">
+                <label className="asc-top-label labelText">Product Image</label>
+                <input
+                  type="text"
+                  // disabled
+                  autoFocus={true}
+                  className="asc-Normal-Input"
+                  style={{
+                    border: warning && !productImage && "1.5px solid #dc3545",
+                  }}
+                  placeholder="Enter your Product image"
+                  value={productImage}
+                  onChange={(e) => {
+                    setProductImage(e.target.value);
+                    setTypeInScreen(e.target.value);
+                  }}
+                  onKeyDown={handleKeyDown}
+                />
+                <br />
+                <span className="warningTxt ps-2">
+                  {warning && !productImage && "Please fill product image!"}
+                </span>
+              </div>
+            </div>
+          </div>
+        </Col>
+      </Row>
+      {/* extra product img div start */}
+      <div className="md:col-span-2">
         <div className="asc-input-container" id="ascNewInput">
-          <label className="asc-top-label labelText">Product Name</label>
+          <label className="asc-top-label labelText">Product Image</label>
           <input
             type="text"
             // disabled
             autoFocus={true}
             className="asc-Normal-Input"
-            style={{ border: warning && !productName && "1.5px solid #dc3545" }}
-            placeholder="Enter your Product Name"
-            value={productName}
-            onChange={(e) => {
-              setProductName(e.target.value);
-              setTypeInScreen(e.target.value);
-            }}
-            onKeyDown={handleKeyDown}
-          />
-          <br />
-          <span className="warningTxt ps-2">
-            {warning && !productName && "Please fill product name!"}
-          </span>
-        </div>
-
-        <div className="asc-input-container" id="ascNewInput">
-          <label className="asc-top-label labelText">Product Title</label>
-          <input
-            type="text"
-            // disabled
-            className="asc-Normal-Input"
             style={{
-              border: warning && !productTitle && "1.5px solid #dc3545",
+              border: warning && !productImage && "1.5px solid #dc3545",
             }}
-            placeholder="Enter your Product Title"
-            value={productTitle}
+            placeholder="Enter your Product image"
+            value={productImage}
             onChange={(e) => {
-              setProductTitle(e.target.value);
+              setProductImage(e.target.value);
               setTypeInScreen(e.target.value);
             }}
             onKeyDown={handleKeyDown}
           />
           <br />
           <span className="warningTxt ps-2">
-            {warning && !productTitle && "Please fill product title!"}
+            {warning && !productImage && "Please fill product image!"}
           </span>
-        </div>
-
-        <div className="asc-input-container" id="ascNewInput">
-          <label className="asc-top-label labelText">Product Description</label>
-          <textarea
-            // disabled
-            className="asc-Normal-Input"
-            style={{
-              border: warning && !productDescription && "1.5px solid #dc3545",
-            }}
-            placeholder="Enter your Product Description"
-            value={productDescription}
-            onChange={(e) => {
-              setProductDescription(e.target.value);
-              setTypeInScreen(e.target.value);
-            }}
-            onKeyDown={handleKeyDown}
-          />
-          <br />
-          <span className="warningTxt ps-2">
-            {warning &&
-              !productDescription &&
-              "Please fill product description!"}
-          </span>
-        </div>
-
-        <div className="asc-input-container" id="ascNewInput">
-          <label className="asc-top-label labelText">Product Price</label>
-          <input
-            type="number"
-            min={100}
-            // disabled
-            className="asc-Normal-Input"
-            style={{
-              border: warning && !productPrice && "1.5px solid #dc3545",
-            }}
-            placeholder="Enter your Product Price"
-            value={productPrice}
-            // onChange={(e) => {
-            //   setProductPrice(e.target.value);
-            //   setTypeInScreen(e.target.value);
-            // }}
-
-            // onChange={(e) => {
-            //   const value = Number(e.target.value);
-            //   if (value >= 100 || e.target.value === "") {
-            //     setProductPrice(e.target.value);
-            //     setTypeInScreen(e.target.value);
-            //   }
-            // }}
-
-            onInput={(e) => {
-              if (e.target.value < 100) e.target.value = 100;
-              if (e.target.value.includes("-")) e.target.value = ""; // Prevent negative values
-              setProductPrice(e.target.value);
-              setTypeInScreen(e.target.value);
-            }}
-            onKeyDown={handleKeyDown}
-          />
-          <br />
-          <span className="warningTxt ps-2">
-            {warning && !productPrice && "Please fill product price!"}
-          </span>
-        </div>
-
-        <div className="md:col-span-2">
-          <div className="asc-input-container" id="ascNewInput">
-            <label className="asc-top-label labelText">Product Image</label>
-            <input
-              type="text"
-              // disabled
-              autoFocus={true}
-              className="asc-Normal-Input"
-              style={{
-                border: warning && !productImage && "1.5px solid #dc3545",
-              }}
-              placeholder="Enter your Product image"
-              value={productImage}
-              onChange={(e) => {
-                setProductImage(e.target.value);
-                setTypeInScreen(e.target.value);
-              }}
-              onKeyDown={handleKeyDown}
-            />
-            <br />
-            <span className="warningTxt ps-2">
-              {warning && !productImage && "Please fill product image!"}
-            </span>
-          </div>
         </div>
       </div>
+      {/* extra product img div end */}
     </div>
   );
 };
