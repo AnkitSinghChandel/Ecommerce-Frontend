@@ -393,7 +393,7 @@ const AddProduct = () => {
               </label>
               <textarea
                 // disabled
-                className="asc-Normal-Input"
+                className="asc-Normal-Input py-3"
                 style={{
                   border:
                     warning && !productDescription && "1.5px solid #dc3545",
