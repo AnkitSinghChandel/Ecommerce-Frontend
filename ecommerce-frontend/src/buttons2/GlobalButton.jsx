@@ -6,8 +6,8 @@ import Button from "@mui/material/Button";
 //   console.log("asc button props from parent components", props);
 //   return (
 //     <button
-//       // className="cancelBtn ascButton"
-//       className={`cancelBtn ascButton ${props.className}`}
+//       // className="cancelButton ascButton"
+//       className={`cancelButton ascButton ${props.className}`}
 //       onClick={props.onClick}
 //     >
 //       {props.label}
@@ -23,8 +23,8 @@ const Button = ({ label, className, onClick, disabled }) => {
   return (
     <Button
       disabled={disabled}
-      // className="cancelBtn ascButton"
-      className={`cancelBtn ascButton ${className}`}
+      // className="cancelButton ascButton"
+      className={`cancelButton ascButton ${className}`}
       onClick={onClick}
     >
       {label}

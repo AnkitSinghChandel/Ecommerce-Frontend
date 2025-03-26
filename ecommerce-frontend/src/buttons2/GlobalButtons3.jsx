@@ -6,7 +6,7 @@ const GlobalButtons = {}; // यह ऑब्जेक्ट सभी बटन
 
 GlobalButtons.Add = ({ className, onClick, label, disabled }) => (
   <Button
-    className={`addBtn ascButton ${className}`}
+    className={`addButton ascButton ${className}`}
     disabled={disabled}
     onClick={onClick}
   >
@@ -16,7 +16,7 @@ GlobalButtons.Add = ({ className, onClick, label, disabled }) => (
 
 GlobalButtons.Cancel = ({ className, onClick, label, disabled }) => (
   <Button
-    className={`cancelBtn ascButton ${className}`}
+    className={`cancelButton ascButton ${className}`}
     disabled={disabled}
     onClick={onClick}
   >
@@ -26,7 +26,7 @@ GlobalButtons.Cancel = ({ className, onClick, label, disabled }) => (
 
 GlobalButtons.Delete = ({ className, onClick, label, disabled }) => (
   <Button
-    className={`deleteBtn ascButton ${className}`}
+    className={`deleteButton ascButton ${className}`}
     disabled={disabled}
     onClick={onClick}
   >
@@ -36,7 +36,7 @@ GlobalButtons.Delete = ({ className, onClick, label, disabled }) => (
 
 GlobalButtons.Submit = ({ className, onClick, label, disabled }) => (
   <Button
-    className={`submitBtn ascButton ${className}`}
+    className={`submitButton ascButton ${className}`}
     disabled={disabled}
     onClick={onClick}
   >

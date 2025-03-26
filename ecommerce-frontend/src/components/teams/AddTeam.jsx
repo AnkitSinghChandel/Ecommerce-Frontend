@@ -196,7 +196,7 @@ const AddTeam = () => {
           }}
           onMouseEnter={() => setBtnHover(true)}
           onMouseLeave={() => setBtnHover(false)}
-          className="addBtn"
+          className="addButton"
           extraComponent={
             showLoader ? (
               <div>

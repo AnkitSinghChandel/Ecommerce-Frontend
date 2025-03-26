@@ -145,7 +145,7 @@ const Profile = () => {
           // onClick={handleAddTeam}
           onMouseEnter={() => setBtnHover(true)}
           onMouseLeave={() => setBtnHover(false)}
-          className="addBtn"
+          className="addButton"
           extraComponent={
             showLoader ? (
               <div>

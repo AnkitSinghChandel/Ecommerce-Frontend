@@ -213,7 +213,7 @@ const ProductsList = () => {
                         </p>
                       </Tooltip>
 
-                      <p className="pt-2">
+                      <div className="pt-2">
                         <Rate
                           tooltips={desc}
                           // onChange={setRatingValue}
@@ -227,8 +227,9 @@ const ProductsList = () => {
                         {ratingValue && (
                           <span>{desc[item.ratings[0]?.rating - 1]}</span>
                         )}
-                      </p>
-                      <p className="font-bold text-[14px] text-[#4b5966] flex gap-4 pt-2">
+                      </div>
+
+                      <div className="font-bold text-[14px] text-[#4b5966] flex gap-4 pt-2">
                         {/* {`$ ${item.productPrice}`} */}
                         <span className="">
                           {`₹ ${Number(item.productPrice / 2).toFixed(2)}`}
@@ -236,11 +237,11 @@ const ProductsList = () => {
                         <span className="font-normal text-[#777] line-through">
                           {`₹ ${Number(item.productPrice).toFixed(2)}`}
                         </span>
-                      </p>
+                      </div>
 
-                      <p className="flex justify-between gap-2 pt-4 text-center">
-                        <span
-                          className="bg-[#5caf90] text-[white] text-[16px] rounded-lg ps- w-[150px] max-w-full p-1 pointer"
+                      <div className="flex flex-wrap sm:flex-nowrap justify-between gap-2 pt-4 text-center">
+                        <div
+                          className="bg-[#5caf90] text-[white] text-[16px] rounded-lg ps- w-full max-w-full p-1 pointer"
                           onClick={() => {
                             navigate(`/update-product/${item.productId}`);
                           }}
@@ -249,10 +250,10 @@ const ProductsList = () => {
                             <EditOutlined />
                           </span>
                           <span className="ps-2">Edit</span>
-                        </span>
+                        </div>
 
-                        <span
-                          className="bg-[#5caf90] text-[white] text-[16px] rounded-lg ps- w-[150px] max-w-full p-1 pointer"
+                        <div
+                          className="bg-[#5caf90] text-[white] text-[16px] rounded-lg ps- w-full max-w-full p-1 pointer"
                           onClick={() => {
                             setProductName(item.productName);
                             setProductID(item.productId);
@@ -263,10 +264,10 @@ const ProductsList = () => {
                             <DeleteOutlined />
                           </span>
                           <span className="ps-2">Delete</span>
-                        </span>
-                      </p>
+                        </div>
+                      </div>
 
-                      <p
+                      <div
                         className="ms-auto float-end pt-3 pointer"
                         onClick={() => {
                           dispatch(addToWishList(userid, item.productId));
@@ -279,7 +280,7 @@ const ProductsList = () => {
                         ) : (
                           <HeartOutlined />
                         )}
-                      </p>
+                      </div>
                     </div>
                   </div>
                 );

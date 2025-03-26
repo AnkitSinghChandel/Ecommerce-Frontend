@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 // Add Button
 export const AddButton = ({ className, onClick, label, disabled }) => (
   <Button
-    className={`addBtn ascButton ${className}`}
+    className={`addButton ascButton ${className}`}
     disabled={disabled}
     onClick={onClick}
   >
@@ -16,7 +16,7 @@ export const AddButton = ({ className, onClick, label, disabled }) => (
 // Cancel Button
 export const CancelButton = ({ className, onClick, label, disabled }) => (
   <Button
-    className={`cancelBtn ascButton ${className}`}
+    className={`cancelButton ascButton ${className}`}
     disabled={disabled}
     onClick={onClick}
   >
@@ -27,7 +27,7 @@ export const CancelButton = ({ className, onClick, label, disabled }) => (
 // Delete Button
 export const DeleteButton = ({ className, onClick, label, disabled }) => (
   <Button
-    className={`deleteBtn ascButton ${className}`}
+    className={`deleteButton ascButton ${className}`}
     disabled={disabled}
     onClick={onClick}
   >
@@ -38,7 +38,7 @@ export const DeleteButton = ({ className, onClick, label, disabled }) => (
 // Submit Button
 export const SubmitButton = ({ className, onClick, label, disabled }) => (
   <Button
-    className={`submitBtn ascButton ${className}`}
+    className={`submitButton ascButton ${className}`}
     disabled={disabled}
     onClick={onClick}
   >

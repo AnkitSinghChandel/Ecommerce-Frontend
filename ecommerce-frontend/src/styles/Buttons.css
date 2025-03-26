@@ -1,4 +1,4 @@
-.addBtn {
+.addButton {
   background: #5caf90;
   color: white;
   font-size: 18px;
@@ -12,11 +12,11 @@
   box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 15px;
 }
 
-.addBtn:hover:not(:disabled) {
+.addButton:hover:not(:disabled) {
   background: linear-gradient(270deg, #44a743e5 0%, #5caf90 100%);
 }
 
-.cancelBtn {
+.cancelButton {
   width: 200px;
   max-width: 90%;
   height: 50px;
@@ -30,7 +30,7 @@
   box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 15px;
 }
 
-.cancelBtn:hover:not(:disabled) {
+.cancelButton:hover:not(:disabled) {
   background-color: #f1f1f1;
   color: #5b5b5b;
 }

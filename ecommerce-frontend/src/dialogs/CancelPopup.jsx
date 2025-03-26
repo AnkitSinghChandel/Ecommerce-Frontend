@@ -27,7 +27,7 @@ const CancelPopup = (props) => {
             <Button
               key="back"
               onClick={props.onCancel}
-              className="cancelBtn ascButton"
+              className="cancelButton ascButton"
             >
               No
             </Button>
@@ -35,7 +35,7 @@ const CancelPopup = (props) => {
             <Button
               key="submit"
               loading={props.loading}
-              className="addBtn ascButton"
+              className="addButton ascButton"
               onClick={() => {
                 props.onOk();
               }}

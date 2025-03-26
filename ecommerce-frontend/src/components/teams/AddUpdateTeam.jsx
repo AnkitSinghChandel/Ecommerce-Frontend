@@ -277,7 +277,7 @@ const AddUpdateTeam = () => {
           onClick={params.id ? handleUpdateTeam : handleAddTeam}
           onMouseEnter={() => setBtnHover(true)}
           onMouseLeave={() => setBtnHover(false)}
-          className="addBtn"
+          className="addButton"
           extraComponent={
             showLoader ? (
               <div>

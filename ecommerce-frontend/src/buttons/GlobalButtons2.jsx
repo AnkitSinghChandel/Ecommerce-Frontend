@@ -4,7 +4,7 @@ import "../styles/Buttons.css";
 // Add Button
 export const AddButton = ({ className, onClick, label, disabled, style }) => (
   <button
-    className={`addBtn ascButton ${className}`}
+    className={`addButton ascButton ${className}`}
     style={style}
     disabled={disabled}
     onClick={onClick}
@@ -22,7 +22,7 @@ export const CancelButton = ({
   style,
 }) => (
   <button
-    className={`cancelBtn ascButton ${className}`}
+    className={`cancelButton ascButton ${className}`}
     style={style}
     disabled={disabled}
     onClick={onClick}
@@ -34,7 +34,7 @@ export const CancelButton = ({
 // Delete Button
 export const DeleteButton = ({ className, onClick, label, disabled }) => (
   <button
-    className={`deleteBtn ascButton ${className}`}
+    className={`deleteButton ascButton ${className}`}
     disabled={disabled}
     onClick={onClick}
   >
@@ -45,7 +45,7 @@ export const DeleteButton = ({ className, onClick, label, disabled }) => (
 // Submit Button
 export const SubmitButton = ({ className, onClick, label, disabled }) => (
   <button
-    className={`submitBtn ascButton ${className}`}
+    className={`submitButton ascButton ${className}`}
     disabled={disabled}
     onClick={onClick}
   >
