@@ -275,9 +275,9 @@ const ProductsList = () => {
                         {fetchAllWishListRes?.data?.some(
                           (wish) => wish.productId === item.productId
                         ) ? (
-                          <HeartOutlined />
-                        ) : (
                           <HeartFilled style={{ color: "#5caf90 " }} />
+                        ) : (
+                          <HeartOutlined />
                         )}
                       </p>
                     </div>

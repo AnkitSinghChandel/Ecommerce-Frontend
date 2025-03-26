@@ -39,6 +39,10 @@ const Carts = () => {
     (state) => state.product.addToWishListRes
   );
 
+  const fetchAllWishListRes = useSelector(
+    (state) => state.product.fetchAllWishListRes
+  );
+
   const [totalWishItem, setTotalWishItem] = useState(0);
   const [totalCartItem, setTotalCartItem] = useState(0);
   const [isOpenAccBox, setIsOpenAccBox] = useState(false);
@@ -63,6 +67,12 @@ const Carts = () => {
       setTotalCartItem(fetchAllCartProductsRes.length);
     }
   }, [fetchAllCartProductsRes]);
+
+  useEffect(() => {
+    if (fetchAllWishListRes.status === true) {
+      setTotalWishItem(fetchAllWishListRes.length);
+    }
+  }, [fetchAllWishListRes]);
 
   return (
     <div className="ascSmoot-h flex flex-wrap gap-8 font-medium">
