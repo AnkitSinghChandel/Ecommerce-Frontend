@@ -104,7 +104,7 @@ const Carts = () => {
         <div>
           <p className="carts-main-label">Wishlist</p>
           <div className="carts-label">
-            <p className="totalWish">{`${totalWishItem}`}</p>-Items
+            <p className="totalWish">{`${totalWishItem}`}</p>-items
           </div>
         </div>
       </div>
@@ -115,7 +115,7 @@ const Carts = () => {
         <div>
           <p className="carts-main-label">Cart</p>
           <div className="carts-label">
-            <p className="totalWish">{`${totalCartItem || cartItem}`}</p>-Items
+            <p className="totalWish">{`${totalCartItem || cartItem}`}</p>-items
           </div>
         </div>
       </div>
