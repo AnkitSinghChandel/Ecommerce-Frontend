@@ -6,6 +6,8 @@ import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { Flex, Rate } from "antd";
 import {
   UserOutlined,
+  ShoppingFilled,
+  CheckCircleFilled,
   ArrowLeftOutlined,
   ShoppingCartOutlined,
   PlusOutlined,
@@ -38,6 +40,10 @@ const ProductItems = () => {
   );
 
   const addToCartRes = useSelector((state) => state.product.addToCartRes);
+
+  const fetchAllCartProductsRes = useSelector(
+    (state) => state.product.fetchAllCartProductsRes
+  );
 
   const discountPropsApiRes = useSelector(
     (state) => state.product.discountPropsApiRes
@@ -185,16 +191,24 @@ const ProductItems = () => {
             {`M.R.P : ${asc_totalPrice.toFixed(2)}`}
           </p>
 
-          <div
-            className="bg-[#5caf90] text-[white] text-[16px] rounded-lg ps-4 w-[150px] max-w-full my-3 p-1 pointer"
-            onClick={() => {
-              dispatch(addToCart(userid, productID, productQuantity));
-            }}
-          >
-            <span className="ps-1">
-              <ShoppingCartOutlined />
-            </span>
-            <span className="ps-3">Add to cart</span>
+          <div className="flex gap-3 items-center">
+            <div
+              className="bg-[#5caf90] text-[white] text-[16px] rounded-lg ps-4 w-[150px] max-w-full my-3 p-1 pointer"
+              onClick={() => {
+                dispatch(addToCart(userid, productID, productQuantity));
+              }}
+            >
+              <span className="ps-1">
+                <ShoppingCartOutlined />
+              </span>
+              <span className="ps-3">Add to cart</span>
+            </div>
+
+            <div>
+              {fetchAllCartProductsRes?.data?.some(
+                (wish) => wish.productId === productID
+              ) && <CheckCircleFilled style={{ color: "#5caf90 " }} />}
+            </div>
           </div>
 
           <div
