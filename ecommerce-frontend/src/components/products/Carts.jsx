@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { fetchAllCartProducts } from "../../redux/actions/productAction";
+import {
+  fetchAllCartProducts,
+  fetchAllWishList,
+} from "../../redux/actions/productAction";
 import { useDispatch, useSelector } from "react-redux";
 import {
   UserOutlined,
@@ -27,8 +30,13 @@ const Carts = () => {
   const cartItem = localStorage.getItem("cartItem") ?? 0;
 
   const addToCartRes = useSelector((state) => state.product.addToCartRes);
+
   const fetchAllCartProductsRes = useSelector(
     (state) => state.product.fetchAllCartProductsRes
+  );
+
+  const addToWishListRes = useSelector(
+    (state) => state.product.addToWishListRes
   );
 
   const [totalWishItem, setTotalWishItem] = useState(0);
@@ -45,6 +53,10 @@ const Carts = () => {
   useEffect(() => {
     dispatch(fetchAllCartProducts());
   }, [addToCartRes]);
+
+  useEffect(() => {
+    dispatch(fetchAllWishList());
+  }, [addToWishListRes]);
 
   useEffect(() => {
     if (fetchAllCartProductsRes.status === true) {

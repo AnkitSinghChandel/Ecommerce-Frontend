@@ -19,6 +19,7 @@ import {
   fetchAllProducts,
   deleteProductById,
   addReview,
+  addToWishList,
 } from "../../redux/actions/productAction";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -46,6 +47,14 @@ const ProductsList = () => {
   );
 
   const addReviewRes = useSelector((state) => state.product.addReviewRes);
+
+  const addToWishListRes = useSelector(
+    (state) => state.product.addToWishListRes
+  );
+
+  const fetchAllWishListRes = useSelector(
+    (state) => state.product.fetchAllWishListRes
+  );
 
   const desc = ["terrible", "bad", "normal", "good", "wonderful"];
   const [ratingValue, setRatingValue] = useState(3);
@@ -87,6 +96,15 @@ const ProductsList = () => {
       });
     }
   }, [addReviewRes]);
+
+  useEffect(() => {
+    if (addToWishListRes.status === true) {
+      toast.success(`${addToWishListRes.message}`, {
+        // autoClose: 3000,
+        onOpen: playSuccessSound,
+      });
+    }
+  }, [addToWishListRes]);
 
   const handleDeleteTeam = () => {
     dispatch(deleteProductById(productID));
@@ -251,11 +269,16 @@ const ProductsList = () => {
                       <p
                         className="ms-auto float-end pt-3 pointer"
                         onClick={() => {
-                          // asc
+                          dispatch(addToWishList(userid, item.productId));
                         }}
                       >
-                        <HeartOutlined />
-                        {/* <HeartFilled style={{ color: "#5caf90 " }} /> */}
+                        {fetchAllWishListRes?.data?.some(
+                          (wish) => wish.productId === item.productId
+                        ) ? (
+                          <HeartOutlined />
+                        ) : (
+                          <HeartFilled style={{ color: "#5caf90 " }} />
+                        )}
                       </p>
                     </div>
                   </div>

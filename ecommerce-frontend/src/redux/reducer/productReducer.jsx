@@ -7,7 +7,9 @@ const initialState = {
   addReviewRes: {},
   addToCartRes: {},
   fetchAllCartProductsRes: {},
+  addToWishListRes: {},
   discountPropsApiRes: {},
+  fetchAllWishListRes: {},
 };
 
 const productReducer = (state = initialState, action) => {
@@ -58,6 +60,18 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         fetchAllCartProductsRes: action.data,
+      };
+
+    case "ADD_TO_WISHLIST":
+      return {
+        ...state,
+        addToWishListRes: action.data,
+      };
+
+    case "FETCH_ALL_WISHLIST_PRODUCTS":
+      return {
+        ...state,
+        fetchAllWishListRes: action.data,
       };
 
     // ASC REDUX PROPS START //

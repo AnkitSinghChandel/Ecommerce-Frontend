@@ -13,6 +13,8 @@ import {
   ADD_REVIEW,
   ADD_TO_CART,
   FETCH_ALL_CART_PRODUCTS,
+  ADD_TO_WISHLIST,
+  FETCH_ALL_WISHLIST_PRODUCTS,
   DISCOUNT_PROPS_API,
 } from "../constance/productType";
 
@@ -196,6 +198,51 @@ export const fetchAllCartProducts = () => async (dispatch) => {
     });
     dispatch({
       type: FETCH_ALL_CART_PRODUCTS,
+      data: response.data,
+    });
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const addToWishList =
+  (userId, productId, productQuantity) => async (dispatch) => {
+    try {
+      const response = await axios({
+        method: "post",
+        url: `${API_URL}/wishLists`,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: { userId, productId },
+      });
+      dispatch({
+        type: ADD_TO_WISHLIST,
+        data: response.data,
+      });
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      dispatch({
+        type: ADD_TO_WISHLIST,
+        data: error.response.data,
+      });
+    }
+  };
+
+export const fetchAllWishList = () => async (dispatch) => {
+  try {
+    const response = await axios({
+      method: "get",
+      url: `${API_URL}/wishLists`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {},
+    });
+    dispatch({
+      type: FETCH_ALL_WISHLIST_PRODUCTS,
       data: response.data,
     });
     return response.data;
