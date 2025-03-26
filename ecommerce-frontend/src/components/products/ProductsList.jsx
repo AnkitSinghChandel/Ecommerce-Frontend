@@ -241,7 +241,7 @@ const ProductsList = () => {
 
                       <div className="flex flex-wrap sm:flex-nowrap justify-between gap-2 pt-4 text-center">
                         <div
-                          className="bg-[#5caf90] text-[white] text-[16px] rounded-lg ps- w-full max-w-full p-1 pointer"
+                          className="bg-[#5caf90] text-[white] text-[16px] rounded-lg ps- w-full max-w-full p-1 pointer ascButton"
                           onClick={() => {
                             navigate(`/update-product/${item.productId}`);
                           }}
@@ -253,7 +253,7 @@ const ProductsList = () => {
                         </div>
 
                         <div
-                          className="bg-[#5caf90] text-[white] text-[16px] rounded-lg ps- w-full max-w-full p-1 pointer"
+                          className="bg-[#5caf90] text-[white] text-[16px] rounded-lg ps- w-full max-w-full p-1 pointer ascButton"
                           onClick={() => {
                             setProductName(item.productName);
                             setProductID(item.productId);
@@ -268,7 +268,7 @@ const ProductsList = () => {
                       </div>
 
                       <div
-                        className="ms-auto float-end pt-3 pointer"
+                        className="ms-auto float-end pt-3 pointer ascButton"
                         onClick={() => {
                           dispatch(addToWishList(userid, item.productId));
                         }}
