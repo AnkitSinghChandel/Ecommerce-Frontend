@@ -44,7 +44,8 @@ const SideBar = () => {
     if (location.pathname === "/products-list") return "5";
     if (location.pathname === "/add-product") return "6-1";
     if (location.pathname.startsWith("/update-product/")) return "6-2";
-    if (location.pathname === "/asc-folder") return "7";
+    if (location.pathname.startsWith("/task")) return "7";
+    if (location.pathname === "/asc-folder") return "8";
     return "";
   })();
 
@@ -152,6 +153,13 @@ const SideBar = () => {
 
     {
       key: "7",
+      icon: <FolderOpenTwoTone />,
+      label: "Tasks",
+      onClick: () => navigate("/task"),
+    },
+
+    {
+      key: "8",
       icon: <FolderOpenTwoTone />,
       label: "ASC-FOLDER",
       onClick: () => navigate("/asc-folder"),

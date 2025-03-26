@@ -19,15 +19,6 @@ const ASCFolder = () => {
       <div
         className="pointer font-medium text-[16px] py-3"
         onClick={() => {
-          navigate("/drag-drop");
-        }}
-      >
-        DragAndDrop
-      </div>
-
-      <div
-        className="pointer font-medium text-[16px] py-3"
-        onClick={() => {
           navigate("/drag-drop-demo");
         }}
       >

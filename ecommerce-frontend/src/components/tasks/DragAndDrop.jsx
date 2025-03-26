@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "../styles/DragAndDrop.css";
+import { useParams } from "react-router";
+import "../../styles/DragAndDrop.css";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 // import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
@@ -12,13 +13,16 @@ import {
   updateTaskById,
   updateAllMultiTasks,
   deleteTaskById,
-} from "../redux/actions/taskAction";
+} from "../../redux/actions/taskAction";
 import { useSelector, useDispatch } from "react-redux";
-import addicon from "../assets/icons/addicon.svg";
-import binIcon from "../assets/icons/Bin.svg";
-// import TaskModal from "../components/tasks/TaskModal";
+import addicon from "../../assets/icons/addicon.svg";
+import binIcon from "../../assets/icons/Bin.svg";
+import TaskModal from "./TaskModal";
+import { Tooltip } from "antd";
+import GlobalButton from "../../buttons/GlobalButton";
 
-const DragDrop = () => {
+const DragAndDrop = () => {
+  const { id } = useParams();
   const [Ankit] = useAutoAnimate();
 
   const handleDragEnd = (result) => {
@@ -171,7 +175,7 @@ const DragDrop = () => {
   };
   // Drag end end from above.
 
-  // add below
+  // with states and all things below.
   const dispatch = useDispatch();
   const [allStatusData, setAllStatusData] = useState([]);
   const [statusName, setStatusName] = useState("");
@@ -225,23 +229,32 @@ const DragDrop = () => {
     }
   }, [fetchAllStatusRes]);
 
+  useEffect(() => {
+    if (id) {
+      setTaskModelShow(true);
+      setModalFunction("update");
+      setTaskID(id);
+    }
+  }, [id]);
+
   return (
     <div className="">
       {taskModelShow && (
         <TaskModal
-          show={taskModelShow}
-          onHide={() => setTaskModelShow(false)}
-          // onHide={handleClose}
-          backdrop="static"
+          open={taskModelShow}
+          onCancel={() => setTaskModelShow(false)}
+          // onOk={handleClose}
           keyboard={false}
           // handleCancel={handleCancel}
+          taskModelShow={taskModelShow}
+          setTaskModelShow={setTaskModelShow}
           modalFunction={modalFunction}
           setModalFunction={setModalFunction}
           statusName={statusName}
           setStatusName={setStatusName}
           statusID={statusID}
           setStatusID={setStatusID}
-          taskID={taskID}
+          taskID={taskID || id}
         />
       )}
 
@@ -250,8 +263,8 @@ const DragDrop = () => {
           <div>
             <input
               type="text"
-              placeholder="Add Status name"
-              className="border-1"
+              className="asc-Normal-Input"
+              placeholder="Add Status Name"
               value={statusName}
               onChange={(e) => {
                 setStatusName(e.target.value);
@@ -259,20 +272,21 @@ const DragDrop = () => {
             />
           </div>
 
-          <button
+          <GlobalButton
+            disabled={statusName === ""}
+            className="customAddCss"
+            label={"Add Status"}
             onClick={() => {
               dispatch(addStatus(statusName));
               setStatusName("");
             }}
-          >
-            Add Status
-          </button>
+          />
         </div>
       </div>
       {/* add status end */}
 
       <DragDropContext onDragEnd={handleDragEnd}>
-        <div className="DeagDropWrapper p-3">
+        <div className="DeagDropWrapper p-3" ref={Ankit}>
           {allStatusData
             .sort((a, b) => a.statusId - b.statusId)
             .map((column, index) => {
@@ -288,31 +302,35 @@ const DragDrop = () => {
                       {...provider.droppableProps}
                     >
                       <div className="flex statusName">
-                        <img
-                          src={binIcon}
-                          alt=""
-                          className="pointer"
-                          width={20}
-                          onClick={() => {
-                            dispatch(deleteStatusById(column.statusId));
-                          }}
-                        />
+                        <Tooltip title="Delete Status">
+                          <img
+                            src={binIcon}
+                            alt=""
+                            className="pointer"
+                            width={20}
+                            onClick={() => {
+                              dispatch(deleteStatusById(column.statusId));
+                            }}
+                          />
+                        </Tooltip>
 
                         <p className="mb-0">{column.statusName}</p>
 
-                        <img
-                          src={addicon}
-                          alt=""
-                          className="pointer"
-                          width={30}
-                          onClick={() => {
-                            setStatusID(column.statusId);
-                            setStatusName(column.statusName);
-                            setTaskModelShow(true);
-                            setModalFunction("add");
-                            console.log("asc22", column.statusName);
-                          }}
-                        />
+                        <Tooltip title="Add Status">
+                          <img
+                            src={addicon}
+                            alt=""
+                            className="pointer"
+                            width={30}
+                            onClick={() => {
+                              setStatusID(column.statusId);
+                              setStatusName(column.statusName);
+                              setTaskModelShow(true);
+                              setModalFunction("add");
+                              console.log("asc22", column.statusName);
+                            }}
+                          />
+                        </Tooltip>
                       </div>
 
                       {column.tasks.map((item, index) => {
@@ -381,4 +399,4 @@ const DragDrop = () => {
   );
 };
 
-export default DragDrop;
+export default DragAndDrop;

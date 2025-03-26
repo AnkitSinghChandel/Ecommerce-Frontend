@@ -14,10 +14,11 @@ import AddProduct from "../components/products/AddProduct";
 import ProductsList from "../components/products/ProductsList";
 import ProductItem from "../components/products/ProductItem";
 import AddToCart from "../components/products/AddToCart";
+
+import DragAndDrop from "../components/tasks/DragAndDrop";
 // ASC FOLDER👇
 import ASCFolder from "../ASC-FOLDER/ASCFolder";
 import SelectBox from "../ASC-FOLDER/SelectBox";
-import DragAndDrop from "../ASC-FOLDER/DragAndDrop";
 import DragAndDropDemo from "../ASC-FOLDER/DragAndDropDemo";
 import MyTodoTask from "../ASC-FOLDER/MyTodoTask";
 import MyTodoTask2 from "../ASC-FOLDER/MyTodoTask2";
@@ -43,10 +44,11 @@ const Routers = () => {
               <Route path="/products-list" element={<ProductsList />} />
               <Route path="/product/:id" element={<ProductItem />} />
               <Route path="/add-to-cart" element={<AddToCart />} />
+
+              <Route path="/task" element={<DragAndDrop />} />
               {/* // ASC FOLDER👇 */}
               <Route path="/asc-folder" element={<ASCFolder />} />
               <Route path="/selectBox" element={<SelectBox />} />
-              <Route path="/drag-drop" element={<DragAndDrop />} />
               <Route path="/drag-drop-demo" element={<DragAndDropDemo />} />
               <Route path="/todo-task" element={<MyTodoTask />} />
               <Route path="/todo-task2" element={<MyTodoTask2 />} />

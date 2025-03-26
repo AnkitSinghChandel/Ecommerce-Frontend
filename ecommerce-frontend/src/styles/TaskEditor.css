@@ -1,0 +1,37 @@
+/* ql Editor classes start */
+#task_editor.taskEditor {
+  width: 650px;
+  border: 1px solid #00246a;
+  border-radius: 8px;
+}
+
+.ql-toolbar {
+  border: none !important;
+}
+
+.ql-container {
+  border: none !important;
+  /* min-height: 100px; */
+  /* padding: 10px; */
+}
+
+.ql-editor {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+}
+
+.customEditorWrapper .ql-container {
+  background-color: red;
+  border-radius: 5px;
+}
+/* ql Editor classes end */
+
+/* ////////////////////////////////////////////////// */
+
+.commentsDiv {
+  border: 1px solid grey;
+  border-radius: 8px;
+  font-size: 18px;
+  padding: 10px;
+  margin: 0;
+}
