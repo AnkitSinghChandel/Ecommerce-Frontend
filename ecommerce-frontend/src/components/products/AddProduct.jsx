@@ -289,9 +289,8 @@ const AddProduct = () => {
                 type="file"
                 ref={hiddenFileInput}
                 multiple
-                // accept="image/*"
+                accept="image/*"
                 // accept=".doc,.docx,.pdf,.xls,.xlsx,.xml,"
-                // ref={hidden_Input_File}
                 style={{ display: "none" }}
                 onChange={(e) => {
                   console.log("fileList", e.target.files);
