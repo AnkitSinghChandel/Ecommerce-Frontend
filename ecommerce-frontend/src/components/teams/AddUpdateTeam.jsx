@@ -73,7 +73,7 @@ const AddUpdateTeam = () => {
   const [cancelPopupShow, setCancelPopupShow] = useState(false);
   const handleClose = () => setCancelPopupShow(false);
 
-  const handleCancel = (e) => {
+  const handleYes = (e) => {
     // history.push("/InvoiceAllList");
     navigate(-1);
   };
@@ -252,7 +252,7 @@ const AddUpdateTeam = () => {
           open={cancelPopupShow}
           // onCancel={() => setCancelPopupShow(false)}
           onCancel={handleClose}
-          onOk={handleCancel}
+          onOk={handleYes}
           title={""}
           keyboard={true}
         />

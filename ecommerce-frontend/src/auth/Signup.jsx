@@ -37,7 +37,7 @@ const Signup = () => {
   const [cancelPopupShow, setCancelPopupShow] = useState(false);
   const handleClose = () => setCancelPopupShow(false);
 
-  const handleCancel = (e) => {
+  const handleYes = (e) => {
     // history.push("/InvoiceAllList");
     navigate(-1);
   };

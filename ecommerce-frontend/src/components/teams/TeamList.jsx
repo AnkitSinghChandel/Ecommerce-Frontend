@@ -3,7 +3,6 @@ import { Link, useNavigate, useLocation } from "react-router";
 import { motion, AnimatePresence } from "motion/react";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import "../../styles/TeamList.css";
-// import "../../styles/TeamListPDF.css";
 import editIcon from "../../assets/icons/edit-2.svg";
 import Pdficon from "../../assets/icons/Pdficon.svg";
 import binIcon from "../../assets/icons/Bin.svg";
@@ -30,8 +29,8 @@ import {
   playErrorSound,
 } from "../../notifications-alert/CustomToastify";
 
-// import html2pdf from "html2pdf.js";
-// import TeamListPDF from "../../pdfs/TeamListPDF";
+import html2pdf from "html2pdf.js";
+import TeamListPDF from "../../pdfs/TeamListPDF";
 
 const TeamsList = () => {
   const navigate = useNavigate();
@@ -57,7 +56,7 @@ const TeamsList = () => {
   const [cancelPopupShow, setCancelPopupShow] = useState(false);
   const handleClose = () => setCancelPopupShow(false);
 
-  const handleCancel = (e) => {
+  const handleYes = (e) => {
     // history.push("/InvoiceAllList");
     navigate(-1);
   };
@@ -108,28 +107,28 @@ const TeamsList = () => {
   };
 
   // ASC html2pdf pdf for start
-  // const downloadPDF = (selectedName) => {
-  //   const element = document.getElementById("teamPDFSection"); // pass id here of pdf div
-  //   if (element) {
-  //     html2pdf()
-  //       .from(element)
-  //       .set({
-  //         // filename: "asc.pdf",
-  //         filename: `${selectedName}.pdf`,
-  //         html2canvas: { scale: 7 }, // Scale factor for better quality not more than 9
-  //         jsPDF: { unit: "in", format: "letter", orientation: "portrait" }, // PDF options
-  //       })
-  //       .save()
-  //       .then(() => {
-  //         toast.success(`${selectedName} Download complete`, {
-  //           // autoClose: 3000,
-  //           onOpen: playSuccessSound,
-  //         });
-  //       });
-  //   } else {
-  //     console.error("Element not found for PDF conversion");
-  //   }
-  // };
+  const downloadPDF = (selectedName) => {
+    const element = document.getElementById("teamPDFSection"); // pass id here of pdf div
+    if (element) {
+      html2pdf()
+        .from(element)
+        .set({
+          // filename: "asc.pdf",
+          filename: `${selectedName}.pdf`,
+          html2canvas: { scale: 7 }, // Scale factor for better quality not more than 9
+          jsPDF: { unit: "in", format: "letter", orientation: "portrait" }, // PDF options
+        })
+        .save()
+        .then(() => {
+          toast.success(`${selectedName} Download complete`, {
+            // autoClose: 3000,
+            onOpen: playSuccessSound,
+          });
+        });
+    } else {
+      console.error("Element not found for PDF conversion");
+    }
+  };
   // ASC html2pdf pdf for end
 
   useEffect(() => {
@@ -381,7 +380,7 @@ const TeamsList = () => {
                         onClick={() => {
                           // setTeamDelete(item._id);
                           // setTeamDeleteName(item.firstName);
-                          // downloadPDF(item.firstName);
+                          downloadPDF(item.firstName);
                         }}
                       />
                     </Tooltip>
@@ -412,6 +411,14 @@ const TeamsList = () => {
             <Empty />
           </div>
         )}
+      </div>
+
+      {/* SEND PROPS DATA TO TeamListPDF for PDF */}
+      <div className="hidden">
+        <TeamListPDF
+          teamListData={teamListData}
+          // downloadPDF={downloadPDF}
+        />
       </div>
     </div>
   );

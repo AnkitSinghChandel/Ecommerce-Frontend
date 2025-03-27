@@ -3,10 +3,10 @@ import { useNavigate, useParams } from "react-router";
 import { Button, Flex, Modal } from "antd";
 // import Draggable from "react-draggable";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-import { addTask, fetchTaskById } from "../../Redux/actions/taskAction";
+import { addTask, fetchTaskById } from "../../redux/actions/taskAction";
 import { ADD_TASK, FETCH_TASK_BY_ID } from "../../redux/constance/taskType";
 import { useSelector, useDispatch } from "react-redux";
-// import TaskEditor from "./TaskEditor";
+import TaskEditor from "./TaskEditor";
 
 const TaskModal = (props) => {
   const navigate = useNavigate();
@@ -17,6 +17,7 @@ const TaskModal = (props) => {
   const [Ankit] = useAutoAnimate();
 
   const fetchTaskByIdRes = useSelector((state) => state.task.fetchTaskByIdRes);
+
   const addTaskMessageRes = useSelector(
     (state) => state.task.addTaskMessageRes
   );
@@ -32,7 +33,7 @@ const TaskModal = (props) => {
 
   useEffect(() => {
     if (props.taskID && props.modalFunction === "update") {
-      navigate(`/DragDrop2/task/${props.taskID}`);
+      navigate(`/task/task-id/${props.taskID}`);
     }
   }, [navigate, props.taskID, props.modalFunction]);
 
@@ -60,7 +61,7 @@ const TaskModal = (props) => {
       // dispatch(addTask(taskName, props.statusID));
     }
     setShowLoader(true);
-    props.onHide();
+    // props.onHide();
   };
 
   console.log("asc props", props);
@@ -73,7 +74,7 @@ const TaskModal = (props) => {
       data: {},
     });
     setModelOpen(false);
-    navigate("/DragDrop2");
+    navigate("/task");
   };
 
   return (
@@ -83,8 +84,13 @@ const TaskModal = (props) => {
         title={props.title}
         centered
         open={props.open}
+        // onCancel={() => props.onCancel()}
+        onCancel={() => {
+          console.log("onCancel triggered! Closing modal");
+          props.onCancel();
+          clearAllDataWhenModalClose();
+        }}
         onOk={() => props.onOk()}
-        onCancel={() => props.onCancel()}
         maskClosable={false}
         loading={false}
         width={{
@@ -99,7 +105,11 @@ const TaskModal = (props) => {
           <div className="flex justify-center gap-5">
             <Button
               key="back"
-              onClick={props.onCancel}
+              // onClick={props.onCancel}
+              onClick={() => {
+                // props.onHide();
+                clearAllDataWhenModalClose();
+              }}
               className="cancelButton ascButton"
             >
               Cancel
@@ -110,10 +120,11 @@ const TaskModal = (props) => {
               loading={props.loading}
               className="addButton ascButton"
               onClick={() => {
+                handleAddModel();
                 props.onOk();
               }}
             >
-              Add Task
+              {props.modalFunction === "add" ? "Add Task" : "Update Task"}
             </Button>
           </div>,
         ]}
@@ -147,6 +158,8 @@ const TaskModal = (props) => {
                 {warning && !taskName && "Please fill your first name!"}
               </span>
             </div>
+
+            <TaskEditor taskID={props.taskID} />
           </div>
         </div>
       </Modal>

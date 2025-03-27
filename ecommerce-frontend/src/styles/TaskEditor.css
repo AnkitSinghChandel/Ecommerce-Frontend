@@ -1,6 +1,6 @@
 /* ql Editor classes start */
 #task_editor.taskEditor {
-  width: 650px;
+  width: auto;
   border: 1px solid #00246a;
   border-radius: 8px;
 }
@@ -33,5 +33,4 @@
   border-radius: 8px;
   font-size: 18px;
   padding: 10px;
-  margin: 0;
 }

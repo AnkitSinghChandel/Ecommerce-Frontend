@@ -16,6 +16,7 @@ import ProductItem from "../components/products/ProductItem";
 import AddToCart from "../components/products/AddToCart";
 
 import DragAndDrop from "../components/tasks/DragAndDrop";
+import Demo from "../pdfs/Demo";
 // ASC FOLDER👇
 import ASCFolder from "../ASC-FOLDER/ASCFolder";
 import SelectBox from "../ASC-FOLDER/SelectBox";
@@ -46,6 +47,8 @@ const Routers = () => {
               <Route path="/add-to-cart" element={<AddToCart />} />
 
               <Route path="/task" element={<DragAndDrop />} />
+              <Route path="/Demo" element={<Demo />} />
+              <Route path="/task/task-id/:id" element={<DragAndDrop />} />
               {/* // ASC FOLDER👇 */}
               <Route path="/asc-folder" element={<ASCFolder />} />
               <Route path="/selectBox" element={<SelectBox />} />

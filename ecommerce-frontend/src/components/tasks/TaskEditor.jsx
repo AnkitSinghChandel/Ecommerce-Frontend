@@ -21,7 +21,8 @@ import EmojiPicker, { EmojiStyle } from "emoji-picker-react";
 
 import Linkify from "linkify-react";
 // import "linkifyjs/plugins/mention";
-import parse from "react-html-parser";
+// import parse from "react-html-parser";
+import parse from "html-react-parser";
 import moment from "moment";
 
 const TaskEditor = (props) => {
@@ -80,7 +81,7 @@ const TaskEditor = (props) => {
   return (
     <>
       <div
-        className="d-flex gap-3"
+        className="flex gap-3"
         style={{ border: "1px solid #00246a", borderRadius: "10px" }}
       >
         <div className="">
@@ -157,7 +158,7 @@ const TaskEditor = (props) => {
 
           <div className="relative">
             <div onClick={() => setShowEmojiPicker(!showEmojiPicker)}>
-              <img src={emojiIcon} alt="" className="ms-2" width={20} />
+              <img src={emojiIcon} alt="" className="" width={20} />
             </div>
             {showEmojiPicker && (
               <EmojiPicker
@@ -255,7 +256,7 @@ const TaskEditor = (props) => {
                   </Linkify>
                 )}
 
-                <div className="d-flex gap-2">
+                <div className="flex gap-2">
                   <Tooltip title="Delete Msg" color={"red"}>
                     <img
                       src={binIcon}

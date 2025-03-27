@@ -243,9 +243,8 @@ const DragAndDrop = () => {
         <TaskModal
           open={taskModelShow}
           onCancel={() => setTaskModelShow(false)}
-          // onOk={handleClose}
+          // onOk={handleYes}
           keyboard={false}
-          // handleCancel={handleCancel}
           taskModelShow={taskModelShow}
           setTaskModelShow={setTaskModelShow}
           modalFunction={modalFunction}
