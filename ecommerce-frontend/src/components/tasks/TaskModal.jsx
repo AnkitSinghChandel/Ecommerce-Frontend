@@ -29,7 +29,6 @@ const TaskModal = (props) => {
   const [taskName, setTaskName] = useState("");
   const [warning, setWarning] = useState(false);
   const [showLoader, setShowLoader] = useState(false);
-  const [modelOpen, setModelOpen] = useState(true);
 
   useEffect(() => {
     if (props.taskID && props.modalFunction === "update") {
@@ -57,23 +56,23 @@ const TaskModal = (props) => {
 
     if (props.modalFunction === "add") {
       dispatch(addTask(taskName, props.statusID));
-    } else {
-      // dispatch(addTask(taskName, props.statusID));
+    } else if (props.modalFunction === "update") {
+      // dispatch(updateTask(taskName, props.statusID));
     }
     setShowLoader(true);
-    // props.onHide();
+    props.setTaskModelShow(false);
   };
 
-  console.log("asc props", props);
+  console.log("asc task modal props", props);
 
   const clearAllDataWhenModalClose = () => {
-    console.log("onHide triggered! Closing modal22");
+    console.log("onCancel triggered! Closing modal22");
     props.setTaskModelShow(false);
     dispatch({
       type: FETCH_TASK_BY_ID,
       data: {},
     });
-    setModelOpen(false);
+
     navigate("/task");
   };
 
@@ -83,7 +82,7 @@ const TaskModal = (props) => {
         {...props}
         title={props.title}
         centered
-        open={props.open}
+        // open={props.open}
         // onCancel={() => props.onCancel()}
         onCancel={() => {
           console.log("onCancel triggered! Closing modal");
@@ -91,7 +90,7 @@ const TaskModal = (props) => {
           clearAllDataWhenModalClose();
         }}
         onOk={() => props.onOk()}
-        maskClosable={false}
+        // maskClosable={false}
         loading={false}
         width={{
           xs: "90%",
@@ -107,7 +106,7 @@ const TaskModal = (props) => {
               key="back"
               // onClick={props.onCancel}
               onClick={() => {
-                // props.onHide();
+                props.onCancel();
                 clearAllDataWhenModalClose();
               }}
               className="cancelButton ascButton"
@@ -121,7 +120,6 @@ const TaskModal = (props) => {
               className="addButton ascButton"
               onClick={() => {
                 handleAddModel();
-                props.onOk();
               }}
             >
               {props.modalFunction === "add" ? "Add Task" : "Update Task"}
@@ -137,7 +135,7 @@ const TaskModal = (props) => {
 
           <div className="pt-6">
             <div className="asc-input-container" id="ascNewInput">
-              <label className="asc-top-label labelText">First Name</label>
+              <label className="asc-top-label labelText">Task Name</label>
               <input
                 type="text"
                 // disabled
@@ -155,7 +153,7 @@ const TaskModal = (props) => {
               />
               <br />
               <span className="warningTxt ps-2">
-                {warning && !taskName && "Please fill your first name!"}
+                {warning && !taskName && "Please fill your task name!"}
               </span>
             </div>
 

@@ -23,9 +23,11 @@ import GlobalButton from "../../buttons/GlobalButton";
 import CancelPopup from "../../dialogs/CancelPopup";
 
 const DragAndDrop = () => {
+  const dispatch = useDispatch();
   const { id } = useParams();
   const [Ankit] = useAutoAnimate();
 
+  // Drag-End start from here 👇.
   const handleDragEnd = (result) => {
     // if (!result.destination) return;
     if (!result.destination) {
@@ -174,20 +176,9 @@ const DragAndDrop = () => {
     console.log("asc final payload:", data);
     dispatch(updateAllMultiTasks(data));
   };
-  // Drag end end from above.
+  // Drag-End end from above👆.
 
   // with states and all things below.
-  const dispatch = useDispatch();
-  const [allStatusData, setAllStatusData] = useState([]);
-  const [statusName, setStatusName] = useState("");
-  const [statusID, setStatusID] = useState("");
-
-  const [allTaskName, setAllTaskName] = useState([]);
-  const [taskID, setTaskID] = useState("");
-  const [deleteBoxOpen, setDeleteBoxOpen] = useState(false);
-  const [taskModelShow, setTaskModelShow] = useState(false);
-  const [modalFunction, setModalFunction] = useState();
-
   const fetchAllStatusRes = useSelector(
     (state) => state.task.fetchAllStatusRes
   );
@@ -210,6 +201,27 @@ const DragAndDrop = () => {
   const deleteStatusByIdRes = useSelector(
     (state) => state.task.deleteStatusByIdRes
   );
+
+  const [allStatusData, setAllStatusData] = useState([]);
+  const [statusName, setStatusName] = useState("");
+  const [statusID, setStatusID] = useState("");
+
+  const [allTaskName, setAllTaskName] = useState([]);
+  const [taskID, setTaskID] = useState("");
+  const [deleteBoxOpen, setDeleteBoxOpen] = useState(false);
+  const [taskModelShow, setTaskModelShow] = useState(false);
+  const [modalFunction, setModalFunction] = useState();
+
+  // asc cancel popup start //
+  const [cancelPopupShow, setCancelPopupShow] = useState(false);
+  const handleClose = () => setCancelPopupShow(false);
+
+  const handleYes = (e) => {
+    dispatch(deleteStatusById(statusID));
+    setCancelPopupShow(false);
+  };
+  const [typeInScreen, setTypeInScreen] = useState("");
+  // asc cancel popup end //
 
   useEffect(() => {
     dispatch(fetchAllStatus());
@@ -237,17 +249,6 @@ const DragAndDrop = () => {
       setTaskID(id);
     }
   }, [id]);
-
-  // asc cancel popup start //
-  const [cancelPopupShow, setCancelPopupShow] = useState(false);
-  const handleClose = () => setCancelPopupShow(false);
-
-  const handleYes = (e) => {
-    dispatch(deleteStatusById(statusID));
-    setCancelPopupShow(false);
-  };
-  const [typeInScreen, setTypeInScreen] = useState("");
-  // asc cancel popup end //
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -411,7 +412,7 @@ const DragAndDrop = () => {
                                       }}
                                     >
                                       <img src={binIcon} alt="" />
-                                      <p className="mb-0">Delet</p>
+                                      <p className="mb-0">Delete</p>
                                     </div>
                                   )}
                                 </div>

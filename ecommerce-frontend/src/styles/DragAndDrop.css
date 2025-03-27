@@ -61,7 +61,7 @@
 .deleteTask {
   position: absolute;
   top: 20px;
-  right: -20px;
+  right: -8px;
   z-index: 1;
   display: flex;
   justify-content: center;
