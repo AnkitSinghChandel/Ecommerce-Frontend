@@ -7,6 +7,7 @@ import { addTask, fetchTaskById } from "../../redux/actions/taskAction";
 import { ADD_TASK, FETCH_TASK_BY_ID } from "../../redux/constance/taskType";
 import { useSelector, useDispatch } from "react-redux";
 import TaskEditor from "./TaskEditor";
+import Messages from "./Messages";
 
 const TaskModal = (props) => {
   const navigate = useNavigate();
@@ -92,6 +93,7 @@ const TaskModal = (props) => {
         onOk={() => props.onOk()}
         // maskClosable={false}
         loading={false}
+        style={{ paddingTop: "3%", paddingBottom: "3%" }}
         width={{
           xs: "90%",
           sm: "80%",

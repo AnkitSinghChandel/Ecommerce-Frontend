@@ -1,37 +1,88 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import {
   sendMessage,
   fetchMessageByTaskId,
 } from "../../redux/actions/taskAction";
 import { useSelector, useDispatch } from "react-redux";
-import sendIcon from "../../assets/icons/black-send.svg";
+import sendIcon from "../../assets/icons/send.svg";
 import attatchIcon from "../../assets/icons/attatch-icon.svg";
 import emojiIcon from "../../assets/icons/emoji.svg";
 import binIcon from "../../assets/icons/Bin.svg";
 import { Tooltip } from "antd";
-
-import ReactQuill from "react-quill-new";
-import "react-quill-new/dist/quill.snow.css";
-
 import "../../styles/TaskEditor.css";
 
-import EmojiPicker, { EmojiStyle } from "emoji-picker-react";
+import { useEditor, EditorContent } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
+import Underline from "@tiptap/extension-underline";
+import Placeholder from "@tiptap/extension-placeholder";
+import Mention from "@tiptap/extension-mention";
 
+import {
+  BoldOutlined,
+  ItalicOutlined,
+  UnderlineOutlined,
+  StrikethroughOutlined,
+  UndoOutlined,
+  RedoOutlined,
+} from "@ant-design/icons";
+
+import EmojiPicker, { EmojiStyle } from "emoji-picker-react";
 import Linkify from "linkify-react";
-// import "linkifyjs/plugins/mention";
-// import parse from "react-html-parser";
 import parse from "html-react-parser";
 import moment from "moment";
 
 const TaskEditor = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const params = useParams();
   const [Ankit] = useAutoAnimate();
+
   const userID = localStorage.getItem("userid");
 
-  const [editorContent, setEditorContent] = useState("");
+  // Tip Tap Editor start
+  const editor = useEditor({
+    extensions: [
+      StarterKit,
+      Placeholder.configure({
+        placeholder: "Start writing...",
+        emptyEditorClass: "is-empty",
+      }),
+      Mention.configure({
+        HTMLAttributes: {
+          class: "mention",
+        },
+        suggestion: {
+          items: ({ query }) => {
+            const users = [
+              { id: "1", label: "Alice" },
+              { id: "2", label: "Bob" },
+              { id: "3", label: "Charlie" },
+            ];
+            return users.filter((user) =>
+              user.label.toLowerCase().startsWith(query.toLowerCase())
+            );
+          },
+        },
+      }),
+    ],
+    content: "", // Empty content so placeholder is visible
+  });
+
+  // get messages
+  const messageContent = editor.getHTML();
+
+  // Disable the send button if the content is empty
+  const isContentEmpty = editor ? editor.isEmpty : true;
+
+  const setEditorContent = (newContent) => {
+    if (editor) {
+      editor.commands.setContent(newContent); // Correct method to set content
+    }
+  };
+  // Tip Tap Editor end
+
   const [messageData, setMessageData] = useState([]);
   const [attachmentData, setAttachmentData] = useState([]);
   const [showMoreComm, setShowMoreComm] = useState(false);
@@ -57,10 +108,10 @@ const TaskEditor = (props) => {
   }, [fetchMessageByTaskIdRes]);
 
   const handleSendMessage = () => {
-    if (editorContent === "") {
+    if (editor.isEmpty === "") {
       return false;
     }
-    dispatch(sendMessage(userID, " ", props.taskID, editorContent));
+    dispatch(sendMessage(userID, " ", props.taskID, messageContent));
   };
 
   const linkifyOptions = {
@@ -70,8 +121,6 @@ const TaskEditor = (props) => {
     },
   };
 
-  const quillRef = useRef(null);
-
   const formatFileSize = (size) => {
     return size >= 1024 * 1024
       ? `${(size / (1024 * 1024)).toFixed(2)} MB`
@@ -80,135 +129,149 @@ const TaskEditor = (props) => {
 
   return (
     <>
-      <div
-        className="flex gap-3"
-        style={{ border: "1px solid #00246a", borderRadius: "10px" }}
-      >
-        <div className="">
-          <ReactQuill
-            ref={quillRef}
-            placeholder="Start writing here..."
-            id="task_editor"
-            className="taskEditor"
-            value={editorContent}
-            onChange={setEditorContent}
-            modules={{
-              toolbar: [
-                ["bold", "italic", "underline", "strike"],
-                [{ list: "ordered" }],
-                [{ size: ["small", false, "large", "huge"] }],
-                [{ header: [1, 2, 3, 4, 5, 6, false] }],
-                [{ color: [] }, { background: [] }],
-              ],
-              // mention: {
-              //   allowedChars: /^[A-Za-z\sÅÄÖåäö]*$/,
-              //   mentionDenotationChars: ["@"],
-              //   source: function (searchTerm, renderList) {
-              //     const people = ["Alice", "Bob", "Charlie"];
-              //     const matches = people.filter((person) =>
-              //       person.toLowerCase().includes(searchTerm.toLowerCase())
-              //     );
-              //     renderList(matches);
-              //   },
-              // },
-            }}
-            readOnly={false} // Editable
-          />
+      <div>
+        {/* Toolbar Buttons */}
+        <div className="tipTapToolbar p-2">
+          <button
+            className="tipTapToolbarIcon"
+            onClick={() => editor.chain().focus().toggleBold().run()}
+          >
+            <BoldOutlined />
+          </button>
+          <button
+            className="tipTapToolbarIcon"
+            onClick={() => editor.chain().focus().toggleItalic().run()}
+          >
+            <ItalicOutlined />
+          </button>
+          <button
+            className="tipTapToolbarIcon"
+            onClick={() => editor.chain().focus().toggleUnderline().run()}
+          >
+            <UnderlineOutlined />
+          </button>
+          <button
+            className="tipTapToolbarIcon"
+            onClick={() => editor.chain().focus().toggleStrike().run()}
+          >
+            <StrikethroughOutlined />
+          </button>
+          <button
+            className="tipTapToolbarIcon"
+            onClick={() =>
+              editor.chain().focus().toggleHeading({ level: 2 }).run()
+            }
+          >
+            H2
+          </button>
+          <button
+            className="tipTapToolbarIcon"
+            onClick={() => editor.chain().focus().undo().run()}
+          >
+            <UndoOutlined />
+          </button>
+          <button
+            className="tipTapToolbarIcon"
+            onClick={() => editor.chain().focus().redo().run()}
+          >
+            <RedoOutlined />
+          </button>
         </div>
 
         <div
-          className="flex gap-2 pointer"
+          className="flex gap-3 mt-2 relative"
           style={{
-            right: "5px",
-            bottom: "10px",
-            alignItems: "center",
-            alignSelf: "end",
+            border: "1px solid gray",
+            borderRadius: "10px",
+            padding: "10px",
+            // minHeight: "200px",
+            minHeight: "auto",
           }}
         >
+          <EditorContent editor={editor} className="w-[90%]" />
+
           <div
-            onDragOver={(e) => e.preventDefault()}
-            onDragLeave={(e) => e.preventDefault()}
-            onDrop={(e) => {
-              e.preventDefault();
-              const droppedFile = Array.from(e.dataTransfer.files);
-              if (droppedFile.length > 0) {
-                console.log("drop imgs", droppedFile);
-                setAttachmentData(droppedFile);
-              }
+            className="flex gap-2 pointer"
+            style={{
+              alignItems: "baseline",
+              alignSelf: "end",
             }}
           >
-            <label>
-              <img src={attatchIcon} alt="" width={12} />
-              <input
-                type="file"
-                multiple
-                // accept="image/*"
-                // accept=".doc,.docx,.pdf,.xls,.xlsx,.xml,"
-                // ref={hidden_Input_File}
-                style={{ display: "none" }}
-                onChange={(e) => {
-                  console.log("fileList", e.target.files);
-                  // setAttachmentData(e.target.files[0]); // single file upload.
-                  const selectedFiles = Array.from(e.target.files);
-                  setAttachmentData(selectedFiles);
-                }}
-              />
-            </label>
-          </div>
-
-          <div className="relative">
-            <div onClick={() => setShowEmojiPicker(!showEmojiPicker)}>
-              <img src={emojiIcon} alt="" className="" width={20} />
-            </div>
-            {showEmojiPicker && (
-              <EmojiPicker
-                emojiStyle={EmojiStyle.GOOGLE} // Apple-style emojis
-                style={{
-                  position: "absolute",
-                  top: "30px",
-                  right: "-45px",
-                  zIndex: "1",
-                }}
-                // onEmojiClick={(e) => {
-                //   setEditorContent(editorContent + e.emoji);
-                //   console.log("asc emoji", e.emoji);
-                // }}
-                onEmojiClick={({ emoji }) => {
-                  const quill = quillRef?.current?.getEditor?.();
-                  if (!quill) return;
-
-                  const pos = quill.getSelection()?.index ?? 0;
-                  quill.insertText(pos, emoji);
-                  quill.setSelection(pos + emoji.length);
-                }}
-              />
-            )}
-          </div>
-
-          <div>
-            <button
-              className="border-0 bg-transparent"
-              disabled={editorContent.trim() === "" && !attachmentData}
-              onClick={() => {
-                if (editorContent.trim() === "" && !attachmentData)
-                  return false;
-                handleSendMessage();
-                setEditorContent("");
+            <div
+              onDragOver={(e) => e.preventDefault()}
+              onDragLeave={(e) => e.preventDefault()}
+              onDrop={(e) => {
+                e.preventDefault();
+                const droppedFile = Array.from(e.dataTransfer.files);
+                if (droppedFile.length > 0) {
+                  console.log("drop imgs", droppedFile);
+                  setAttachmentData(droppedFile);
+                }
               }}
             >
-              <img src={sendIcon} alt="" width={25} />
-            </button>
+              <label>
+                <img src={attatchIcon} alt="" width={12} />
+                <input
+                  type="file"
+                  multiple
+                  // accept="image/*"
+                  // accept=".doc,.docx,.pdf,.xls,.xlsx,.xml,"
+                  // ref={hidden_Input_File}
+                  style={{ display: "none" }}
+                  onChange={(e) => {
+                    console.log("fileList", e.target.files);
+                    // setAttachmentData(e.target.files[0]); // single file upload.
+                    const selectedFiles = Array.from(e.target.files);
+                    setAttachmentData(selectedFiles);
+                  }}
+                />
+              </label>
+            </div>
+
+            <div className="relative">
+              <div onClick={() => setShowEmojiPicker(!showEmojiPicker)}>
+                <img src={emojiIcon} alt="" className="" width={20} />
+              </div>
+              {showEmojiPicker && (
+                <EmojiPicker
+                  emojiStyle={EmojiStyle.GOOGLE} // Apple-style emojis
+                  style={{
+                    position: "absolute",
+                    top: "30px",
+                    right: "-45px",
+                    zIndex: "1",
+                  }}
+                  onEmojiClick={(e) => {
+                    if (!editor) return;
+                    editor.chain().focus().insertContent(e.emoji).run();
+                  }}
+                />
+              )}
+            </div>
+
+            <div>
+              <button
+                className="pointer"
+                disabled={messageContent === "" && !attachmentData}
+                onClick={() => {
+                  handleSendMessage();
+                  setEditorContent();
+                }}
+              >
+                <img src={sendIcon} alt="" width={25} />
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* comments */}
+      {/* comments section start */}
       <div ref={Ankit}>
         {attachmentData?.map((item, index) => {
           return (
-            <li className="ps-3 pt-2" key={index}>
+            <ul className="ps-3 pt-2" key={index}>
               {item.name} ({formatFileSize(item.size)})
-            </li>
+            </ul>
           );
         })}
 
@@ -216,6 +279,7 @@ const TaskEditor = (props) => {
 
         <div className="flex justify-between pt-3 px-2">
           <p>Comments</p>
+
           {messageData && messageData.length > 4 && (
             <p
               className="pointer"
@@ -263,7 +327,7 @@ const TaskEditor = (props) => {
                       alt=""
                       className="ms-auto pointer"
                       onClick={() => {
-                        // jj
+                        // asc
                       }}
                     />
                   </Tooltip>
@@ -276,6 +340,7 @@ const TaskEditor = (props) => {
           );
         })}
       </div>
+      {/* comments section end */}
     </>
   );
 };
