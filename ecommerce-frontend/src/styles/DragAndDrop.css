@@ -1,4 +1,4 @@
-.DeagDropWrapper {
+.DragDropWrapper {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
@@ -18,7 +18,7 @@
 }
 
 .statusName {
-  background: #dadada;
+  background: lightgray;
   border: 1px solid grey;
   border-radius: 8px;
   font-size: 20px;

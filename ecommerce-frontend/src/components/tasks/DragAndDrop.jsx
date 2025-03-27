@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { Navigate, useParams } from "react-router";
 import "../../styles/DragAndDrop.css";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 // import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
@@ -20,6 +20,7 @@ import binIcon from "../../assets/icons/Bin.svg";
 import TaskModal from "./TaskModal";
 import { Tooltip } from "antd";
 import GlobalButton from "../../buttons/GlobalButton";
+import CancelPopup from "../../dialogs/CancelPopup";
 
 const DragAndDrop = () => {
   const { id } = useParams();
@@ -237,6 +238,25 @@ const DragAndDrop = () => {
     }
   }, [id]);
 
+  // asc cancel popup start //
+  const [cancelPopupShow, setCancelPopupShow] = useState(false);
+  const handleClose = () => setCancelPopupShow(false);
+
+  const handleYes = (e) => {
+    dispatch(deleteStatusById(statusID));
+    setCancelPopupShow(false);
+  };
+  const [typeInScreen, setTypeInScreen] = useState("");
+  // asc cancel popup end //
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      dispatch(addStatus(statusName));
+      setStatusName("");
+    }
+  };
+
   return (
     <div className="">
       {taskModelShow && (
@@ -257,6 +277,17 @@ const DragAndDrop = () => {
         />
       )}
 
+      {cancelPopupShow && (
+        <CancelPopup
+          open={cancelPopupShow}
+          // onCancel={() => setCancelPopupShow(false)}
+          onCancel={handleClose}
+          onOk={handleYes}
+          title={""}
+          keyboard={true}
+        />
+      )}
+
       <div className="p-4">
         <div className="flex gap-3">
           <div>
@@ -268,6 +299,7 @@ const DragAndDrop = () => {
               onChange={(e) => {
                 setStatusName(e.target.value);
               }}
+              onKeyDown={handleKeyDown}
             />
           </div>
 
@@ -285,7 +317,7 @@ const DragAndDrop = () => {
       {/* add status end */}
 
       <DragDropContext onDragEnd={handleDragEnd}>
-        <div className="DeagDropWrapper p-3" ref={Ankit}>
+        <div className="DragDropWrapper p-3" ref={Ankit}>
           {allStatusData
             .sort((a, b) => a.statusId - b.statusId)
             .map((column, index) => {
@@ -300,15 +332,17 @@ const DragAndDrop = () => {
                       ref={provider.innerRef}
                       {...provider.droppableProps}
                     >
-                      <div className="flex statusName">
-                        <Tooltip title="Delete Status">
+                      <div className="flex statusName p-2">
+                        <Tooltip title="Delete Status" color="red">
                           <img
                             src={binIcon}
                             alt=""
                             className="pointer"
                             width={20}
                             onClick={() => {
-                              dispatch(deleteStatusById(column.statusId));
+                              // dispatch(deleteStatusById(column.statusId));
+                              setCancelPopupShow(true);
+                              setStatusID(column.statusId);
                             }}
                           />
                         </Tooltip>
@@ -342,7 +376,7 @@ const DragAndDrop = () => {
                             {(provider, snapshot) => (
                               <div
                                 // className="mainItemCss pb-1"
-                                className={`mainItemsDiv p-2 ${
+                                className={`mainItemsDiv pt-3 ${
                                   snapshot.draggingOver ? "draggingOver" : ""
                                 }`}
                                 ref={provider.innerRef}
@@ -371,7 +405,7 @@ const DragAndDrop = () => {
 
                                   {deleteBoxOpen && taskID === item.taskId && (
                                     <div
-                                      className="deleteTask"
+                                      className="deleteTask pointer"
                                       onClick={() => {
                                         dispatch(deleteTaskById(item.taskId));
                                       }}
