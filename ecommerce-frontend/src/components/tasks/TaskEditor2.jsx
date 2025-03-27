@@ -29,7 +29,7 @@ import {
 } from "@ant-design/icons";
 import Messages from "./Messages";
 
-const TaskEditor2 = () => {
+const TaskEditor2 = (props) => {
   const users = [
     { id: "1", label: "Alice" },
     { id: "2", label: "Bob" },
@@ -145,7 +145,7 @@ const TaskEditor2 = () => {
 
         <div className="flex items-end pointer invisible">Send</div>
         <Messages
-          taskID={"67e4ef647e604b40a3f52ed2"}
+          taskID={props.taskID}
           messageContent={messageContent}
           isContentEmpty={isContentEmpty}
           clear={setEditorContent}

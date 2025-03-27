@@ -6,7 +6,7 @@ import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { addTask, fetchTaskById } from "../../redux/actions/taskAction";
 import { ADD_TASK, FETCH_TASK_BY_ID } from "../../redux/constance/taskType";
 import { useSelector, useDispatch } from "react-redux";
-import TaskEditor from "./TaskEditor";
+import TaskEditor from "./TaskEditor2";
 import Messages from "./Messages";
 
 const TaskModal = (props) => {
