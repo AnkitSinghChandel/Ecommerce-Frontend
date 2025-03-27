@@ -131,8 +131,8 @@ const TaskModal = (props) => {
       >
         <div className="py-4">
           <div className="text-[20px] text-[#212529]">
-            Modal {props.statusName}
-            {props.modalFunction === "update" && "Update"}
+            Modal &nbsp; {props.statusName} &nbsp;
+            {props.modalFunction}
           </div>
 
           <div className="pt-6">
