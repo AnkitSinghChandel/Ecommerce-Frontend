@@ -4,7 +4,11 @@ import { Button, Flex, Modal } from "antd";
 // import Draggable from "react-draggable";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { addTask, fetchTaskById } from "../../redux/actions/taskAction";
-import { ADD_TASK, FETCH_TASK_BY_ID } from "../../redux/constance/taskType";
+import {
+  ADD_TASK,
+  FETCH_TASK_BY_ID,
+  FETCH_MESSAGE_BY_TASK_ID,
+} from "../../redux/constance/taskType";
 import { useSelector, useDispatch } from "react-redux";
 import TaskEditor from "./TaskEditor";
 import Messages from "./Messages";
@@ -69,8 +73,15 @@ const TaskModal = (props) => {
   const clearAllDataWhenModalClose = () => {
     console.log("onCancel triggered! Closing modal22");
     props.setTaskModelShow(false);
+    props.setTaskID(false);
+
     dispatch({
       type: FETCH_TASK_BY_ID,
+      data: {},
+    });
+
+    dispatch({
+      type: FETCH_MESSAGE_BY_TASK_ID,
       data: {},
     });
 

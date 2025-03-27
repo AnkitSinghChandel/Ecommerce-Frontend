@@ -275,6 +275,7 @@ const DragAndDrop = () => {
           statusID={statusID}
           setStatusID={setStatusID}
           taskID={taskID || id}
+          setTaskID={setTaskID}
         />
       )}
 
