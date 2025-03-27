@@ -209,7 +209,7 @@ const TaskEditor = (props) => {
                 }
               }}
             >
-              <label>
+              <label className="pointer">
                 <img src={attatchIcon} alt="" width={12} />
                 <input
                   type="file"

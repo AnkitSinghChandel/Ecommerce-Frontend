@@ -10,7 +10,7 @@ import {
   FETCH_MESSAGE_BY_TASK_ID,
 } from "../../redux/constance/taskType";
 import { useSelector, useDispatch } from "react-redux";
-import TaskEditor from "./TaskEditor";
+import TaskEditor from "./TaskEditor2";
 import Messages from "./Messages";
 
 const TaskModal = (props) => {

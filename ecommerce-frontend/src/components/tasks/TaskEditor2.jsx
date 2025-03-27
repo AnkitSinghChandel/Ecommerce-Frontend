@@ -141,10 +141,11 @@ const TaskEditor2 = (props) => {
           minHeight: "auto",
         }}
       >
-        <EditorContent editor={editor} className="w-[90%]" />
+        <EditorContent editor={editor} className="w-[86%]" />
 
         <div className="flex items-end pointer invisible">Send</div>
         <Messages
+          editor={editor}
           taskID={props.taskID}
           messageContent={messageContent}
           isContentEmpty={isContentEmpty}
