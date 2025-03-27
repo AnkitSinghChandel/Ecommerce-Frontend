@@ -1,4 +1,9 @@
 import axios from "axios";
+import { toast } from "react-toastify";
+import {
+  playSuccessSound,
+  playErrorSound,
+} from "../notifications-alert/CustomToastify";
 
 // Create Axios instance👇
 const axiosInstance = axios.create({
@@ -29,6 +34,8 @@ axiosInstance.interceptors.request.use(
 );
 
 // Response Interceptor - Handle Unauthorized (401) errors👇
+let notificationShown = false;
+
 axiosInstance.interceptors.response.use(
   (response) => {
     // Agar response me token mile to localStorage me set karo
@@ -41,7 +48,17 @@ axiosInstance.interceptors.response.use(
   },
   (error) => {
     if (error.response?.status === 401) {
-      console.warn("Unauthorized! Logging out...");
+      console.log("Unauthorized! Logging out...");
+
+      if (error.response?.data?.tokenExpired === true && !notificationShown) {
+        // Show a notification
+        toast.error(`Your session has expired. You will be logged out.`, {
+          onOpen: playErrorSound,
+        });
+
+        // Set the flag to true to avoid showing the notification again
+        notificationShown = true;
+      }
 
       // Remove token from storage
       // Cookies.remove("token");
@@ -49,8 +66,9 @@ axiosInstance.interceptors.response.use(
       sessionStorage.clear();
       localStorage.clear();
 
-      // Redirect to login page
-      window.location.href = "/";
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 5000);
     }
 
     return Promise.reject(error);

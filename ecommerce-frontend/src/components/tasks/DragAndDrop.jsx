@@ -377,7 +377,7 @@ const DragAndDrop = () => {
                             {(provider, snapshot) => (
                               <div
                                 // className="mainItemCss pb-1"
-                                className={`mainItemsDiv pt-3 ${
+                                className={`mainItemsDiv mt-3 ${
                                   snapshot.draggingOver ? "draggingOver" : ""
                                 }`}
                                 ref={provider.innerRef}
