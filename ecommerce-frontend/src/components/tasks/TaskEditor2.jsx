@@ -217,7 +217,7 @@ const TaskEditor2 = (props) => {
           <div>
             <button
               className="pointer"
-              disabled={props.messageContent === "" && !attachmentData}
+              disabled={!editor.getText().trim() && attachmentData.length === 0}
               onClick={() => {
                 handleSendMessage();
                 setEditorContent();
