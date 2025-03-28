@@ -4,6 +4,8 @@
   background: #fafafa;
   border: 1px solid black;
   border-radius: 8px;
+  width: fit-content;
+  min-width: 100%;
 }
 
 .mainBoxCss {
@@ -12,8 +14,8 @@
   border-radius: 8px;
   font-size: 20px;
   font-weight: 700;
-  width: 100%;
-  max-width: 300px;
+  width: fit-content;
+  min-width: 300px;
 }
 
 .statusName {

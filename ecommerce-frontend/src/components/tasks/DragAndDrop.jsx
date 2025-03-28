@@ -319,115 +319,123 @@ const DragAndDrop = () => {
       {/* add status end */}
 
       <DragDropContext onDragEnd={handleDragEnd}>
-        <div className="DragDropWrapper p-3" ref={Ankit}>
-          {allStatusData
-            .sort((a, b) => a.statusId - b.statusId)
-            .map((column, index) => {
-              return (
-                <Droppable droppableId={column.statusId} key={index}>
-                  {(provider, snapshot) => (
-                    <div
-                      // className="mainBoxCss p-3"
-                      className={`mainBoxCss p-3 ${
-                        snapshot.isDraggingOver ? "isDraggingOver" : ""
-                      }`}
-                      ref={provider.innerRef}
-                      {...provider.droppableProps}
-                    >
-                      <div className="flex statusName p-2">
-                        <Tooltip title="Delete Status" color="red">
-                          <img
-                            src={binIcon}
-                            alt=""
-                            className="pointer"
-                            width={20}
-                            onClick={() => {
-                              // dispatch(deleteStatusById(column.statusId));
-                              setCancelPopupShow(true);
-                              setStatusID(column.statusId);
-                            }}
-                          />
-                        </Tooltip>
+        <div className="overflow-auto p-5">
+          <div className="DragDropWrapper p-3" ref={Ankit}>
+            {allStatusData
+              .sort((a, b) => a.statusId - b.statusId)
+              .map((column, index) => {
+                return (
+                  <Droppable droppableId={column.statusId} key={index}>
+                    {(provider, snapshot) => (
+                      <div
+                        // className="mainBoxCss p-3"
+                        className={`mainBoxCss p-3 ${
+                          snapshot.isDraggingOver ? "isDraggingOver" : ""
+                        }`}
+                        ref={provider.innerRef}
+                        {...provider.droppableProps}
+                      >
+                        <div className="flex statusName p-2">
+                          <Tooltip title="Delete Status" color="red">
+                            <img
+                              src={binIcon}
+                              alt=""
+                              className="pointer"
+                              width={20}
+                              onClick={() => {
+                                // dispatch(deleteStatusById(column.statusId));
+                                setCancelPopupShow(true);
+                                setStatusID(column.statusId);
+                              }}
+                            />
+                          </Tooltip>
 
-                        <p className="mb-0">{column.statusName}</p>
+                          <p className="mb-0">{column.statusName}</p>
 
-                        <Tooltip title="Add Status">
-                          <img
-                            src={addicon}
-                            alt=""
-                            className="pointer"
-                            width={30}
-                            onClick={() => {
-                              setStatusID(column.statusId);
-                              setStatusName(column.statusName);
-                              setTaskModelShow(true);
-                              setModalFunction("add");
-                              console.log("asc22", column.statusName);
-                            }}
-                          />
-                        </Tooltip>
-                      </div>
+                          <Tooltip title="Add Status">
+                            <img
+                              src={addicon}
+                              alt=""
+                              className="pointer"
+                              width={30}
+                              onClick={() => {
+                                setStatusID(column.statusId);
+                                setStatusName(column.statusName);
+                                setTaskModelShow(true);
+                                setModalFunction("add");
+                                console.log("asc22", column.statusName);
+                              }}
+                            />
+                          </Tooltip>
+                        </div>
 
-                      {column.tasks.map((item, index) => {
-                        return (
-                          <Draggable
-                            key={item.taskId}
-                            draggableId={item.taskId}
-                            index={index}
-                          >
-                            {(provider, snapshot) => (
-                              <div
-                                // className="mainItemCss pb-1"
-                                className={`mainItemsDiv mt-3 ${
-                                  snapshot.draggingOver ? "draggingOver" : ""
-                                }`}
-                                ref={provider.innerRef}
-                                {...provider.draggableProps}
-                                {...provider.dragHandleProps}
-                              >
-                                <div className="relative" ref={Ankit}>
-                                  <p
-                                    className="taskitems mb-0"
-                                    onContextMenu={(e) => {
-                                      e.preventDefault();
-                                      setDeleteBoxOpen((prev) => !prev);
-                                      setTaskID(item.taskId);
-                                    }}
-                                    onClick={(e) => {
-                                      setTaskID(item.taskId);
-                                      setStatusID(column.statusId);
-                                      setStatusName(column.statusName);
-                                      setTaskModelShow(true);
-                                      setModalFunction("update");
-                                      console.log("asc222", column.statusName);
-                                    }}
-                                  >
-                                    {item.taskName}
-                                  </p>
-
-                                  {deleteBoxOpen && taskID === item.taskId && (
-                                    <div
-                                      className="deleteTask pointer"
-                                      onClick={() => {
-                                        dispatch(deleteTaskById(item.taskId));
+                        {column.tasks.map((item, index) => {
+                          return (
+                            <Draggable
+                              key={item.taskId}
+                              draggableId={item.taskId}
+                              index={index}
+                            >
+                              {(provider, snapshot) => (
+                                <div
+                                  // className="mainItemCss pb-1"
+                                  className={`mainItemsDiv mt-3 ${
+                                    snapshot.draggingOver ? "draggingOver" : ""
+                                  }`}
+                                  ref={provider.innerRef}
+                                  {...provider.draggableProps}
+                                  {...provider.dragHandleProps}
+                                >
+                                  <div className="relative" ref={Ankit}>
+                                    <p
+                                      className="taskitems mb-0"
+                                      onContextMenu={(e) => {
+                                        e.preventDefault();
+                                        setDeleteBoxOpen((prev) => !prev);
+                                        setTaskID(item.taskId);
+                                      }}
+                                      onClick={(e) => {
+                                        setTaskID(item.taskId);
+                                        setStatusID(column.statusId);
+                                        setStatusName(column.statusName);
+                                        setTaskModelShow(true);
+                                        setModalFunction("update");
+                                        console.log(
+                                          "asc222",
+                                          column.statusName
+                                        );
                                       }}
                                     >
-                                      <img src={binIcon} alt="" />
-                                      <p className="mb-0">Delete</p>
-                                    </div>
-                                  )}
+                                      {item.taskName}
+                                    </p>
+
+                                    {deleteBoxOpen &&
+                                      taskID === item.taskId && (
+                                        <div
+                                          className="deleteTask pointer"
+                                          onClick={() => {
+                                            dispatch(
+                                              deleteTaskById(item.taskId)
+                                            );
+                                          }}
+                                        >
+                                          <img src={binIcon} alt="" />
+                                          <p className="mb-0">Delete</p>
+                                        </div>
+                                      )}
+                                  </div>
                                 </div>
-                              </div>
-                            )}
-                          </Draggable>
-                        );
-                      })}
-                      {provider.placeholder}
-                    </div>
-                  )}
-                </Droppable>
-              );
-            })}
+                              )}
+                            </Draggable>
+                          );
+                        })}
+                        {provider.placeholder}
+                      </div>
+                    )}
+                  </Droppable>
+                );
+              })}
+          </div>
         </div>
       </DragDropContext>
     </div>
