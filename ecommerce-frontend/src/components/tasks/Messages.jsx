@@ -14,7 +14,6 @@ import parse from "html-react-parser";
 import { Tooltip } from "antd";
 import moment from "moment";
 import Linkify from "linkify-react";
-import EmojiPicker, { EmojiStyle } from "emoji-picker-react";
 
 const Messages = (props) => {
   const navigate = useNavigate();
@@ -28,7 +27,6 @@ const Messages = (props) => {
   const [attachmentData, setAttachmentData] = useState([]);
   const [showMoreComm, setShowMoreComm] = useState(false);
   let displayQuantity = showMoreComm ? undefined : 5;
-  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
   const addTaskMessageRes = useSelector(
     (state) => state.task.addTaskMessageRes
@@ -73,81 +71,6 @@ const Messages = (props) => {
 
   return (
     <>
-      <div
-        className="flex gap-2 pointer absolute"
-        style={{
-          alignItems: "baseline",
-          alignSelf: "end",
-          right: "5px",
-          bottom: "70px",
-        }}
-      >
-        <div
-          onDragOver={(e) => e.preventDefault()}
-          onDragLeave={(e) => e.preventDefault()}
-          onDrop={(e) => {
-            e.preventDefault();
-            const droppedFile = Array.from(e.dataTransfer.files);
-            if (droppedFile.length > 0) {
-              console.log("drop imgs", droppedFile);
-              setAttachmentData(droppedFile);
-            }
-          }}
-        >
-          <label className="pointer">
-            <img src={attatchIcon} alt="" width={12} />
-            <input
-              type="file"
-              multiple
-              // accept="image/*"
-              // accept=".doc,.docx,.pdf,.xls,.xlsx,.xml,"
-              // ref={hidden_Input_File}
-              style={{ display: "none" }}
-              onChange={(e) => {
-                console.log("fileList", e.target.files);
-                // setAttachmentData(e.target.files[0]); // single file upload.
-                const selectedFiles = Array.from(e.target.files);
-                setAttachmentData(selectedFiles);
-              }}
-            />
-          </label>
-        </div>
-
-        <div className="relative">
-          <div onClick={() => setShowEmojiPicker(!showEmojiPicker)}>
-            <img src={emojiIcon} alt="" className="" width={20} />
-          </div>
-          {showEmojiPicker && (
-            <EmojiPicker
-              emojiStyle={EmojiStyle.GOOGLE} // Apple-style emojis
-              style={{
-                position: "absolute",
-                top: "30px",
-                right: "-45px",
-                zIndex: "1",
-              }}
-              onEmojiClick={(e) => {
-                if (!props.editor) return;
-                props.editor.chain().focus().insertContent(e.emoji).run();
-              }}
-            />
-          )}
-        </div>
-
-        <div>
-          <button
-            className="pointer"
-            disabled={props.messageContent === "" && !attachmentData}
-            onClick={() => {
-              handleSendMessage();
-              setEditorContent();
-            }}
-          >
-            <img src={sendIcon} alt="" width={25} />
-          </button>
-        </div>
-      </div>
-
       {/* comments section start */}
       <div ref={Ankit}>
         {attachmentData?.map((item, index) => {

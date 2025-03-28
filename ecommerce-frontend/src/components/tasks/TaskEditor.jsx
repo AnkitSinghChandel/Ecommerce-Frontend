@@ -192,13 +192,8 @@ const TaskEditor = (props) => {
         >
           <EditorContent editor={editor} className="w-[90%]" />
 
-          <div
-            className="flex gap-2 pointer"
-            style={{
-              alignItems: "baseline",
-              alignSelf: "end",
-            }}
-          >
+          {/* attatchment, emoji, send buttons div start */}
+          <div className="flex gap-2 items-baseline self-end pointer">
             <div
               onDragOver={(e) => e.preventDefault()}
               onDragLeave={(e) => e.preventDefault()}
@@ -264,6 +259,7 @@ const TaskEditor = (props) => {
               </button>
             </div>
           </div>
+          {/* attatchment, emoji, send buttons div end */}
         </div>
       </div>
 
