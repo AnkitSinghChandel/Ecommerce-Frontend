@@ -388,7 +388,7 @@ const DragAndDrop = () => {
                                 >
                                   <div className="relative" ref={Ankit}>
                                     <p
-                                      className="taskitems mb-0"
+                                      className="taskitems p-3 mb-0"
                                       onContextMenu={(e) => {
                                         e.preventDefault();
                                         setDeleteBoxOpen((prev) => !prev);
