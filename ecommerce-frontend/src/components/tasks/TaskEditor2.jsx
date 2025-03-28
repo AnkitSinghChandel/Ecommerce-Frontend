@@ -204,7 +204,7 @@ const TaskEditor2 = (props) => {
                   zIndex: "1",
                 }}
                 onEmojiClick={(e) => {
-                  if (!props.editor) return;
+                  if (!editor) return;
                   editor.chain().focus().insertContent(e.emoji).run();
                 }}
               />
