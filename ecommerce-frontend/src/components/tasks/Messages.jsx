@@ -208,13 +208,13 @@ const Messages = (props) => {
                     <img
                       src={binIcon}
                       alt=""
-                      className="ms-auto pointer"
+                      className="ms-auto w-[12px] pointer"
                       onClick={() => {
                         // asc
                       }}
                     />
                   </Tooltip>
-                  <p className="mb-0">
+                  <p className="mb-0 text-[14px]">
                     {moment(item.createdAt).format("DD.MM.YYYY,h:mm a")}
                   </p>
                 </div>

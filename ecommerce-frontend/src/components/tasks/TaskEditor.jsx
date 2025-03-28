@@ -45,6 +45,8 @@ const TaskEditor = (props) => {
   const editor = useEditor({
     extensions: [
       StarterKit,
+      Underline,
+      // Heading.configure({ levels: [1, 2, 3] }),
       Placeholder.configure({
         placeholder: "Start writing...",
         emptyEditorClass: "is-empty",
@@ -325,13 +327,13 @@ const TaskEditor = (props) => {
                     <img
                       src={binIcon}
                       alt=""
-                      className="ms-auto pointer"
+                      className="ms-auto w-[12px] pointer"
                       onClick={() => {
                         // asc
                       }}
                     />
                   </Tooltip>
-                  <p className="mb-0">
+                  <p className="mb-0 text-[14px]">
                     {moment(item.createdAt).format("DD.MM.YYYY,h:mm a")}
                   </p>
                 </div>

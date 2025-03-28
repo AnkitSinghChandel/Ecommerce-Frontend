@@ -42,6 +42,8 @@ const TaskEditor2 = (props) => {
   const editor = useEditor({
     extensions: [
       StarterKit,
+      Underline,
+      // Heading.configure({ levels: [1, 2, 3] }),
       Placeholder.configure({
         placeholder: "Start writing...",
         emptyEditorClass: "is-empty",
