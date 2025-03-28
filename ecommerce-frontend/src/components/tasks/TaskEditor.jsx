@@ -192,8 +192,9 @@ const TaskEditor = (props) => {
         >
           <EditorContent editor={editor} className="w-[90%]" />
 
-          {/* attatchment, emoji, send buttons div start */}
+          {/* attachment, emoji, send buttons div start */}
           <div className="flex gap-2 items-baseline self-end pointer">
+            {/* attachment */}
             <div
               onDragOver={(e) => e.preventDefault()}
               onDragLeave={(e) => e.preventDefault()}
@@ -225,6 +226,7 @@ const TaskEditor = (props) => {
               </label>
             </div>
 
+            {/* emoji */}
             <div className="relative">
               <div onClick={() => setShowEmojiPicker(!showEmojiPicker)}>
                 <img src={emojiIcon} alt="" className="" width={20} />
@@ -241,6 +243,7 @@ const TaskEditor = (props) => {
               )}
             </div>
 
+            {/* send */}
             <div>
               <button
                 className="pointer"
@@ -254,7 +257,7 @@ const TaskEditor = (props) => {
               </button>
             </div>
           </div>
-          {/* attatchment, emoji, send buttons div end */}
+          {/* attachment, emoji, send buttons div end */}
         </div>
       </div>
 
