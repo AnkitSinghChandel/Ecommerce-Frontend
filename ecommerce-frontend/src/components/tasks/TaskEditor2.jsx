@@ -45,7 +45,9 @@ const TaskEditor2 = (props) => {
       Underline,
       // Heading.configure({ levels: [1, 2, 3] }),
       Placeholder.configure({
-        placeholder: "Start writing...",
+        placeholder: ({ editor }) => {
+          return editor.getText().trim() === "" ? "Start writing..." : "";
+        },
         emptyEditorClass: "is-empty",
       }),
       // Emoji,
@@ -67,7 +69,10 @@ const TaskEditor2 = (props) => {
         },
       }),
     ],
-    content: "", // Empty content so placeholder is visible
+    content: "", // Empty content so placeholder is visible.
+    onUpdate: ({ editor }) => {
+      editor.getText().trim() === "" && editor.commands.clearContent();
+    },
   });
 
   // get messages
