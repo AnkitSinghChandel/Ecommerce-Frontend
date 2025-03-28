@@ -232,12 +232,7 @@ const TaskEditor = (props) => {
               {showEmojiPicker && (
                 <EmojiPicker
                   emojiStyle={EmojiStyle.GOOGLE} // Apple-style emojis
-                  style={{
-                    position: "absolute",
-                    top: "30px",
-                    right: "-45px",
-                    zIndex: "1",
-                  }}
+                  className="absolute top-[30px] right-[-45px] z-1"
                   onEmojiClick={(e) => {
                     if (!editor) return;
                     editor.chain().focus().insertContent(e.emoji).run();
