@@ -37,6 +37,7 @@ const ProductsList = () => {
   const [Ankit] = useAutoAnimate();
 
   const userid = localStorage.getItem("userid");
+  const globalDiscount = localStorage.getItem("globalDiscount");
 
   const fetchAllProductsRes = useSelector(
     (state) => state.product.fetchAllProductsRes
@@ -232,7 +233,9 @@ const ProductsList = () => {
                       <div className="font-bold text-[14px] text-[#4b5966] flex gap-4 pt-2">
                         {/* {`$ ${item.productPrice}`} */}
                         <span className="">
-                          {`₹ ${Number(item.productPrice / 2).toFixed(2)}`}
+                          {`₹ ${Number(
+                            item.productPrice * (1 - globalDiscount / 100)
+                          ).toFixed(2)}`}
                         </span>
                         <span className="font-normal text-[#777] line-through">
                           {`₹ ${Number(item.productPrice).toFixed(2)}`}

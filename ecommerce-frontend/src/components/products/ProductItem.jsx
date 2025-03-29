@@ -34,6 +34,7 @@ const ProductItems = () => {
   const [Ankit] = useAutoAnimate();
 
   const userid = localStorage.getItem("userid");
+  const globalDiscount = localStorage.getItem("globalDiscount");
 
   const fetchProductByIdRes = useSelector(
     (state) => state.product.fetchProductByIdRes
@@ -106,16 +107,15 @@ const ProductItems = () => {
 
     if (discountPropsApiRes) {
       setGlobalProductDiscount(discountPropsApiRes.discount1);
-      localStorage.setItem(
-        "hhh",
-        JSON.stringify(discountPropsApiRes.discount1)
-      );
+      localStorage.setItem("props Discount", discountPropsApiRes.discount1);
     }
   }, [discountPropsApiRes]);
 
-  const asc_discountPercentage = globalProductDiscount;
-  const asc_discountedPrice = productPrice * (1 - asc_discountPercentage / 100);
-  const asc_totalPrice = asc_discountedPrice * productQuantity;
+  // const asc_discountPercentage = Number(globalProductDiscount);
+  const asc_discountPercentage = Number(globalDiscount);
+  const asc_totalPrice = productPrice * productQuantity;
+  const asc_discountedPrice =
+    asc_totalPrice * (1 - asc_discountPercentage / 100);
 
   return (
     <div>
@@ -184,7 +184,8 @@ const ProductItems = () => {
 
           <p className="text-2xl">
             {/* {`-70% ₹${productPrice * productQuantity}`} */}
-            {`-${globalProductDiscount}% ₹${asc_discountedPrice.toFixed(2)}`}
+            {/* {`-${globalProductDiscount}% ₹${asc_discountedPrice.toFixed(2)}`} */}
+            {`-${globalDiscount}% ₹${asc_discountedPrice.toFixed(2)}`}
           </p>
           <p className="text-[14px] text-[#4b5966] ps-4">
             {/* {`M.R.P : ${productPrice * productQuantity}`} */}
