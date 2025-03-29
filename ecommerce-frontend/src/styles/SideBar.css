@@ -24,7 +24,7 @@
 #asc_Sidebar .ant-menu-item:hover {
   background-color: #e6f7ff !important;
   color: #1890ff !important;
-  padding-left: 40px !important;
+  padding-left: 30px !important;
   transition: all 0.3s ease-in-out !important;
 }
 
@@ -32,7 +32,7 @@
 #asc_Sidebar .ant-menu-submenu-title:hover {
   background-color: #e6f7ff !important;
   color: #1890ff !important;
-  padding-left: 40px !important;
+  padding-left: 30px !important;
   transition: all 0.3s ease-in-out !important;
 }
 

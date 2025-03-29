@@ -16,6 +16,8 @@ import {
   DashboardOutlined,
   CheckCircleOutlined,
   FolderOpenTwoTone,
+  ProductOutlined,
+  UnorderedListOutlined,
 } from "@ant-design/icons";
 import navIcon from "../assets/icons/logo.jpg";
 import Hamburger from "hamburger-react";
@@ -126,14 +128,14 @@ const SideBar = () => {
 
     {
       key: "5",
-      icon: <HomeOutlined />,
+      icon: <UnorderedListOutlined />,
       label: "Products List",
       onClick: () => navigate("/products-list"),
     },
 
     {
       key: "6",
-      icon: <UserOutlined />,
+      icon: <ProductOutlined />,
       label: "Products",
       children: [
         {
@@ -183,6 +185,7 @@ const SideBar = () => {
           trigger={null}
           collapsible
           collapsed={collapsed}
+          className="p-1"
           style={{
             background: "#F2F2F2",
             position: "sticky",
