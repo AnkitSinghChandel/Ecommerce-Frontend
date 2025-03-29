@@ -86,7 +86,7 @@ const Messages = (props) => {
         <div className="flex justify-between pt-3 px-2">
           <p>Comments</p>
 
-          {messageData && messageData.length > 4 && (
+          {messageData && messageData.length > 5 && (
             <p
               className="pointer"
               onClick={() => {
