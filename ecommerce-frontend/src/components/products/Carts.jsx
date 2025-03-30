@@ -98,7 +98,12 @@ const Carts = () => {
         </div>
       </div>
 
-      <div className="flex items-center gap-2 pointer carts">
+      <div
+        className="flex items-center gap-2 pointer carts"
+        onClick={() => {
+          navigate("/wish-items");
+        }}
+      >
         {/* <img alt="" src="" /> */}
         <HeartOutlined className="carts-icons" />
         <div>
@@ -109,7 +114,12 @@ const Carts = () => {
         </div>
       </div>
 
-      <div className="flex items-center gap-2 pointer carts">
+      <div
+        className="flex items-center gap-2 pointer carts"
+        onClick={() => {
+          navigate("/check-out");
+        }}
+      >
         {/* <img alt="" src="" /> */}
         <ShoppingCartOutlined className="carts-icons" />
         <div>

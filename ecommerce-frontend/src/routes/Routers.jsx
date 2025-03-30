@@ -13,7 +13,9 @@ import TeamList from "../components/teams/TeamList";
 import AddProduct from "../components/products/AddProduct";
 import ProductsList from "../components/products/ProductsList";
 import ProductItem from "../components/products/ProductItem";
+import WishListItems from "../components/products/WishListItems";
 import AddToCart from "../components/products/AddToCart";
+import CheckOutItems from "../components/products/CheckOutItems";
 
 import DragAndDrop from "../components/tasks/DragAndDrop";
 import Demo from "../pdfs/Demo";
@@ -44,7 +46,9 @@ const Routers = () => {
               <Route path="/update-product/:id" element={<AddProduct />} />
               <Route path="/products-list" element={<ProductsList />} />
               <Route path="/product/:id" element={<ProductItem />} />
+              <Route path="/wish-items" element={<WishListItems />} />
               <Route path="/add-to-cart" element={<AddToCart />} />
+              <Route path="/check-out" element={<CheckOutItems />} />
 
               <Route path="/task" element={<DragAndDrop />} />
               <Route path="/Demo" element={<Demo />} />
