@@ -213,7 +213,12 @@ const TaskEditor = (props) => {
               }}
             >
               <label className="pointer">
-                <img src={attatchIcon} alt="" width={12} />
+                <img
+                  src={attatchIcon}
+                  alt=""
+                  width={12}
+                  className="opacity-50"
+                />
                 <input
                   type="file"
                   multiple
@@ -234,7 +239,7 @@ const TaskEditor = (props) => {
             {/* emoji */}
             <div className="relative">
               <div onClick={() => setShowEmojiPicker(!showEmojiPicker)}>
-                <img src={emojiIcon} alt="" className="" width={20} />
+                <img src={emojiIcon} alt="" className="opacity-50" width={20} />
               </div>
               {showEmojiPicker && (
                 <EmojiPicker
@@ -260,7 +265,7 @@ const TaskEditor = (props) => {
                   setEditorContent();
                 }}
               >
-                <img src={sendIcon} alt="" width={25} />
+                <img src={sendIcon} alt="" width={25} className="opacity-50" />
               </button>
             </div>
           </div>

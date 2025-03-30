@@ -328,8 +328,8 @@ const DragAndDrop = () => {
                   <Droppable droppableId={column.statusId} key={index}>
                     {(provider, snapshot) => (
                       <div
-                        // className="mainBoxCss p-3"
-                        className={`mainBoxCss p-3 ${
+                        // className="mainBox p-3"
+                        className={`mainBox p-3 ${
                           snapshot.isDraggingOver ? "isDraggingOver" : ""
                         }`}
                         ref={provider.innerRef}

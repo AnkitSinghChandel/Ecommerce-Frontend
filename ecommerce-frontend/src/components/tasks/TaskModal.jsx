@@ -148,12 +148,14 @@ const TaskModal = (props) => {
 
           <div className="pt-6">
             <div className="asc-input-container" id="ascNewInput">
-              <label className="asc-top-label labelText">Task Name</label>
+              <label className="asc-top-label labelText bg-white!">
+                Task Name
+              </label>
               <input
                 type="text"
                 // disabled
                 autoFocus={true}
-                className="asc-Normal-Input"
+                className="asc-Normal-Input bg-white!"
                 style={{
                   border: warning && !taskName && "1.5px solid #dc3545",
                 }}
