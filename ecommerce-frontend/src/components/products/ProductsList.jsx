@@ -153,7 +153,7 @@ const ProductsList = () => {
       ) : (
         <>
           <div
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 pt-15 p-5"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 pt-15 p-5 overflow-hidden"
             ref={Ankit}
           >
             {productsData
@@ -164,7 +164,14 @@ const ProductsList = () => {
               )
               .map((item, index) => {
                 return (
-                  <div className="productsBox p-4 w-full">
+                  <div
+                    className="productsBox p-4 w-full"
+                    data-aos="fade-up"
+                    data-aos-offset="0"
+                    data-aos-delay={index * 300} // Delay increases per product.
+                    data-aos-duration="1000"
+                    key={item.productId}
+                  >
                     <div
                       className="productImage rounded-lg pointer"
                       onClick={() => {

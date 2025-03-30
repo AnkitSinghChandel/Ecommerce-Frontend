@@ -59,7 +59,7 @@ const WishListItems = () => {
             data-aos-offset="0"
             data-aos-delay={index * 300} // Delay increases per product.
             data-aos-duration="1000"
-            key={index}
+            key={item.productId}
           >
             <div className="bg-[lightgrey] w-[200px] h-[120px] rounded-xl p-2">
               <img
