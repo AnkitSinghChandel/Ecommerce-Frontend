@@ -53,7 +53,14 @@ const WishListItems = () => {
 
       {wishListItems.map((item, index) => {
         return (
-          <div className="w-[500px] py-3 ps-5">
+          <div
+            className="w-[500px] py-3 ps-5"
+            data-aos="fade-up"
+            data-aos-offset="0"
+            data-aos-delay={index * 300} // Delay increases per product.
+            data-aos-duration="1000"
+            key={index}
+          >
             <div className="bg-[lightgrey] w-[200px] h-[120px] rounded-xl p-2">
               <img
                 src={item?.products?.productImage}
