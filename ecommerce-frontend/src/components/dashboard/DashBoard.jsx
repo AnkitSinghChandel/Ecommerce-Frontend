@@ -107,17 +107,19 @@ const DashBoard = () => {
         />
       </div>
 
-      <Progress
-        type="circle"
-        percent={50}
-        // success={{ percent: 50 }}
-        success={numberPercent >= 50 ? { numberPercent } : undefined}
-        // status="exception"
-        trailColor={"217, 217, 225"} // only color name or RGB color format.
-        // strokeColor={"red"}
-        strokeWidth={12}
-      />
-      {/* <Progress type="circle" percent={100} format={() => "Done"} /> */}
+      <div className="ps-7">
+        <Progress
+          type="circle"
+          percent={50}
+          // success={{ percent: 50 }}
+          success={numberPercent >= 50 ? { numberPercent } : undefined}
+          // status="exception"
+          trailColor={"217, 217, 225"} // only color name or RGB color format.
+          // strokeColor={"red"}
+          strokeWidth={12}
+        />
+        {/* <Progress type="circle" percent={100} format={() => "Done"} /> */}
+      </div>
     </div>
   );
 };
