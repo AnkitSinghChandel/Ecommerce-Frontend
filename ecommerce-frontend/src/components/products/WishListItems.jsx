@@ -46,7 +46,7 @@ const WishListItems = () => {
   };
 
   return (
-    <div>
+    <div className="overflow-hidden">
       <p className="text-[18px] text-[#4b5966] font-[500] py-5 ps-6">
         Wish List Products...
       </p>
