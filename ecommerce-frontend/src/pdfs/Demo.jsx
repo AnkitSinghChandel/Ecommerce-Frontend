@@ -95,12 +95,15 @@ const Demo = () => {
     }
   };
 
+  const [runFunctionFromParent, setRunFunctionFromParent] = useState(false);
+
   return (
     <div>
       <button
         className="ms-5 mt-3 border-1"
         onClick={() => {
-          downloadPDF();
+          // downloadPDF();
+          setRunFunctionFromParent(true);
         }}
       >
         Button
@@ -132,7 +135,10 @@ const Demo = () => {
       </div>
 
       <div className="hidde-n">
-        <DemoPDF />
+        <DemoPDF
+          runFunctionFromParent={runFunctionFromParent}
+          setRunFunctionFromParent={setRunFunctionFromParent}
+        />
       </div>
 
       {/* <DemoPDF2 /> */}
