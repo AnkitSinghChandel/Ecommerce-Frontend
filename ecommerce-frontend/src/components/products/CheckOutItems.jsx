@@ -53,7 +53,14 @@ const CheckOutItems = () => {
 
       {wishListItems.map((item, index) => {
         return (
-          <div className="w-[500px] border-b-1 py-3 ps-6">
+          <div
+            className="w-[500px] border-b-1 py-3 ps-6"
+            data-aos="fade-up"
+            data-aos-offset="0"
+            data-aos-delay={index * 300} // Delay increases per product.
+            data-aos-duration="1000"
+            key={index}
+          >
             <div className="flex gap-3 items-center">
               {/* <Checkbox onChange={onChange}>Checkbox</Checkbox> */}
               {/* <img src={item?.products?.productImage} alt="" className="" /> */}
