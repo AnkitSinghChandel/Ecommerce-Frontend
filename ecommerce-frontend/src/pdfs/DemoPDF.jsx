@@ -32,7 +32,7 @@ const DemoPDF = () => {
         </p>
       </div>
 
-      <div className="flex gap-3 items-center" style={{ width: "100%" }}>
+      <div className="flex gap-3 items-center pt-4" style={{ width: "100%" }}>
         <div className="borderClass">
           <p>Ankit</p>
           <p>Singh</p>
