@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import {
   playSuccessSound,
   playErrorSound,
-} from "../notifications-alert/customToastify";
+} from "../notifications-alert/CustomToastify";
 
 import { jsPDF } from "jspdf";
 

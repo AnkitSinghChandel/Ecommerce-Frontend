@@ -116,7 +116,7 @@ const TeamsList = () => {
           // filename: "asc.pdf",
           filename: `${selectedName}.pdf`,
           html2canvas: { scale: 7 }, // Scale factor for better quality not more than 9
-          jsPDF: { unit: "in", format: "letter", orientation: "portrait" }, // PDF options
+          jsPDF: { unit: "in", format: "a4", orientation: "portrait" }, // PDF options
         })
         .save()
         .then(() => {
