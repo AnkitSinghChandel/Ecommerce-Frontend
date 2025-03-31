@@ -10,7 +10,7 @@ import {
   MinusOutlined,
   PlusOutlined,
 } from "@ant-design/icons";
-import { Checkbox } from "antd";
+import { Tooltip } from "antd";
 import "../../styles/cart.css";
 import "../../styles/asc_Anime.css";
 import { useLocation, useNavigate, useParams } from "react-router";
@@ -51,40 +51,36 @@ const WishListItems = () => {
         Wish List Products...
       </p>
 
-      {wishListItems.map((item, index) => {
-        return (
-          <div
-            className="w-[500px] py-3 ps-5"
-            data-aos="fade-up"
-            data-aos-offset="0"
-            data-aos-delay={index * 300} // Delay increases per product.
-            data-aos-duration="1000"
-            key={item.productId}
-          >
-            <div className="bg-[lightgrey] w-[200px] h-[120px] rounded-xl p-2">
-              <img
-                src={item?.products?.productImage}
-                alt=""
-                className="w-full h-full object-cover rounded-xl"
-              />
-            </div>
+      <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {wishListItems.map((item, index) => {
+          return (
+            <div
+              className="w-full max-w-[300px] mx-auto py-3 ps-5"
+              data-aos="fade-up"
+              data-aos-offset="0"
+              data-aos-delay={index * 300} // Delay increases per product.
+              data-aos-duration="1000"
+              key={item.productId}
+            >
+              <div className="bg-[lightgrey] w-[20-0px] h-[140px] rounded-xl p-2">
+                <img
+                  src={item?.products?.productImage}
+                  alt=""
+                  className="w-full h-full object-cover rounded-xl"
+                />
+              </div>
 
-            <div className="w-[300px] pt-2 ps-3">
-              <p className="productTitle">{item?.products?.productTitle}</p>
-              {/* <p>{item?.products?.productDescription}</p> */}
-              <p className="productName">
-                {item?.products?.productDescription.length > 25
-                  ? item?.products?.productDescription.slice(0, 25) + "..."
-                  : item?.products?.productDescription}
-              </p>
-
-              <p className="w-[100px] text-[#5caf90] font-bold">
-                {`₹ ${item?.products?.productPrice}`}
-              </p>
+              <div className="pt-2 ps-3">
+                <p className="productTitle">{item?.products?.productTitle}</p>
+                <p className="truncate">{item?.products?.productDescription}</p>
+                <p className="text-[#5caf90] font-bold">
+                  {`₹ ${item?.products?.productPrice}`}
+                </p>
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 };
