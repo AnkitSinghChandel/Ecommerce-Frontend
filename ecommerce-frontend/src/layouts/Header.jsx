@@ -63,9 +63,9 @@ const Header = (props) => {
           <div className="headerMainDiv px-5 pt-2">
             <div
               className={
-                deviceType === "webView" || deviceType === "tabView"
-                  ? "hidden"
-                  : ""
+                deviceType === "mobileView" || deviceType === "tabView"
+                  ? ""
+                  : "hidden"
               }
             >
               <Drawer />

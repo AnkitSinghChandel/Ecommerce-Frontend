@@ -16,7 +16,7 @@ const MyDrawer = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className={DeviceType() === "mobileView" ? "" : "d-non-e"}>
+    <div>
       <Hamburger toggled={open} toggle={setOpen} />
 
       <Drawer
