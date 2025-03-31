@@ -32,20 +32,20 @@ const MyDrawer = () => {
         closeIcon={null} // Removes default close button.
         // placement="right"
         placement="left"
-        mask={false}
+        // mask={false}
         onClose={() => setOpen(false)}
         open={open}
-        className="custom-drawer"
         classNames={{
           header: "custom-header",
           body: "custom-body",
           footer: "custom-footer",
         }}
+        className="custom-drawer"
       >
         <div className="pointer">
           <p
             className={
-              path === "/team-list" ? "drawer-txtHighlighted" : "optionText"
+              path === "/dashboard" ? "drawer-txtHighlighted" : "optionText"
             }
             onClick={() => {
               navigate("/dashboard");
@@ -89,7 +89,7 @@ const MyDrawer = () => {
 
           <p
             className={
-              path === "/team-list" ? "drawer-txtHighlighted" : "optionText"
+              path === "/products-list" ? "drawer-txtHighlighted" : "optionText"
             }
             onClick={() => {
               navigate("/products-list");
@@ -100,112 +100,24 @@ const MyDrawer = () => {
 
           <p
             className={
-              path === "/DragDrop" ? "drawer-txtHighlighted" : "optionText"
+              path === "/task" ? "drawer-txtHighlighted" : "optionText"
             }
             onClick={() => {
-              navigate("/DragDrop");
+              navigate("/task");
             }}
           >
-            DragDrop
+            Task
           </p>
 
           <p
             className={
-              path === "/DragDrop2" ? "drawer-txtHighlighted" : "optionText"
+              path === "/demo" ? "drawer-txtHighlighted" : "optionText"
             }
             onClick={() => {
-              navigate("/DragDrop2");
-            }}
-          >
-            DragDrop2
-          </p>
-
-          <p
-            className={
-              path === "/list" ? "drawer-txtHighlighted" : "optionText"
-            }
-            onClick={() => {
-              navigate("/list");
+              navigate("/demo");
             }}
           >
             Js PDF List
-          </p>
-
-          <p
-            className={
-              path === "/PushedOnCheck" ? "drawer-txtHighlighted" : "optionText"
-            }
-            onClick={() => {
-              navigate("/PushedOnCheck");
-            }}
-          >
-            Check-Uncheck
-          </p>
-
-          <p
-            className={
-              path === "/MyTodoTask" ? "drawer-txtHighlighted" : "optionText"
-            }
-            onClick={() => {
-              navigate("/MyTodoTask");
-            }}
-          >
-            MyTodoTask
-          </p>
-
-          <p
-            className={
-              path === "/MyTodoTask2" ? "drawer-txtHighlighted" : "optionText"
-            }
-            onClick={() => {
-              navigate("/MyTodoTask2");
-            }}
-          >
-            MyTodoTask2
-          </p>
-
-          <p
-            className={
-              path === "/MyTodoTask3" ? "drawer-txtHighlighted" : "optionText"
-            }
-            onClick={() => {
-              navigate("/MyTodoTask3");
-            }}
-          >
-            MyTodoTask3
-          </p>
-
-          <p
-            className={
-              path === "/SelectBox" ? "drawer-txtHighlighted" : "optionText"
-            }
-            onClick={() => {
-              navigate("/SelectBox");
-            }}
-          >
-            SelectBox
-          </p>
-
-          <p
-            className={
-              path === "/SelectBox2" ? "drawer-txtHighlighted" : "optionText"
-            }
-            onClick={() => {
-              navigate("/SelectBox2");
-            }}
-          >
-            SelectBox2
-          </p>
-
-          <p
-            className={
-              path === "/asctesting" ? "drawer-txtHighlighted" : "optionText"
-            }
-            onClick={() => {
-              navigate("/asctesting");
-            }}
-          >
-            asctesting
           </p>
         </div>
       </Drawer>
