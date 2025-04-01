@@ -205,7 +205,7 @@ const SideBar = () => {
                   navigate("/dashboard");
                 }}
               >
-                ASC
+                Grabit
               </h5>
 
               <h4>
