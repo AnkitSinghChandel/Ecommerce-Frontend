@@ -174,6 +174,7 @@ const SideBar = () => {
         style={{
           minHeight: "100vh",
           flex: "none",
+          background: "#F2F2F2",
           display:
             deviceType === "mobileView" || deviceType === "tabView"
               ? "none"
@@ -182,10 +183,11 @@ const SideBar = () => {
       >
         <Sider
           id="asc_Sidebar"
+          width={200}
           trigger={null}
           collapsible
           collapsed={collapsed}
-          className="p-1"
+          className="p-2"
           style={{
             background: "#F2F2F2",
             position: "sticky",
@@ -194,10 +196,7 @@ const SideBar = () => {
             overflow: "auto",
           }}
         >
-          <div
-            className="logo"
-            style={{ padding: "16px", textAlign: "center" }}
-          >
+          <div className="logo p-4 text-center">
             <div className="">
               <h5
                 className="text-[18px] text-[#5caf90] font-bold"

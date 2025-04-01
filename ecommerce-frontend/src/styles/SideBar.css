@@ -12,11 +12,11 @@
 
 /* Submenu Background */
 #asc_Sidebar .ant-menu-submenu-title {
-  background-color: lightgray !important;
+  background-color: #f2f2f2 !important;
 }
 /* Submenu Items */
 #asc_Sidebar .ant-menu-sub {
-  background-color: lightgray !important;
+  background-color: #f2f2f2 !important;
   border-radius: 8px;
 }
 
