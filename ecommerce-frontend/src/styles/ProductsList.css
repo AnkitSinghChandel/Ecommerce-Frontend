@@ -10,11 +10,18 @@
   transition: all 0.2s ease-in-out;
 } */
 
-.productsBox:hover,
+/* .productsBox:hover,
 .productsBox:hover .productImage {
   box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 15px;
   transition: all 0.3s ease-in-out;
   transform: scale(1.1);
+} */
+
+.productsBox:hover,
+.productsBox:hover {
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 15px;
+  transition: all 0.3s ease-in-out;
+  transform: translateY(-20px);
 }
 
 .productTitle {
