@@ -100,55 +100,57 @@ const Login = () => {
   document.getElementById("asc_input")?.focus();
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4 p-4">
-      <div className="login-left-box p-3">
-        <img src={ASC33} alt="" className="login-left-img" />
-      </div>
-
-      <div className="login-right-box pt-5">
-        <p className="ps-2 welcomeTxt">Welcome !</p>
-
-        <div className="p-3">
-          <label htmlFor="ASCemail" className="login-label ps-2">
-            Email
-          </label>
-          <br />
-          <input
-            className="inputBorder ps-2"
-            type="email"
-            name="ASCemail"
-            placeholder="Enter your Email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-              setMsgalert("");
-            }}
-          />
+    <>
+      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4 p-4 h-scree-n">
+        <div className="login-left-box p-3">
+          {/* <img src={ASC33} alt="" className="login-left-img" /> */}
+          <img src="/public/grabLogo.svg" alt="" className="login-left-img" />
         </div>
 
-        <div className="p-3">
-          <p className="mb-0 login-label ps-2">Password</p>
-          <div style={{ position: "relative" }}>
+        <div className="login-right-box pt-5">
+          <p className="ps-2 welcomeTxt">Welcome !</p>
+
+          <div className="p-3">
+            <label htmlFor="ASCemail" className="login-label ps-2">
+              Email
+            </label>
+            <br />
             <input
-              className="inputBorder ps-2 pe-5"
-              type={showPassword ? "text" : "password"}
-              placeholder="Enter your Password"
-              value={password}
+              className="inputBorder ps-2"
+              type="email"
+              name="ASCemail"
+              placeholder="Enter your Email"
+              value={email}
               onChange={(e) => {
-                setPassword(e.target.value);
+                setEmail(e.target.value);
                 setMsgalert("");
               }}
             />
-
-            <img
-              className="eyeIcon pointer"
-              src={showPassword ? eye : eyeClose}
-              alt=""
-              onClick={() => setShowPassword(!showPassword)}
-            />
           </div>
 
-          {/* <AnimatePresence>
+          <div className="p-3">
+            <p className="mb-0 login-label ps-2">Password</p>
+            <div style={{ position: "relative" }}>
+              <input
+                className="inputBorder ps-2 pe-5"
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter your Password"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setMsgalert("");
+                }}
+              />
+
+              <img
+                className="eyeIcon pointer"
+                src={showPassword ? eye : eyeClose}
+                alt=""
+                onClick={() => setShowPassword(!showPassword)}
+              />
+            </div>
+
+            {/* <AnimatePresence>
             {msgalert && (
               <motion.p
                 transition={{ duration: 0.5 }}
@@ -161,48 +163,48 @@ const Login = () => {
               </motion.p>
             )}
           </AnimatePresence> */}
-          <p className="ps-2 mb-0 alertMsg" ref={Ankit}>
-            {msgalert}
-          </p>
-        </div>
-
-        <div className="keep-labels ps-5">
-          <div className="ps-">
-            <input
-              type="checkbox"
-              id="keep"
-              className="checkboxRound pointer"
-              value=""
-              onChange={() => {
-                setKeepMeLogin(!keepMeLogin);
-              }}
-            />
-            <label htmlFor="keep" className="ps-1">
-              Keep me logged in
-            </label>
+            <p className="ps-2 mb-0 alertMsg" ref={Ankit}>
+              {msgalert}
+            </p>
           </div>
 
-          <div className="ps-">
-            <input
-              type="checkbox"
-              id="agree"
-              className="TermsCon pointer"
-              value=""
-              onChange={() => {
-                setTermCondition(!termCondition);
-              }}
-            />
-            <label htmlFor="agree" className="ps-1">
-              I have read and agreed &nbsp;
-              <a href={ascResume} target="_blank" rel="noopener noreferrer">
-                Terms and Conditions
-              </a>
-            </label>
-          </div>
-        </div>
+          <div className="keep-labels ps-5">
+            <div className="ps-">
+              <input
+                type="checkbox"
+                id="keep"
+                className="checkboxRound pointer"
+                value=""
+                onChange={() => {
+                  setKeepMeLogin(!keepMeLogin);
+                }}
+              />
+              <label htmlFor="keep" className="ps-1">
+                Keep me logged in
+              </label>
+            </div>
 
-        <div className="py-3 ps-5 pe-3">
-          {/* <AddButton
+            <div className="ps-">
+              <input
+                type="checkbox"
+                id="agree"
+                className="TermsCon pointer"
+                value=""
+                onChange={() => {
+                  setTermCondition(!termCondition);
+                }}
+              />
+              <label htmlFor="agree" className="ps-1">
+                I have read and agreed &nbsp;
+                <a href={ascResume} target="_blank" rel="noopener noreferrer">
+                  Terms and Conditions
+                </a>
+              </label>
+            </div>
+          </div>
+
+          <div className="py-3 ps-5 pe-3">
+            {/* <AddButton
             variant="contained"
             disabled={termCondition === !true}
             // startIcon={<DeleteIcon />}
@@ -214,22 +216,35 @@ const Login = () => {
             style={{ width: "100%" }}
           /> */}
 
-          <AddButton
-            label={"Login"}
-            disabled={termCondition === !true}
-            className=""
-            style={{ width: "100%", maxWidth: "100%", fontSize: "18px" }}
-            onClick={handleLogin}
-          />
+            <AddButton
+              label={"Login"}
+              disabled={termCondition === !true}
+              className=""
+              style={{ width: "100%", maxWidth: "100%", fontSize: "18px" }}
+              onClick={handleLogin}
+            />
 
-          <p className="pt-4 keep-labels">
-            if you are not a member you can make
-            <Link to="/signup">&nbsp;Signup</Link>
-            &nbsp;first
-          </p>
+            <p className="pt-4 keep-labels">
+              if you are not a member you can make
+              <Link to="/signup">&nbsp;Signup</Link>
+              &nbsp;first
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+
+      <div className="animate__animated animate__slideInLeft">
+        <p className="text-[30px] text-[#5CAF90] font-bold pt-6 ps-9">
+          Welcome to Grabit – Where Shopping Meets Happiness!
+        </p>
+      </div>
+
+      <div className="animate__animated animate__slideInLeft">
+        <p className="text-[30px] text-[#5CAF90] font-bold pt-6 ps-9">
+          Shop Smart, Shop Fast!
+        </p>
+      </div>
+    </>
   );
 };
 
