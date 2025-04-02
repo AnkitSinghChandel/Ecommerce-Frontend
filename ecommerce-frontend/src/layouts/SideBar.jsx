@@ -19,6 +19,7 @@ import {
   ProductOutlined,
   UnorderedListOutlined,
 } from "@ant-design/icons";
+import AddTaskIcon from "@mui/icons-material/AddTask";
 import navIcon from "../assets/icons/logo.jpg";
 import Hamburger from "hamburger-react";
 import DeviceType from "../layouts/DeviceType";
@@ -106,13 +107,13 @@ const SideBar = () => {
       children: [
         {
           key: "3-1",
-          icon: <UsergroupAddOutlined />,
+          // icon: <UsergroupAddOutlined />,
           label: "Add Team",
           onClick: () => navigate("/add-team"),
         },
         {
           key: "3-2",
-          icon: <UserSwitchOutlined />,
+          // icon: <UserSwitchOutlined />,
           label: "Update Team",
           onClick: () => navigate("/add-update-team/:id"),
         },
@@ -140,13 +141,13 @@ const SideBar = () => {
       children: [
         {
           key: "6-1",
-          icon: <UsergroupAddOutlined />,
+          // icon: <UsergroupAddOutlined />,
           label: "Add Product",
           onClick: () => navigate("/add-product"),
         },
         {
           key: "6-2",
-          icon: <UserSwitchOutlined />,
+          // icon: <UserSwitchOutlined />,
           label: "Update Product",
           onClick: () => navigate("/update-product/:id"),
         },
@@ -155,7 +156,7 @@ const SideBar = () => {
 
     {
       key: "7",
-      icon: <FolderOpenTwoTone />,
+      icon: <AddTaskIcon />,
       label: "Tasks",
       onClick: () => navigate("/task"),
     },
