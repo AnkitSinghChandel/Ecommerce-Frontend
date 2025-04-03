@@ -417,7 +417,7 @@ const AddProduct = () => {
               <label className="asc-top-label labelText">Product Price</label>
               <input
                 type="number"
-                min={100}
+                min={1}
                 // disabled
                 className="asc-Normal-Input"
                 style={{
@@ -431,18 +431,24 @@ const AddProduct = () => {
                 // }}
 
                 // onChange={(e) => {
-                //   const value = Number(e.target.value);
-                //   if (value >= 100 || e.target.value === "") {
-                //     setProductPrice(e.target.value);
-                //     setTypeInScreen(e.target.value);
+                //   let value = Number(e.target.value);
+                //   if (value < 1 || isNaN(value)) {
+                //     value = 1;
                 //   }
+                //   setProductPrice(value);
+                //   setTypeInScreen(value);
                 // }}
 
                 onInput={(e) => {
-                  if (e.target.value < 100) e.target.value = 100;
-                  if (e.target.value.includes("-")) e.target.value = ""; // Prevent negative values
-                  setProductPrice(e.target.value);
-                  setTypeInScreen(e.target.value);
+                  let value = Number(e.target.value);
+
+                  // Prevent negative values and enforce minimum 100
+                  if (value < 1 || isNaN(value)) {
+                    value = 100;
+                  }
+
+                  setProductPrice(value);
+                  setTypeInScreen(value);
                 }}
                 onKeyDown={handleKeyDown}
               />
