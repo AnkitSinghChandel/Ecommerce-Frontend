@@ -9,6 +9,7 @@ import {
   DeleteOutlined,
   MinusOutlined,
   PlusOutlined,
+  SyncOutlined,
 } from "@ant-design/icons";
 import { Tooltip } from "antd";
 import "../../styles/cart.css";
@@ -16,7 +17,7 @@ import "../../styles/asc_Anime.css";
 import { useLocation, useNavigate, useParams } from "react-router";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 
-const WishListItems = () => {
+const WishListProducts = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
@@ -48,7 +49,8 @@ const WishListItems = () => {
   return (
     <div className="overflow-hidden">
       <p className="text-[18px] text-[#4b5966] font-[500] py-5 ps-6">
-        Wish List Products...
+        Wish List Products... &nbsp;
+        <SyncOutlined spin />
       </p>
 
       <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -85,4 +87,4 @@ const WishListItems = () => {
   );
 };
 
-export default WishListItems;
+export default WishListProducts;

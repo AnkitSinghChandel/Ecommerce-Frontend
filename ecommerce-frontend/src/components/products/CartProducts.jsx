@@ -9,6 +9,7 @@ import {
   DeleteOutlined,
   MinusOutlined,
   PlusOutlined,
+  SyncOutlined,
 } from "@ant-design/icons";
 import { Checkbox } from "antd";
 import "../../styles/cart.css";
@@ -16,7 +17,7 @@ import "../../styles/asc_Anime.css";
 import { useLocation, useNavigate, useParams } from "react-router";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 
-const CheckOutItems = () => {
+const CartProducts = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
@@ -48,7 +49,8 @@ const CheckOutItems = () => {
   return (
     <div>
       <p className="text-[18px] text-[#4b5966] font-[500] py-5 ps-6">
-        Check Out Products...
+        Check Out Products... &nbsp;
+        <SyncOutlined spin />
       </p>
 
       {wishListItems.map((item, index) => {
@@ -119,4 +121,4 @@ const CheckOutItems = () => {
   );
 };
 
-export default CheckOutItems;
+export default CartProducts;
