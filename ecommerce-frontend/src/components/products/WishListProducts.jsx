@@ -8,14 +8,15 @@ import {
   UserOutlined,
   DeleteOutlined,
   MinusOutlined,
-  PlusOutlined,
+  ArrowLeftOutlined,
   SyncOutlined,
 } from "@ant-design/icons";
-import { Tooltip } from "antd";
+import { Tooltip, Popover, FloatButton } from "antd";
 import "../../styles/cart.css";
 import "../../styles/asc_Anime.css";
 import { useLocation, useNavigate, useParams } from "react-router";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
+import GlobalButtons from "../../buttons/GlobalButtons3";
 
 const WishListProducts = () => {
   const navigate = useNavigate();
@@ -48,10 +49,29 @@ const WishListProducts = () => {
 
   return (
     <div className="overflow-hidden">
-      <p className="text-[18px] text-[#4b5966] font-[500] py-5 ps-6">
-        Wish List Products... &nbsp;
-        <SyncOutlined spin />
-      </p>
+      <div className="flex gap-8 justify-between items-center pe-5">
+        <p className="text-[18px] text-[#4b5966] font-[500] py-5 ps-6">
+          Wish List Products... &nbsp;
+          <SyncOutlined spin />
+        </p>
+
+        <div
+          data-aos="fade-up"
+          data-aos-offset="0"
+          data-aos-delay="300" // Delay increases per product.
+          data-aos-duration="1000"
+        >
+          <Tooltip title="Back">
+            <ArrowLeftOutlined
+              onClick={() => {
+                navigate(-1);
+              }}
+              className="bg-[#5caf90] rounded-[50%] p-2"
+              style={{ color: "white", fontSize: "20px" }}
+            />
+          </Tooltip>
+        </div>
+      </div>
 
       <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {wishListItems.map((item, index) => {
