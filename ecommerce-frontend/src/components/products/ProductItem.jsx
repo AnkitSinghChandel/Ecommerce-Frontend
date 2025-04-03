@@ -23,7 +23,7 @@ import { toast } from "react-toastify";
 import {
   playSuccessSound,
   playErrorSound,
-} from "../../notifications-alert/CustomToastify";
+} from "../../notification-alert/CustomToastify";
 
 const ProductItems = () => {
   const navigate = useNavigate();

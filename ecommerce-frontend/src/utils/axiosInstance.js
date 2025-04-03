@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import {
   playSuccessSound,
   playErrorSound,
-} from "../notifications-alert/CustomToastify";
+} from "../notification-alert/CustomToastify";
 
 // Create Axios instance👇
 const axiosInstance = axios.create({

@@ -1,8 +1,8 @@
 import React from "react";
 import { ToastContainer, toast, Flip } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import successAlert from "../assets/NotificationSound/successAlert.wav";
-import errorAlert from "../assets/NotificationSound/errorAlert.wav";
+import successAlert from "../assets/notification-sound/successAlert.wav";
+import errorAlert from "../assets/notification-sound/errorAlert.wav";
 
 // const playSuccessSound = () => {
 //   const audio = new Audio(successAlert);

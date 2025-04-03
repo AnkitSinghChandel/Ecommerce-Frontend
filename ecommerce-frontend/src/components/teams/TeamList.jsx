@@ -27,7 +27,7 @@ import { toast } from "react-toastify";
 import {
   playSuccessSound,
   playErrorSound,
-} from "../../notifications-alert/CustomToastify";
+} from "../../notification-alert/CustomToastify";
 
 import html2pdf from "html2pdf.js";
 import TeamListPDF from "../../pdfs/TeamListPDF";

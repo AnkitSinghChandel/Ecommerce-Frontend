@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 import {
   playSuccessSound,
   playErrorSound,
-} from "../notifications-alert/CustomToastify";
+} from "../notification-alert/CustomToastify";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import GlobalButtons from "../buttons/GlobalButtons3";
 

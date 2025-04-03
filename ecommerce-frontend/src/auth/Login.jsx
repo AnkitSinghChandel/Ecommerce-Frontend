@@ -18,7 +18,7 @@ import { toast } from "react-toastify";
 import {
   playSuccessSound,
   playErrorSound,
-} from "../notifications-alert/CustomToastify";
+} from "../notification-alert/CustomToastify";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 const Login = () => {
@@ -236,12 +236,6 @@ const Login = () => {
       <div className="animate__animated animate__slideInLeft">
         <p className="text-[30px] text-[#5CAF90] font-bold pt-6 ps-9">
           Welcome to Grabit – Where Shopping Meets Happiness!
-        </p>
-      </div>
-
-      <div className="animate__animated animate__slideInLeft">
-        <p className="text-[30px] text-[#5CAF90] font-bold pt-6 ps-9">
-          Shop Smart, Shop Fast!
         </p>
       </div>
     </>

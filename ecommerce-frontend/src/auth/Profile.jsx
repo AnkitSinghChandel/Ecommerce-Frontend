@@ -22,7 +22,7 @@ import { toast } from "react-toastify";
 import {
   playSuccessSound,
   playErrorSound,
-} from "../notifications-alert/CustomToastify";
+} from "../notification-alert/CustomToastify";
 import moment from "moment";
 import NoData from "../common/NoData";
 import GlobalButtons from "../buttons/GlobalButtons3";

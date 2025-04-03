@@ -6,7 +6,7 @@ import "animate.css";
 import "aos/dist/aos.css";
 import AOS from "aos";
 
-import CustomToastify from "./notifications-alert/CustomToastify";
+import CustomToastify from "./notification-alert/CustomToastify";
 
 import Routers from "./routes/Routers";
 import NetworkStatus from "./errors/NetworkStatus";
