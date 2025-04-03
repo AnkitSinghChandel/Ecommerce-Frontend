@@ -198,9 +198,9 @@ const SideBar = () => {
           }}
         >
           <div className="logo p-4 text-center">
-            <div className="">
+            <div className="pointer">
               <h5
-                className="text-[18px] text-[#5caf90] font-bold"
+                className="text-[18px] text-[#5caf90] font-bold flex justify-center"
                 onClick={() => {
                   navigate("/dashboard");
                 }}
