@@ -285,7 +285,7 @@ const AddUpdateTeam = () => {
                 <span className="px-2">Updating...</span>
               </div>
             ) : (
-              <div className="flex gap-5 justify-center pe-4">
+              <div className="flex gap-3 justify-center pe-">
                 <img
                   className="icons mx-"
                   src={btnHover ? addicon : doubleUser}
