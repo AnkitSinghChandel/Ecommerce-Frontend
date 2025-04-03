@@ -43,7 +43,6 @@ const Toastify = () => {
       rtl={false}
       pauseOnFocusLoss
       pauseOnHover
-      transition={Flip} // comment if we want default transition.
       // onOpen={() => playSuccessSound()}
     />
   );
