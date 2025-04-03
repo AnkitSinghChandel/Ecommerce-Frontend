@@ -104,7 +104,7 @@ const Login = () => {
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4 p-4 h-scree-n">
         <div className="login-left-box p-3">
           {/* <img src={ASC33} alt="" className="login-left-img" /> */}
-          <img src="/public/grabLogo.svg" alt="" className="login-left-img" />
+          <img src="/grabLogo.svg" alt="" className="login-left-img" />
         </div>
 
         <div className="login-right-box pt-5">
