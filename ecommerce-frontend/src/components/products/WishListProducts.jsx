@@ -30,7 +30,7 @@ const WishListProducts = () => {
     (state) => state.product.fetchAllWishListRes
   );
 
-  const [wishListItems, setWishListItems] = useState([]);
+  const [wishListProducts, setWishListProducts] = useState([]);
   const [productQuantity, setProductQuantity] = useState(0);
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const WishListProducts = () => {
 
   useEffect(() => {
     if (fetchAllWishListRes.status === true) {
-      setWishListItems(fetchAllWishListRes.data);
+      setWishListProducts(fetchAllWishListRes.data);
     }
   }, [fetchAllWishListRes]);
 
@@ -74,7 +74,7 @@ const WishListProducts = () => {
       </div>
 
       <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {wishListItems.map((item, index) => {
+        {wishListProducts.map((item, index) => {
           return (
             <div
               className="w-full max-w-[300px] mx-auto py-3 ps-5"

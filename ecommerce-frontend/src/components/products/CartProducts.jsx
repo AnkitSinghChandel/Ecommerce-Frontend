@@ -29,7 +29,7 @@ const CartProducts = () => {
     (state) => state.product.fetchAllWishListRes
   );
 
-  const [wishListItems, setWishListItems] = useState([]);
+  const [wishListProducts, setWishListProducts] = useState([]);
   const [productQuantity, setProductQuantity] = useState(1);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const CartProducts = () => {
 
   useEffect(() => {
     if (fetchAllWishListRes.status === true) {
-      setWishListItems(fetchAllWishListRes.data);
+      setWishListProducts(fetchAllWishListRes.data);
     }
   }, [fetchAllWishListRes]);
 
@@ -53,7 +53,7 @@ const CartProducts = () => {
         <SyncOutlined spin />
       </p>
 
-      {wishListItems.map((item, index) => {
+      {wishListProducts.map((item, index) => {
         return (
           <div
             className="w-[500px] border-b-1 py-3 ps-6"
