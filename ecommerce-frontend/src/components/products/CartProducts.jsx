@@ -30,7 +30,7 @@ const CartProducts = () => {
   );
 
   const [wishListItems, setWishListItems] = useState([]);
-  const [productQuantity, setProductQuantity] = useState(0);
+  const [productQuantity, setProductQuantity] = useState(1);
 
   useEffect(() => {
     dispatch(fetchAllWishList());
@@ -94,8 +94,9 @@ const CartProducts = () => {
                 <span
                   onClick={() => {
                     // setProductQuantity((prev) => prev - 1);
-                    // can not enter negative values👇
-                    setProductQuantity((prev) => Math.max(prev - 1, 0));
+                    // can not enter negative values till 0👇
+                    // setProductQuantity((prev) => Math.max(prev - 1, 0));
+                    setProductQuantity((prev) => Math.max(prev - 1, 1));
                   }}
                 >
                   <MinusOutlined />
