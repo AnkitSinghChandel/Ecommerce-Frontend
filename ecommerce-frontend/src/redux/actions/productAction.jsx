@@ -162,7 +162,7 @@ export const addReview = (userId, productId, rating) => async (dispatch) => {
 };
 
 export const addToCart =
-  (userId, productId, productQuantity) => async (dispatch) => {
+  (userId, products, productQuantity) => async (dispatch) => {
     try {
       const response = await axios({
         method: "post",
@@ -170,7 +170,7 @@ export const addToCart =
         headers: {
           "Content-Type": "application/json",
         },
-        data: { userId, productId, productQuantity },
+        data: { userId, products, productQuantity },
       });
       dispatch({
         type: ADD_TO_CART,

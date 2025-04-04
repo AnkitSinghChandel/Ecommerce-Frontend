@@ -207,7 +207,7 @@ const ProductItems = () => {
 
             <div>
               {fetchAllCartProductsRes?.data?.some(
-                (wish) => wish.productId === productID
+                (wish) => wish.products.productId === productID
               ) && <CheckCircleFilled style={{ color: "#5caf90 " }} />}
             </div>
           </div>

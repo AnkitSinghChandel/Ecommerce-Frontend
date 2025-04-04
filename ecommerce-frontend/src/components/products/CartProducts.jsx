@@ -29,7 +29,6 @@ const CartProducts = () => {
   );
 
   const [cartProducts, setCartProducts] = useState([]);
-  const [productQuantity, setProductQuantity] = useState([]);
 
   useEffect(() => {
     dispatch(fetchAllCartProducts(userID));
@@ -61,7 +60,7 @@ const CartProducts = () => {
     setCartProducts(updatedList);
   };
 
-  console.log("asc223", productQuantity);
+  console.log("asc223", "productQuantity");
 
   return (
     <div>
@@ -120,8 +119,8 @@ const CartProducts = () => {
                   <MinusOutlined />
                 </span>
 
-                <p>{productQuantity}</p>
-                {/* <p>{productQuantity[index]}</p> */}
+                <p>{item.productQuantity}</p>
+                {/* <p>{item.productQuantity[index]}</p> */}
 
                 <span
                   // onClick={() => {
