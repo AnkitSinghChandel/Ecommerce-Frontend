@@ -186,11 +186,11 @@ export const addToCart =
     }
   };
 
-export const fetchAllCartProducts = () => async (dispatch) => {
+export const fetchAllCartProducts = (userId) => async (dispatch) => {
   try {
     const response = await axios({
       method: "get",
-      url: `${API_URL}/carts`,
+      url: `${API_URL}/carts/${userId}`,
       headers: {
         "Content-Type": "application/json",
       },
@@ -231,11 +231,11 @@ export const addToWishList =
     }
   };
 
-export const fetchAllWishList = () => async (dispatch) => {
+export const fetchAllWishList = (userId) => async (dispatch) => {
   try {
     const response = await axios({
       method: "get",
-      url: `${API_URL}/wishLists`,
+      url: `${API_URL}/wishLists/${userId}`,
       headers: {
         "Content-Type": "application/json",
       },

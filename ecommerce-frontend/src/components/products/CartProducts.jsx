@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  fetchAllCartProducts,
-  fetchAllWishList,
-} from "../../redux/actions/productAction";
+import { fetchAllCartProducts } from "../../redux/actions/productAction";
 import { useDispatch, useSelector } from "react-redux";
 import {
   UserOutlined,
@@ -25,37 +22,43 @@ const CartProducts = () => {
   console.log("param", params.id);
   const [Ankit] = useAutoAnimate();
 
-  const fetchAllWishListRes = useSelector(
-    (state) => state.product.fetchAllWishListRes
+  const userID = localStorage.getItem("userid");
+
+  const fetchAllCartProductsRes = useSelector(
+    (state) => state.product.fetchAllCartProductsRes
   );
 
-  const [wishListProducts, setWishListProducts] = useState([]);
+  const [cartProducts, setCartProducts] = useState([]);
   const [productQuantity, setProductQuantity] = useState([]);
 
   useEffect(() => {
-    dispatch(fetchAllWishList());
+    dispatch(fetchAllCartProducts(userID));
   }, []);
 
   useEffect(() => {
-    if (fetchAllWishListRes.status === true) {
-      setWishListProducts(fetchAllWishListRes.data);
+    if (fetchAllCartProductsRes.status === true) {
+      setCartProducts(fetchAllCartProductsRes.data);
     }
-  }, [fetchAllWishListRes]);
+  }, [fetchAllCartProductsRes]);
 
   const onChange = (e) => {
     console.log(`checked = ${e.target.checked}`);
   };
 
   const handleIncrease = (index, productId) => {
-    let quantity = [...productQuantity];
-    quantity[index] = (quantity[index] || 1) + 1;
-    setProductQuantity(quantity);
+    const updatedList = [...cartProducts];
+    updatedList[index].quantity += 1;
+
+    console.log("Updated Product:", updatedList[index]); // ✅ बढ़ा हुआ quantity दिखेगा
+    console.log("Updated Product List:", updatedList); // ✅ पूरी updated list
+
+    setCartProducts(updatedList);
   };
 
   const handleDecrease = (index, productId) => {
-    let quantity = [...productQuantity];
-    quantity[index] = Math.max((quantity[index] || 1) - 1, 1);
-    setProductQuantity(quantity);
+    const updatedList = [...cartProducts];
+    updatedList[index].quantity = Math.max(updatedList[index].quantity - 1, 1); // prevent going below 1
+    setCartProducts(updatedList);
   };
 
   console.log("asc223", productQuantity);
@@ -67,7 +70,7 @@ const CartProducts = () => {
         <SyncOutlined spin />
       </p>
 
-      {wishListProducts.map((item, index) => {
+      {cartProducts.map((item, index) => {
         return (
           <div
             className="w-[500px] border-b-1 py-3 ps-6"
@@ -117,8 +120,8 @@ const CartProducts = () => {
                   <MinusOutlined />
                 </span>
 
-                {/* <p>{productQuantity}</p> */}
-                <p>{productQuantity[index]}</p>
+                <p>{productQuantity}</p>
+                {/* <p>{productQuantity[index]}</p> */}
 
                 <span
                   // onClick={() => {

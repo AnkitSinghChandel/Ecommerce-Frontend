@@ -27,6 +27,7 @@ const Carts = () => {
   console.log("param", params.id);
   const [Ankit] = useAutoAnimate();
 
+  const userID = localStorage.getItem("userid");
   const cartItem = localStorage.getItem("cartItem") ?? 0;
 
   const addToCartRes = useSelector((state) => state.product.addToCartRes);
@@ -55,11 +56,11 @@ const Carts = () => {
   }, [addToCartRes]);
 
   useEffect(() => {
-    dispatch(fetchAllCartProducts());
+    dispatch(fetchAllCartProducts(userID));
   }, [addToCartRes]);
 
   useEffect(() => {
-    dispatch(fetchAllWishList());
+    dispatch(fetchAllWishList(userID));
   }, [addToWishListRes]);
 
   useEffect(() => {

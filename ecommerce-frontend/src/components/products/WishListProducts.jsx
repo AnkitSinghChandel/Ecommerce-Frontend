@@ -26,6 +26,8 @@ const WishListProducts = () => {
   console.log("param", params.id);
   const [Ankit] = useAutoAnimate();
 
+  const userID = localStorage.getItem("userid");
+
   const fetchAllWishListRes = useSelector(
     (state) => state.product.fetchAllWishListRes
   );
@@ -34,7 +36,7 @@ const WishListProducts = () => {
   const [productQuantity, setProductQuantity] = useState(0);
 
   useEffect(() => {
-    dispatch(fetchAllWishList());
+    dispatch(fetchAllWishList(userID));
   }, []);
 
   useEffect(() => {
