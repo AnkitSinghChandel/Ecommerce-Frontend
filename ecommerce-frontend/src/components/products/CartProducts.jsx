@@ -45,22 +45,24 @@ const CartProducts = () => {
   };
 
   const handleIncrease = (index, productId) => {
+    console.log("asc223", productId);
     const updatedList = [...cartProducts];
-    updatedList[index].quantity += 1;
+    updatedList[index].productQuantity += 1;
 
-    console.log("Updated Product:", updatedList[index]); // ✅ बढ़ा हुआ quantity दिखेगा
-    console.log("Updated Product List:", updatedList); // ✅ पूरी updated list
+    console.log("Updated index Product:", updatedList[index]);
+    console.log("Updated Product List:", updatedList); // पूरी updated list
 
     setCartProducts(updatedList);
   };
 
   const handleDecrease = (index, productId) => {
     const updatedList = [...cartProducts];
-    updatedList[index].quantity = Math.max(updatedList[index].quantity - 1, 1); // prevent going below 1
+    updatedList[index].productQuantity = Math.max(
+      updatedList[index].productQuantity - 1,
+      1 // prevent going below 1
+    );
     setCartProducts(updatedList);
   };
-
-  console.log("asc223", "productQuantity");
 
   return (
     <div>
@@ -114,7 +116,7 @@ const CartProducts = () => {
                   //   // setProductQuantity((prev) => Math.max(prev - 1, 0));
                   //   setProductQuantity((prev) => Math.max(prev - 1, 1));
                   // }}
-                  onClick={() => handleDecrease(index, item.productId)}
+                  onClick={() => handleDecrease(index, item.products.productId)}
                 >
                   <MinusOutlined />
                 </span>
@@ -126,7 +128,7 @@ const CartProducts = () => {
                   // onClick={() => {
                   //   setProductQuantity((prev) => prev + 1);
                   // }}
-                  onClick={() => handleIncrease(index, item.productId)}
+                  onClick={() => handleIncrease(index, item.products.productId)}
                 >
                   <PlusOutlined />
                 </span>
