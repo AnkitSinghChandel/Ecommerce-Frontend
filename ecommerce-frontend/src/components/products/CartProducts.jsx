@@ -46,9 +46,10 @@ const CartProducts = () => {
 
   const handleIncrease = (index, productId) => {
     const updatedList = [...cartProducts];
-    updatedList[index].productQuantity += 1;
+    updatedList[index] = { ...updatedList[index] };
+    updatedList[index].productQuantity = updatedList[index].productQuantity + 1;
 
-    console.log("asc223", index, productId);
+    console.log("index, productId", index, productId);
     console.log("Updated index Product:", updatedList[index]);
     console.log("Updated Product List:", updatedList); // पूरी updated list
 
@@ -57,12 +58,15 @@ const CartProducts = () => {
 
   const handleDecrease = (index, productId) => {
     const updatedList = [...cartProducts];
+    updatedList[index] = { ...updatedList[index] };
     updatedList[index].productQuantity = Math.max(
       updatedList[index].productQuantity - 1,
       1 // prevent going below 1
     );
     setCartProducts(updatedList);
   };
+
+  console.log("asc223", cartProducts);
 
   return (
     <div>
