@@ -46,7 +46,7 @@ const CartProducts = () => {
 
   const handleIncrease = (index, productId) => {
     const updatedList = [...cartProducts];
-    updatedList[index] = { ...updatedList[index] };
+    updatedList[index] = { ...updatedList[index] }; // object ke bhi copy
     updatedList[index].productQuantity = updatedList[index].productQuantity + 1;
 
     console.log("index, productId", index, productId);
