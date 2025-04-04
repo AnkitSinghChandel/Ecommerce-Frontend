@@ -1,6 +1,6 @@
 import React from "react";
 import box from "../assets/images/box(1).png";
-import box2 from "../assets/images/box(4).png";
+import box2 from "../assets/images/box(3).png";
 
 const NoData = (props) => {
   console.log("asc44", props);

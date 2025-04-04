@@ -5,7 +5,7 @@ import ASC22 from "../../assets/images/ASC22.jpg";
 import Xicon from "../../assets/icons/Xicon.svg";
 import searchicon from "../../assets/icons/search.svg";
 import box from "../../assets/images/box(1).png";
-import box2 from "../../assets/images/box(4).png";
+import box2 from "../../assets/images/box(3).png";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import NoData from "../../common/NoData";
 import SelectBox from "../../common/SelectBox";

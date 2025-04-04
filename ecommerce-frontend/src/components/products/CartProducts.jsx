@@ -30,7 +30,7 @@ const CartProducts = () => {
   );
 
   const [wishListProducts, setWishListProducts] = useState([]);
-  const [productQuantity, setProductQuantity] = useState(1);
+  const [productQuantity, setProductQuantity] = useState([]);
 
   useEffect(() => {
     dispatch(fetchAllWishList());
@@ -45,6 +45,20 @@ const CartProducts = () => {
   const onChange = (e) => {
     console.log(`checked = ${e.target.checked}`);
   };
+
+  const handleIncrease = (index, productId) => {
+    let quantity = [...productQuantity];
+    quantity[index] = (quantity[index] || 1) + 1;
+    setProductQuantity(quantity);
+  };
+
+  const handleDecrease = (index, productId) => {
+    let quantity = [...productQuantity];
+    quantity[index] = Math.max((quantity[index] || 1) - 1, 1);
+    setProductQuantity(quantity);
+  };
+
+  console.log("asc223", productQuantity);
 
   return (
     <div>
@@ -92,22 +106,25 @@ const CartProducts = () => {
             <div className="flex gap-4 p-3">
               <div className="bg-[#5caf90] text-[white] text-[16px] rounded-lg ps-4 w-[150px] max-w-full my-3 p-2 flex gap-5 justify-center pointer">
                 <span
-                  onClick={() => {
-                    // setProductQuantity((prev) => prev - 1);
-                    // can not enter negative values till 0👇
-                    // setProductQuantity((prev) => Math.max(prev - 1, 0));
-                    setProductQuantity((prev) => Math.max(prev - 1, 1));
-                  }}
+                  // onClick={() => {
+                  //   // setProductQuantity((prev) => prev - 1);
+                  //   // can not enter negative values till 0👇
+                  //   // setProductQuantity((prev) => Math.max(prev - 1, 0));
+                  //   setProductQuantity((prev) => Math.max(prev - 1, 1));
+                  // }}
+                  onClick={() => handleDecrease(index, item.productId)}
                 >
                   <MinusOutlined />
                 </span>
 
-                <p>{productQuantity}</p>
+                {/* <p>{productQuantity}</p> */}
+                <p>{productQuantity[index]}</p>
 
                 <span
-                  onClick={() => {
-                    setProductQuantity((prev) => prev + 1);
-                  }}
+                  // onClick={() => {
+                  //   setProductQuantity((prev) => prev + 1);
+                  // }}
+                  onClick={() => handleIncrease(index, item.productId)}
                 >
                   <PlusOutlined />
                 </span>

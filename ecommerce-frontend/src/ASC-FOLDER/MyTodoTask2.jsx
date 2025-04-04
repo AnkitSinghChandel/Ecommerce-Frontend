@@ -12,12 +12,12 @@ function MyTodoTask2() {
     },
   ]);
 
-  const handleOnChange2 = (index, key, value) => {
+  const handleOnChange2 = (index, field, value) => {
     // here value = e.target.value
-    // and key = like => list[index]["supplier"]
+    // and field = like => list[index]["supplier"]
 
     let list = [...personalTaskData];
-    list[index][key] = value;
+    list[index][field] = value;
     let firstName_length = list[index]["firstName"].length;
     let middleName_length = list[index]["middleName"].length;
     let LastName_length = list[index]["lastName"].length;
@@ -35,9 +35,9 @@ function MyTodoTask2() {
     setPersonalTaskData([...list]);
   };
 
-  const handleOnChange = (index, key, value) => {
+  const handleOnChange = (index, field, value) => {
     let list = [...personalTaskData];
-    list[index][key] = value;
+    list[index][field] = value;
 
     const { firstName, middleName, lastName } = list[index];
 
