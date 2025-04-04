@@ -164,7 +164,7 @@ const ProductItems = () => {
             <span
               onClick={() => {
                 // setProductQuantity((prev) => prev - 1);
-                // can not enter negative values👇
+                // can not enter negative values stop in 0👇
                 setProductQuantity((prev) => Math.max(prev - 1, 0));
               }}
             >

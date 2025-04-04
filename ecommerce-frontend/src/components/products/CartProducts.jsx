@@ -45,10 +45,10 @@ const CartProducts = () => {
   };
 
   const handleIncrease = (index, productId) => {
-    console.log("asc223", productId);
     const updatedList = [...cartProducts];
     updatedList[index].productQuantity += 1;
 
+    console.log("asc223", index, productId);
     console.log("Updated index Product:", updatedList[index]);
     console.log("Updated Product List:", updatedList); // पूरी updated list
 
@@ -110,24 +110,14 @@ const CartProducts = () => {
             <div className="flex gap-4 p-3">
               <div className="bg-[#5caf90] text-[white] text-[16px] rounded-lg ps-4 w-[150px] max-w-full my-3 p-2 flex gap-5 justify-center pointer">
                 <span
-                  // onClick={() => {
-                  //   // setProductQuantity((prev) => prev - 1);
-                  //   // can not enter negative values till 0👇
-                  //   // setProductQuantity((prev) => Math.max(prev - 1, 0));
-                  //   setProductQuantity((prev) => Math.max(prev - 1, 1));
-                  // }}
                   onClick={() => handleDecrease(index, item.products.productId)}
                 >
                   <MinusOutlined />
                 </span>
 
                 <p>{item.productQuantity}</p>
-                {/* <p>{item.productQuantity[index]}</p> */}
 
                 <span
-                  // onClick={() => {
-                  //   setProductQuantity((prev) => prev + 1);
-                  // }}
                   onClick={() => handleIncrease(index, item.products.productId)}
                 >
                   <PlusOutlined />
