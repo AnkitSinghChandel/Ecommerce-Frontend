@@ -10,6 +10,7 @@ import CustomToastify from "./notification-alert/CustomToastify";
 
 import Routers from "./routes/Routers";
 import NetworkStatus from "./errors/NetworkStatus";
+import Timer from "./timer/Timer";
 
 function App() {
   // Initialize AOS by ASC
@@ -30,6 +31,7 @@ function App() {
       <CustomToastify />
       <Routers />
       <NetworkStatus />
+      <Timer />
     </div>
   );
 }
