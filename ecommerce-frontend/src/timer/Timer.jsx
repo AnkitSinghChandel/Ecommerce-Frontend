@@ -13,35 +13,51 @@ const Timer = () => {
   const [singleLeft, setSingleLeft] = useState(false);
   const [singleTop, setSingleTop] = useState(false);
 
-  const [time, setTime] = useState(0); // time in seconds
-  const [isRunning, setIsRunning] = useState(false);
+  const [totalTime, setTotalTime] = useState(0); // total totalTime in seconds.
+  const [isTimerRunning, setIsTimerRunning] = useState(false);
   const timerRef = useRef(null);
 
   const startTimer = () => {
-    if (!isRunning) {
-      setIsRunning(true);
+    if (!isTimerRunning) {
+      setIsTimerRunning(true);
       timerRef.current = setInterval(() => {
-        setTime((prevTime) => prevTime + 1);
+        setTotalTime((prevTime) => prevTime + 1);
       }, 1000);
     }
   };
 
   const stopTimer = () => {
     clearInterval(timerRef.current);
-    setIsRunning(false);
+    setIsTimerRunning(false);
   };
 
   const resetTimer = () => {
     clearInterval(timerRef.current);
-    setTime(0);
-    setIsRunning(false);
+    setTotalTime(0);
+    setIsTimerRunning(false);
   };
 
   const formatTime = (seconds) => {
-    const mins = Math.floor(seconds / 60);
+    const hrs = Math.floor(seconds / 3600);
+    const mins = Math.floor((seconds % 3600) / 60);
     const secs = seconds % 60;
-    return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+    return `${String(hrs).padStart(2, "0")}:${String(mins).padStart(
+      2,
+      "0"
+    )}:${String(secs).padStart(2, "0")}`;
   };
+
+  const convertToHMS = (totalSeconds) => {
+    const hrs = Math.floor(totalSeconds / 3600);
+    const min = Math.floor((totalSeconds % 3600) / 60);
+    const sec = totalSeconds % 60;
+    return { hrs, min, sec };
+  };
+
+  const { hrs, min, sec } = convertToHMS(totalTime);
+
+  console.log("⏱ Timer Raw Seconds:", totalTime);
+  console.log("⏳ Hours:", hrs, "Minutes:", min, "Seconds:", sec);
 
   return (
     <div
@@ -67,16 +83,18 @@ const Timer = () => {
         />
       </div>
 
-      {/* <p className="timerText">Timer: {formatTime(time)}</p> */}
-      <p className="timerText">
-        <AccessAlarmIcon /> {formatTime(time)}
-      </p>
+      {/* <p className="timerText">Timer: {formatTime(totalTime)}</p> */}
+      <div className="timerText flex justify-center items-center">
+        <AccessAlarmIcon />
+        <p className="min-w-[90px]">{formatTime(totalTime)}</p>
+        <img src={isTimerRunning && "clock3.gif"} width={20} />
+      </div>
 
       <div className="flex gap-2 justify-between pt-2">
         <button
           className="timerButton"
           onClick={startTimer}
-          disabled={isRunning}
+          disabled={isTimerRunning}
         >
           Start
         </button>
@@ -84,7 +102,7 @@ const Timer = () => {
         <button
           className="timerButton"
           onClick={stopTimer}
-          disabled={!isRunning}
+          disabled={!isTimerRunning}
         >
           Stop
         </button>
@@ -92,7 +110,7 @@ const Timer = () => {
         <button
           className="timerButton"
           onClick={startTimer}
-          disabled={isRunning || time === 0}
+          disabled={isTimerRunning || totalTime === 0}
         >
           Resume
         </button>
